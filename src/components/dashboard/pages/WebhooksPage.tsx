@@ -1,34 +1,51 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useSeo } from '@/hooks/useSeo';
-import { DashboardCard, EmptyState, Badge } from '@/components/dashboard/DashboardUI';
-import { Webhook, Plus, Save, Trash2, AlertCircle, Loader2, Check } from 'lucide-react';
+import { useFetch } from '@/hooks/useFetch';
+import { api } from '@/lib/api';
+import { DashboardCard, EmptyState, Badge, LoadingState, ErrorState } from '@/components/dashboard/DashboardUI';
+import { Webhook, Save, AlertCircle, Loader2, Check } from 'lucide-react';
 import type { NavigateFn } from './types';
 
 export function WebhooksPage({ navigate }: { navigate: NavigateFn }) {
   useSeo({ title: 'Webhooks — Dashboard', description: 'Configure webhook endpoints.', path: '/dashboard/webhooks' });
 
+  const { data, loading, error, refetch } = useFetch(() => api.getWebhooks());
   const [url, setUrl] = useState('');
   const [saved, setSaved] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [saving, setSaving] = useState(false);
+  const [saveError, setSaveError] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (data?.url) setUrl(data.url);
+  }, [data]);
 
   const handleSave = async () => {
-    setError(null);
+    setSaveError(null);
     if (!url.trim()) {
-      setError('Please enter a webhook URL.');
+      setSaveError('Please enter a webhook URL.');
       return;
     }
     if (!url.startsWith('https://')) {
-      setError('Webhook URL must use HTTPS.');
+      setSaveError('Webhook URL must use HTTPS.');
       return;
     }
-
-    setLoading(true);
-    await new Promise((r) => setTimeout(r, 600));
-    setLoading(false);
-    setSaved(true);
-    setTimeout(() => setSaved(false), 3000);
+    setSaving(true);
+    try {
+      await api.saveWebhook(url.trim());
+      setSaved(true);
+      setTimeout(() => setSaved(false), 3000);
+      refetch();
+    } catch (err) {
+      setSaveError(err instanceof Error ? err.message : 'Failed to save webhook');
+    } finally {
+      setSaving(false);
+    }
   };
+
+  if (loading) return <LoadingState label="Loading webhook settings..." />;
+  if (error) return <ErrorState message={error} />;
+
+  const configured = data?.configured ?? false;
 
   return (
     <div className="space-y-6">
@@ -52,26 +69,33 @@ export function WebhooksPage({ navigate }: { navigate: NavigateFn }) {
             />
           </div>
 
-          {error && (
+          {configured && (
+            <div className="flex items-center gap-2 text-sm text-success-600">
+              <Check className="h-4 w-4" />
+              Webhook endpoint is currently configured.
+            </div>
+          )}
+
+          {saveError && (
             <div className="flex items-start gap-2.5 rounded-lg border border-error-200 bg-error-500/5 p-3">
               <AlertCircle className="mt-0.5 h-4 w-4 shrink-0 text-error-500" />
-              <p className="text-sm text-error-600">{error}</p>
+              <p className="text-sm text-error-600">{saveError}</p>
             </div>
           )}
 
           <button
             onClick={handleSave}
-            disabled={loading}
+            disabled={saving}
             className="flex items-center gap-2 rounded-xl bg-primary-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-primary-700 disabled:opacity-60"
           >
-            {loading ? (
+            {saving ? (
               <Loader2 className="h-4 w-4 animate-spin" />
             ) : saved ? (
               <Check className="h-4 w-4" />
             ) : (
               <Save className="h-4 w-4" />
             )}
-            {loading ? 'Saving...' : saved ? 'Saved' : 'Save endpoint'}
+            {saving ? 'Saving...' : saved ? 'Saved' : 'Save endpoint'}
           </button>
         </div>
       </DashboardCard>

@@ -1,21 +1,27 @@
 import { useAuth } from '@/hooks/useAuth';
 import { useSeo } from '@/hooks/useSeo';
-import { StatCard, DashboardCard, EmptyState, ProgressBar, Badge } from '@/components/dashboard/DashboardUI';
+import { useFetch } from '@/hooks/useFetch';
+import { api } from '@/lib/api';
+import { StatCard, DashboardCard, EmptyState, ProgressBar, LoadingState, ErrorState } from '@/components/dashboard/DashboardUI';
 import { Activity, KeyRound, Webhook, CreditCard, TrendingUp, ArrowRight } from 'lucide-react';
-import { pricingTiers } from '@/config/pricing';
 import type { NavigateFn } from './types';
 
 export function OverviewPage({ navigate }: { navigate: NavigateFn }) {
   useSeo({ title: 'Overview — Dashboard', description: 'Your Chirograph Verify dashboard overview.', path: '/dashboard' });
   const { user } = useAuth();
+  const { data, loading, error } = useFetch(() => api.getOverview());
 
-  const planName = 'Free';
-  const planVerifications = 1000;
-  const usedVerifications = 0;
+  if (loading) return <LoadingState label="Loading dashboard..." />;
+  if (error) return <ErrorState message={error} />;
+
+  const planName = data?.plan ?? 'Free';
+  const planVerifications = data?.monthly_limit ?? 1000;
+  const usedVerifications = data?.used ?? 0;
+  const apiKeyCount = data?.api_key_count ?? 0;
+  const webhookConfigured = data?.webhook_configured ?? false;
 
   return (
     <div className="space-y-6">
-      {/* Welcome */}
       <div>
         <h2 className="text-xl font-semibold text-ink-900">
           Welcome{user?.email ? `, ${user.email.split('@')[0]}` : ''}
@@ -25,7 +31,6 @@ export function OverviewPage({ navigate }: { navigate: NavigateFn }) {
         </p>
       </div>
 
-      {/* Stats */}
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <StatCard
           label="Current plan"
@@ -41,19 +46,18 @@ export function OverviewPage({ navigate }: { navigate: NavigateFn }) {
         />
         <StatCard
           label="API keys"
-          value="0"
-          sublabel="No keys created yet"
+          value={apiKeyCount}
+          sublabel={apiKeyCount === 0 ? 'No keys created yet' : `${apiKeyCount} active`}
           icon={<KeyRound className="h-4 w-4" />}
         />
         <StatCard
           label="Webhook status"
-          value="Not configured"
-          sublabel="No webhook endpoint set"
+          value={webhookConfigured ? 'Configured' : 'Not configured'}
+          sublabel={webhookConfigured ? 'Endpoint is set' : 'No webhook endpoint set'}
           icon={<Webhook className="h-4 w-4" />}
         />
       </div>
 
-      {/* Usage bar */}
       <DashboardCard title="Monthly usage" description="Verification usage for the current billing period.">
         <ProgressBar value={usedVerifications} max={planVerifications} label="Verifications" />
         <div className="mt-4 flex items-center justify-between text-sm">
@@ -70,7 +74,6 @@ export function OverviewPage({ navigate }: { navigate: NavigateFn }) {
         </div>
       </DashboardCard>
 
-      {/* Quick actions */}
       <div className="grid gap-4 lg:grid-cols-2">
         <DashboardCard title="Get started" description="Set up your first verification flow.">
           <ul className="space-y-3">
@@ -112,12 +115,11 @@ export function OverviewPage({ navigate }: { navigate: NavigateFn }) {
         </DashboardCard>
       </div>
 
-      {/* Plan info */}
-      <DashboardCard title="Your plan" description="You are currently on the Free plan.">
+      <DashboardCard title="Your plan" description={`You are currently on the ${planName} plan.`}>
         <div className="flex items-center justify-between">
           <div>
             <p className="text-sm text-ink-600">
-              <span className="font-semibold text-ink-900">Free</span> — 1,000 verifications per month.
+              <span className="font-semibold text-ink-900">{planName}</span> — {planVerifications.toLocaleString()} verifications per month.
             </p>
             <p className="mt-1 text-xs text-ink-400">
               Need more? Upgrade to a paid plan for higher limits and additional features.

@@ -1,61 +1,55 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useSeo } from '@/hooks/useSeo';
-import { DashboardCard, EmptyState, Badge } from '@/components/dashboard/DashboardUI';
+import { useFetch } from '@/hooks/useFetch';
+import { api, type ApiKey } from '@/lib/api';
+import { DashboardCard, EmptyState, Badge, LoadingState, ErrorState } from '@/components/dashboard/DashboardUI';
 import { KeyRound, Plus, Copy, Check, Trash2, AlertCircle, Loader2, Eye, EyeOff } from 'lucide-react';
 import type { NavigateFn } from './types';
 
-interface ApiKey {
-  id: string;
-  name: string;
-  prefix: string;
-  createdAt: string;
-  type: 'secret' | 'publishable';
-}
-
-export function ApiKeysPage({ navigate }: { navigate: NavigateFn }) {
+export function ApiKeysPage({ navigate: _navigate }: { navigate: NavigateFn }) {
   useSeo({ title: 'API Keys — Dashboard', description: 'Manage your Chirograph Verify API keys.', path: '/dashboard/api-keys' });
 
-  const [keys, setKeys] = useState<ApiKey[]>([]);
+  const { data: keys, loading, error, refetch } = useFetch<ApiKey[]>(() => api.getApiKeys());
   const [showCreate, setShowCreate] = useState(false);
   const [newKeyName, setNewKeyName] = useState('');
   const [newKeyType, setNewKeyType] = useState<'secret' | 'publishable'>('secret');
   const [createdKey, setCreatedKey] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
   const [showKey, setShowKey] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [creating, setCreating] = useState(false);
+  const [createError, setCreateError] = useState<string | null>(null);
+  const [revokingId, setRevokingId] = useState<string | null>(null);
 
   const handleCreate = async () => {
-    setError(null);
+    setCreateError(null);
     if (!newKeyName.trim()) {
-      setError('Please enter a name for your API key.');
+      setCreateError('Please enter a name for your API key.');
       return;
     }
-
-    setLoading(true);
-    await new Promise((r) => setTimeout(r, 600));
-
-    const prefix = newKeyType === 'secret' ? 'sk_live_' : 'pk_live_';
-    const randomPart = Math.random().toString(36).slice(2, 42);
-    const fullKey = `${prefix}${randomPart}`;
-
-    const newKey: ApiKey = {
-      id: crypto.randomUUID(),
-      name: newKeyName.trim(),
-      prefix: `${prefix}...${randomPart.slice(-4)}`,
-      createdAt: new Date().toISOString(),
-      type: newKeyType,
-    };
-
-    setKeys((prev) => [...prev, newKey]);
-    setCreatedKey(fullKey);
-    setNewKeyName('');
-    setNewKeyType('secret');
-    setLoading(false);
+    setCreating(true);
+    try {
+      const result = await api.createApiKey(newKeyName.trim(), newKeyType);
+      setCreatedKey(result.key);
+      setNewKeyName('');
+      setNewKeyType('secret');
+      refetch();
+    } catch (err) {
+      setCreateError(err instanceof Error ? err.message : 'Failed to create key');
+    } finally {
+      setCreating(false);
+    }
   };
 
-  const handleRevoke = (id: string) => {
-    setKeys((prev) => prev.filter((k) => k.id !== id));
+  const handleRevoke = async (id: string) => {
+    setRevokingId(id);
+    try {
+      await api.revokeApiKey(id);
+      refetch();
+    } catch {
+      /* ignore */
+    } finally {
+      setRevokingId(null);
+    }
   };
 
   const copyKey = async () => {
@@ -67,7 +61,6 @@ export function ApiKeysPage({ navigate }: { navigate: NavigateFn }) {
     } catch { /* ignore */ }
   };
 
-  // Show newly created key modal
   if (createdKey) {
     return (
       <div className="space-y-6">
@@ -142,7 +135,6 @@ export function ApiKeysPage({ navigate }: { navigate: NavigateFn }) {
         </button>
       </div>
 
-      {/* Create form */}
       {showCreate && (
         <DashboardCard title="Create new API key">
           <div className="space-y-4">
@@ -175,19 +167,19 @@ export function ApiKeysPage({ navigate }: { navigate: NavigateFn }) {
                 />
               </div>
             </div>
-            {error && (
+            {createError && (
               <div className="flex items-start gap-2.5 rounded-lg border border-error-200 bg-error-500/5 p-3">
                 <AlertCircle className="mt-0.5 h-4 w-4 shrink-0 text-error-500" />
-                <p className="text-sm text-error-600">{error}</p>
+                <p className="text-sm text-error-600">{createError}</p>
               </div>
             )}
             <div className="flex gap-3">
               <button
                 onClick={handleCreate}
-                disabled={loading}
+                disabled={creating}
                 className="flex items-center gap-2 rounded-xl bg-primary-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-primary-700 disabled:opacity-60"
               >
-                {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Plus className="h-4 w-4" />}
+                {creating ? <Loader2 className="h-4 w-4 animate-spin" /> : <Plus className="h-4 w-4" />}
                 Generate key
               </button>
               <button
@@ -201,8 +193,11 @@ export function ApiKeysPage({ navigate }: { navigate: NavigateFn }) {
         </DashboardCard>
       )}
 
-      {/* Key list */}
-      {keys.length === 0 ? (
+      {loading ? (
+        <LoadingState label="Loading API keys..." />
+      ) : error ? (
+        <ErrorState message={error} />
+      ) : !keys || keys.length === 0 ? (
         <EmptyState
           title="No API keys yet"
           description="Create your first API key to start integrating Chirograph Verify."
@@ -242,14 +237,19 @@ export function ApiKeysPage({ navigate }: { navigate: NavigateFn }) {
                       <code className="font-mono text-xs text-ink-600">{key.prefix}</code>
                     </td>
                     <td className="px-4 py-3 text-ink-500">
-                      {new Date(key.createdAt).toLocaleDateString()}
+                      {new Date(key.created_at).toLocaleDateString()}
                     </td>
                     <td className="px-4 py-3 text-right">
                       <button
                         onClick={() => handleRevoke(key.id)}
-                        className="inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-sm text-error-600 transition-colors hover:bg-error-50"
+                        disabled={revokingId === key.id}
+                        className="inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-sm text-error-600 transition-colors hover:bg-error-50 disabled:opacity-60"
                       >
-                        <Trash2 className="h-3.5 w-3.5" />
+                        {revokingId === key.id ? (
+                          <Loader2 className="h-3.5 w-3.5 animate-spin" />
+                        ) : (
+                          <Trash2 className="h-3.5 w-3.5" />
+                        )}
                         Revoke
                       </button>
                     </td>
@@ -261,7 +261,6 @@ export function ApiKeysPage({ navigate }: { navigate: NavigateFn }) {
         </DashboardCard>
       )}
 
-      {/* Security note */}
       <div className="rounded-xl border border-warning-500/20 bg-warning-500/5 p-4">
         <div className="flex items-start gap-2.5">
           <AlertCircle className="mt-0.5 h-4 w-4 shrink-0 text-warning-600" />

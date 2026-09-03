@@ -1,15 +1,21 @@
 import { useSeo } from '@/hooks/useSeo';
-import { DashboardCard, Badge, StatCard } from '@/components/dashboard/DashboardUI';
+import { useFetch } from '@/hooks/useFetch';
+import { api } from '@/lib/api';
+import { DashboardCard, Badge, StatCard, LoadingState, ErrorState } from '@/components/dashboard/DashboardUI';
 import { CreditCard, Check, ArrowRight } from 'lucide-react';
 import { pricingTiers } from '@/config/pricing';
 import type { NavigateFn } from './types';
 
-export function BillingPage({ navigate }: { navigate: NavigateFn }) {
+export function BillingPage({ navigate: _navigate }: { navigate: NavigateFn }) {
   useSeo({ title: 'Billing — Dashboard', description: 'Manage your subscription and billing.', path: '/dashboard/billing' });
+  const { data, loading, error } = useFetch(() => api.getBilling());
 
-  const currentPlan = 'Free';
-  const monthlyVerifications = 1000;
-  const usedVerifications = 0;
+  if (loading) return <LoadingState label="Loading billing..." />;
+  if (error) return <ErrorState message={error} />;
+
+  const currentPlan = data?.current_plan ?? 'Free';
+  const monthlyVerifications = data?.monthly_limit ?? 1000;
+  const usedVerifications = data?.used ?? 0;
 
   return (
     <div className="space-y-6">
@@ -18,7 +24,6 @@ export function BillingPage({ navigate }: { navigate: NavigateFn }) {
         <p className="mt-1 text-sm text-ink-500">Manage your subscription and payment method.</p>
       </div>
 
-      {/* Current plan */}
       <div className="grid gap-4 sm:grid-cols-3">
         <StatCard
           label="Current plan"
@@ -38,7 +43,6 @@ export function BillingPage({ navigate }: { navigate: NavigateFn }) {
         />
       </div>
 
-      {/* Plans */}
       <DashboardCard title="Available plans" description="Upgrade or change your plan at any time.">
         <div className="grid gap-4 lg:grid-cols-3 xl:grid-cols-5">
           {pricingTiers.map((tier) => {
@@ -91,7 +95,6 @@ export function BillingPage({ navigate }: { navigate: NavigateFn }) {
         </div>
       </DashboardCard>
 
-      {/* Payment method */}
       <DashboardCard title="Payment method" description="Your payment is processed securely via Flutterwave.">
         <div className="flex items-center justify-between rounded-xl border border-ink-200 bg-ink-50 p-4">
           <div className="flex items-center gap-3">
@@ -107,7 +110,6 @@ export function BillingPage({ navigate }: { navigate: NavigateFn }) {
         </div>
       </DashboardCard>
 
-      {/* Billing history */}
       <DashboardCard title="Billing history" description="Your past invoices and payment history.">
         <div className="py-8 text-center">
           <p className="text-sm text-ink-500">No billing history yet. Invoices will appear here once you upgrade to a paid plan.</p>

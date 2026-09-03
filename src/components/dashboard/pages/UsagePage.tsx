@@ -1,16 +1,22 @@
 import { useSeo } from '@/hooks/useSeo';
-import { DashboardCard, ProgressBar, StatCard, EmptyState } from '@/components/dashboard/DashboardUI';
+import { useFetch } from '@/hooks/useFetch';
+import { api } from '@/lib/api';
+import { DashboardCard, ProgressBar, StatCard, EmptyState, LoadingState, ErrorState } from '@/components/dashboard/DashboardUI';
 import { Activity, CheckCircle2, XCircle, Flag } from 'lucide-react';
 import type { NavigateFn } from './types';
 
 export function UsagePage({ navigate }: { navigate: NavigateFn }) {
   useSeo({ title: 'Usage — Dashboard', description: 'Your verification usage.', path: '/dashboard/usage' });
+  const { data, loading, error } = useFetch(() => api.getUsage());
 
-  const monthlyLimit = 1000;
-  const used = 0;
-  const passed = 0;
-  const flagged = 0;
-  const failed = 0;
+  if (loading) return <LoadingState label="Loading usage..." />;
+  if (error) return <ErrorState message={error} />;
+
+  const monthlyLimit = data?.monthly_limit ?? 1000;
+  const used = data?.used ?? 0;
+  const passed = data?.passed ?? 0;
+  const flagged = data?.flagged ?? 0;
+  const failed = data?.failed ?? 0;
 
   return (
     <div className="space-y-6">
@@ -19,7 +25,6 @@ export function UsagePage({ navigate }: { navigate: NavigateFn }) {
         <p className="mt-1 text-sm text-ink-500">Track your verification usage for the current billing period.</p>
       </div>
 
-      {/* Stats */}
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <StatCard
           label="Total verifications"
@@ -47,7 +52,6 @@ export function UsagePage({ navigate }: { navigate: NavigateFn }) {
         />
       </div>
 
-      {/* Usage bar */}
       <DashboardCard title="Monthly verification usage" description="Your usage resets at the start of each billing cycle.">
         <ProgressBar value={used} max={monthlyLimit} label="Verifications used" />
         <div className="mt-4 flex items-center justify-between text-sm">
@@ -63,7 +67,6 @@ export function UsagePage({ navigate }: { navigate: NavigateFn }) {
         </div>
       </DashboardCard>
 
-      {/* Recent verifications */}
       <DashboardCard title="Recent verifications" description="Your latest verification events.">
         {used === 0 ? (
           <EmptyState
