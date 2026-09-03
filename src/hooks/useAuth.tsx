@@ -1,10 +1,14 @@
-import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
-import type { Session, User } from '@supabase/supabase-js';
-import { supabase } from '@/lib/supabase';
+import { createContext, useContext, useState, useEffect, useCallback, type ReactNode } from 'react';
+import { api, type AuthSession } from '@/lib/api';
+
+interface AuthUser {
+  id: string;
+  email: string;
+  created_at?: string;
+}
 
 interface AuthContextValue {
-  session: Session | null;
-  user: User | null;
+  user: AuthUser | null;
   loading: boolean;
   signIn: (email: string, password: string) => Promise<{ error: string | null }>;
   signUp: (email: string, password: string) => Promise<{ error: string | null; needsConfirmation: boolean }>;
@@ -15,60 +19,70 @@ interface AuthContextValue {
 const AuthContext = createContext<AuthContextValue | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const [session, setSession] = useState<Session | null>(null);
+  const [user, setUser] = useState<AuthUser | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    supabase.auth.getSession().then(({ data }) => {
-      setSession(data.session);
-      setLoading(false);
-    });
-
-    const { data: listener } = supabase.auth.onAuthStateChange((_event, newSession) => {
-      (async () => {
-        setSession(newSession);
-      })();
-    });
-
-    return () => {
-      listener.subscription.unsubscribe();
-    };
+    let active = true;
+    api.getSession()
+      .then((session: AuthSession) => {
+        if (active) setUser(session.user);
+      })
+      .catch(() => {
+        if (active) setUser(null);
+      })
+      .finally(() => {
+        if (active) setLoading(false);
+      });
+    return () => { active = false; };
   }, []);
 
-  const signIn = async (email: string, password: string) => {
-    const { error } = await supabase.auth.signInWithPassword({ email, password });
-    return { error: error?.message ?? null };
-  };
+  const signIn = useCallback(async (email: string, password: string) => {
+    try {
+      const result = await api.signIn(email, password);
+      if (result.error) return { error: result.error };
+      const session = await api.getSession();
+      setUser(session.user);
+      return { error: null };
+    } catch (err) {
+      return { error: err instanceof Error ? err.message : 'Sign in failed' };
+    }
+  }, []);
 
-  const signUp = async (email: string, password: string) => {
-    const { data, error } = await supabase.auth.signUp({ email, password });
-    if (error) return { error: error.message, needsConfirmation: false };
-    const needsConfirmation = !data.session && !!data.user;
-    return { error: null, needsConfirmation };
-  };
+  const signUp = useCallback(async (email: string, password: string) => {
+    try {
+      const result = await api.signUp(email, password);
+      if (result.error) return { error: result.error, needsConfirmation: false };
+      const needsConfirmation = !!result.needs_confirmation;
+      if (!needsConfirmation) {
+        const session = await api.getSession();
+        setUser(session.user);
+      }
+      return { error: null, needsConfirmation };
+    } catch (err) {
+      return { error: err instanceof Error ? err.message : 'Sign up failed', needsConfirmation: false };
+    }
+  }, []);
 
-  const signOut = async () => {
-    await supabase.auth.signOut();
-    setSession(null);
-  };
+  const signOut = useCallback(async () => {
+    try {
+      await api.signOut();
+    } catch {
+      /* ignore */
+    }
+    setUser(null);
+  }, []);
 
-  const resetPassword = async (email: string) => {
-    const { error } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: `${window.location.origin}/#/login`,
-    });
-    return { error: error?.message ?? null };
-  };
+  const resetPassword = useCallback(async (email: string) => {
+    try {
+      const result = await api.resetPassword(email);
+      return { error: result.error ?? null };
+    } catch (err) {
+      return { error: err instanceof Error ? err.message : 'Reset failed' };
+    }
+  }, []);
 
-  const value: AuthContextValue = {
-    session,
-    user: session?.user ?? null,
-    loading,
-    signIn,
-    signUp,
-    signOut,
-    resetPassword,
-  };
-
+  const value: AuthContextValue = { user, loading, signIn, signUp, signOut, resetPassword };
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
 

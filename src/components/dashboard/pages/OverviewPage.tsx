@@ -3,7 +3,7 @@ import { useSeo } from '@/hooks/useSeo';
 import { StatCard, DashboardCard, EmptyState, ProgressBar, Badge } from '@/components/dashboard/DashboardUI';
 import { Activity, KeyRound, Webhook, CreditCard, TrendingUp, ArrowRight } from 'lucide-react';
 import { pricingTiers } from '@/config/pricing';
-import type { NavigateFn } from './DashboardPages';
+import type { NavigateFn } from './types';
 
 export function OverviewPage({ navigate }: { navigate: NavigateFn }) {
   useSeo({ title: 'Overview — Dashboard', description: 'Your Chirograph Verify dashboard overview.', path: '/dashboard' });
