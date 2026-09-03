@@ -17,7 +17,7 @@ export function OverviewPage({ navigate }: { navigate: NavigateFn }) {
   const planName = data?.plan ?? 'Free';
   const planVerifications = data?.monthly_limit ?? 1000;
   const usedVerifications = data?.used ?? 0;
-  const apiKeyCount = data?.api_key_count ?? 0;
+  const apiKeyExists = data?.api_key_exists ?? false;
   const webhookConfigured = data?.webhook_configured ?? false;
 
   return (
@@ -45,9 +45,9 @@ export function OverviewPage({ navigate }: { navigate: NavigateFn }) {
           icon={<Activity className="h-4 w-4" />}
         />
         <StatCard
-          label="API keys"
-          value={apiKeyCount}
-          sublabel={apiKeyCount === 0 ? 'No keys created yet' : `${apiKeyCount} active`}
+          label="API key"
+          value={apiKeyExists ? 'Active' : 'Not set'}
+          sublabel={apiKeyExists ? 'Key is configured' : 'No key generated yet'}
           icon={<KeyRound className="h-4 w-4" />}
         />
         <StatCard
@@ -79,8 +79,8 @@ export function OverviewPage({ navigate }: { navigate: NavigateFn }) {
           <ul className="space-y-3">
             <QuickAction
               icon={<KeyRound className="h-4 w-4" />}
-              title="Create an API key"
-              description="Generate a secret key to start integrating."
+              title="Generate an API key"
+              description="Create your secret key to start integrating."
               onClick={() => navigate('/dashboard/api-keys')}
             />
             <QuickAction

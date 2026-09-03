@@ -1,73 +1,62 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useSeo } from '@/hooks/useSeo';
 import { useFetch } from '@/hooks/useFetch';
-import { api, type ApiKey } from '@/lib/api';
+import { api, type ApiKeyInfo } from '@/lib/api';
 import { DashboardCard, EmptyState, Badge, LoadingState, ErrorState } from '@/components/dashboard/DashboardUI';
-import { KeyRound, Plus, Copy, Check, Trash2, AlertCircle, Loader2, Eye, EyeOff } from 'lucide-react';
+import { KeyRound, Copy, Check, AlertCircle, Loader2, Eye, EyeOff, RefreshCw } from 'lucide-react';
 import type { NavigateFn } from './types';
 
-export function ApiKeysPage({ navigate: _navigate }: { navigate: NavigateFn }) {
-  useSeo({ title: 'API Keys — Dashboard', description: 'Manage your Chirograph Verify API keys.', path: '/dashboard/api-keys' });
+export function ApiKeysPage({ navigate }: { navigate: NavigateFn }) {
+  useSeo({ title: 'API Key — Dashboard', description: 'Manage your Chirograph Verify API key.', path: '/dashboard/api-keys' });
 
-  const { data: keys, loading, error, refetch } = useFetch<ApiKey[]>(() => api.getApiKeys());
-  const [showCreate, setShowCreate] = useState(false);
-  const [newKeyName, setNewKeyName] = useState('');
-  const [newKeyType, setNewKeyType] = useState<'secret' | 'publishable'>('secret');
-  const [createdKey, setCreatedKey] = useState<string | null>(null);
+  const { data, loading, error, refetch } = useFetch<ApiKeyInfo>(() => api.getApiKeyInfo());
+  const [regeneratedKey, setRegeneratedKey] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
   const [showKey, setShowKey] = useState(false);
-  const [creating, setCreating] = useState(false);
-  const [createError, setCreateError] = useState<string | null>(null);
-  const [revokingId, setRevokingId] = useState<string | null>(null);
+  const [regenerating, setRegenerating] = useState(false);
+  const [regenError, setRegenError] = useState<string | null>(null);
+  const [confirmRegen, setConfirmRegen] = useState(false);
 
-  const handleCreate = async () => {
-    setCreateError(null);
-    if (!newKeyName.trim()) {
-      setCreateError('Please enter a name for your API key.');
-      return;
-    }
-    setCreating(true);
+  const handleRegenerate = async () => {
+    setRegenError(null);
+    setRegenerating(true);
     try {
-      const result = await api.createApiKey(newKeyName.trim(), newKeyType);
-      setCreatedKey(result.key);
-      setNewKeyName('');
-      setNewKeyType('secret');
+      const result = await api.regenerateApiKey();
+      setRegeneratedKey(result.key);
+      setConfirmRegen(false);
       refetch();
     } catch (err) {
-      setCreateError(err instanceof Error ? err.message : 'Failed to create key');
+      setRegenError(err instanceof Error ? err.message : 'Failed to regenerate key');
     } finally {
-      setCreating(false);
-    }
-  };
-
-  const handleRevoke = async (id: string) => {
-    setRevokingId(id);
-    try {
-      await api.revokeApiKey(id);
-      refetch();
-    } catch {
-      /* ignore */
-    } finally {
-      setRevokingId(null);
+      setRegenerating(false);
     }
   };
 
   const copyKey = async () => {
-    if (!createdKey) return;
+    if (!regeneratedKey) return;
     try {
-      await navigator.clipboard.writeText(createdKey);
+      await navigator.clipboard.writeText(regeneratedKey);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch { /* ignore */ }
   };
 
-  if (createdKey) {
+  if (loading) return <LoadingState label="Loading API key..." />;
+  if (error) return <ErrorState message={error} />;
+
+  const keyExists = data?.exists ?? false;
+  const prefix = data?.prefix ?? '';
+  const createdAt = data?.created_at ? new Date(data.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) : null;
+  const lastRegen = data?.last_regenerated_at ? new Date(data.last_regenerated_at).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) : null;
+
+  // Show newly regenerated key
+  if (regeneratedKey) {
     return (
       <div className="space-y-6">
         <div>
-          <h2 className="text-xl font-semibold text-ink-900">API key created</h2>
+          <h2 className="text-xl font-semibold text-ink-900">API key regenerated</h2>
           <p className="mt-1 text-sm text-ink-500">
-            Copy your key now. For security, the full key will not be shown again.
+            Copy your new key now. For security, the full key will not be shown again.
           </p>
         </div>
 
@@ -75,7 +64,7 @@ export function ApiKeysPage({ navigate: _navigate }: { navigate: NavigateFn }) {
           <div className="rounded-xl border border-ink-200 bg-ink-50 p-4">
             <div className="flex items-center justify-between gap-4">
               <code className="flex-1 break-all font-mono text-sm text-ink-800">
-                {showKey ? createdKey : `${createdKey.slice(0, 12)}${'•'.repeat(20)}${createdKey.slice(-4)}`}
+                {showKey ? regeneratedKey : `${regeneratedKey.slice(0, 12)}${'•'.repeat(20)}${regeneratedKey.slice(-4)}`}
               </code>
               <div className="flex items-center gap-2">
                 <button
@@ -100,16 +89,13 @@ export function ApiKeysPage({ navigate: _navigate }: { navigate: NavigateFn }) {
             <div className="flex items-start gap-2.5">
               <AlertCircle className="mt-0.5 h-4 w-4 shrink-0 text-warning-600" />
               <p className="text-sm text-ink-700">
-                <strong>Keep this key secure.</strong>{' '}
-                {newKeyType === 'secret'
-                  ? 'Never expose secret keys in frontend code. Store them in server-side environment variables only.'
-                  : 'Publishable keys are safe for browser use with the widget SDK.'}
+                <strong>Keep this key secure.</strong> Never expose it in frontend code. Store it in server-side environment variables only. The previous key is now invalid.
               </p>
             </div>
           </div>
 
           <button
-            onClick={() => { setCreatedKey(null); setShowKey(false); }}
+            onClick={() => { setRegeneratedKey(null); setShowKey(false); }}
             className="mt-6 rounded-xl bg-ink-900 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-ink-850"
           >
             Done
@@ -121,191 +107,124 @@ export function ApiKeysPage({ navigate: _navigate }: { navigate: NavigateFn }) {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <div>
-          <h2 className="text-xl font-semibold text-ink-900">API Keys</h2>
-          <p className="mt-1 text-sm text-ink-500">Manage your secret and publishable API keys.</p>
-        </div>
-        <button
-          onClick={() => setShowCreate(!showCreate)}
-          className="flex items-center gap-2 rounded-xl bg-primary-600 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-primary-700"
-        >
-          <Plus className="h-4 w-4" />
-          Create key
-        </button>
+      <div>
+        <h2 className="text-xl font-semibold text-ink-900">API Key</h2>
+        <p className="mt-1 text-sm text-ink-500">Your tenant API key is used to authenticate API requests from your backend.</p>
       </div>
 
-      {showCreate && (
-        <DashboardCard title="Create new API key">
+      {keyExists ? (
+        <DashboardCard title="Your API key" description="One key per account. Regenerate to invalidate the old key and create a new one.">
           <div className="space-y-4">
-            <div>
-              <label className="mb-1.5 block text-sm font-medium text-ink-700">Key name</label>
-              <input
-                type="text"
-                value={newKeyName}
-                onChange={(e) => setNewKeyName(e.target.value)}
-                placeholder="e.g. Production server"
-                className="w-full rounded-xl border border-ink-200 bg-ink-50 px-4 py-2.5 text-sm text-ink-800 placeholder:text-ink-400 focus:border-primary-400 focus:bg-white focus:outline-none focus:ring-1 focus:ring-primary-400"
-              />
-            </div>
-            <div>
-              <label className="mb-1.5 block text-sm font-medium text-ink-700">Key type</label>
-              <div className="grid gap-3 sm:grid-cols-2">
-                <KeyTypeOption
-                  selected={newKeyType === 'secret'}
-                  onSelect={() => setNewKeyType('secret')}
-                  label="Secret key"
-                  prefix="sk_live_..."
-                  description="Server-side only. Create challenges and redeem results."
-                />
-                <KeyTypeOption
-                  selected={newKeyType === 'publishable'}
-                  onSelect={() => setNewKeyType('publishable')}
-                  label="Publishable key"
-                  prefix="pk_live_..."
-                  description="Browser-safe. Used with the widget SDK."
-                />
+            <div className="rounded-xl border border-ink-200 bg-ink-50 p-4">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary-50">
+                    <KeyRound className="h-5 w-5 text-primary-600" />
+                  </span>
+                  <div>
+                    <code className="font-mono text-sm text-ink-800">{prefix}</code>
+                    <p className="mt-0.5 text-xs text-ink-400">Secret key</p>
+                  </div>
+                </div>
+                <Badge variant="success">Active</Badge>
               </div>
             </div>
-            {createError && (
+
+            <div className="grid gap-3 sm:grid-cols-2">
+              <div className="rounded-lg border border-ink-200 bg-white p-4">
+                <p className="text-xs font-medium text-ink-500">Created</p>
+                <p className="mt-1 text-sm font-medium text-ink-900">{createdAt ?? '—'}</p>
+              </div>
+              <div className="rounded-lg border border-ink-200 bg-white p-4">
+                <p className="text-xs font-medium text-ink-500">Last regenerated</p>
+                <p className="mt-1 text-sm font-medium text-ink-900">{lastRegen ?? '—'}</p>
+              </div>
+            </div>
+
+            {regenError && (
               <div className="flex items-start gap-2.5 rounded-lg border border-error-200 bg-error-500/5 p-3">
                 <AlertCircle className="mt-0.5 h-4 w-4 shrink-0 text-error-500" />
-                <p className="text-sm text-error-600">{createError}</p>
+                <p className="text-sm text-error-600">{regenError}</p>
               </div>
             )}
-            <div className="flex gap-3">
+
+            {confirmRegen ? (
+              <div className="rounded-xl border border-warning-500/30 bg-warning-500/5 p-4">
+                <p className="text-sm text-ink-700">
+                  <strong>Are you sure?</strong> Regenerating will immediately invalidate your current key. Any services using the old key will stop working until updated.
+                </p>
+                <div className="mt-4 flex gap-3">
+                  <button
+                    onClick={handleRegenerate}
+                    disabled={regenerating}
+                    className="flex items-center gap-2 rounded-xl bg-error-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-error-700 disabled:opacity-60"
+                  >
+                    {regenerating ? <Loader2 className="h-4 w-4 animate-spin" /> : <RefreshCw className="h-4 w-4" />}
+                    Yes, regenerate
+                  </button>
+                  <button
+                    onClick={() => setConfirmRegen(false)}
+                    className="rounded-xl border border-ink-200 px-5 py-2.5 text-sm font-medium text-ink-700 transition-colors hover:bg-ink-50"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            ) : (
               <button
-                onClick={handleCreate}
-                disabled={creating}
-                className="flex items-center gap-2 rounded-xl bg-primary-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-primary-700 disabled:opacity-60"
+                onClick={() => setConfirmRegen(true)}
+                className="flex items-center gap-2 rounded-xl border border-ink-200 px-5 py-2.5 text-sm font-semibold text-ink-700 transition-colors hover:border-error-300 hover:bg-error-50 hover:text-error-600"
               >
-                {creating ? <Loader2 className="h-4 w-4 animate-spin" /> : <Plus className="h-4 w-4" />}
-                Generate key
+                <RefreshCw className="h-4 w-4" />
+                Regenerate key
               </button>
-              <button
-                onClick={() => setShowCreate(false)}
-                className="rounded-xl border border-ink-200 px-5 py-2.5 text-sm font-medium text-ink-700 transition-colors hover:bg-ink-50"
-              >
-                Cancel
-              </button>
-            </div>
+            )}
           </div>
         </DashboardCard>
-      )}
-
-      {loading ? (
-        <LoadingState label="Loading API keys..." />
-      ) : error ? (
-        <ErrorState message={error} />
-      ) : !keys || keys.length === 0 ? (
+      ) : (
         <EmptyState
-          title="No API keys yet"
-          description="Create your first API key to start integrating Chirograph Verify."
+          title="No API key yet"
+          description="Generate your first API key to start integrating Chirograph Verify with your backend."
           action={
             <button
-              onClick={() => setShowCreate(true)}
-              className="flex items-center gap-2 rounded-xl bg-primary-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-primary-700"
+              onClick={handleRegenerate}
+              disabled={regenerating}
+              className="flex items-center gap-2 rounded-xl bg-primary-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-primary-700 disabled:opacity-60"
             >
-              <Plus className="h-4 w-4" />
-              Create your first key
+              {regenerating ? <Loader2 className="h-4 w-4 animate-spin" /> : <KeyRound className="h-4 w-4" />}
+              Generate API key
             </button>
           }
         />
-      ) : (
-        <DashboardCard>
-          <div className="overflow-x-auto">
-            <table className="w-full border-collapse text-sm">
-              <thead>
-                <tr className="border-b border-ink-200">
-                  <th className="px-4 py-3 text-left font-semibold text-ink-900">Name</th>
-                  <th className="px-4 py-3 text-left font-semibold text-ink-900">Type</th>
-                  <th className="px-4 py-3 text-left font-semibold text-ink-900">Key</th>
-                  <th className="px-4 py-3 text-left font-semibold text-ink-900">Created</th>
-                  <th className="px-4 py-3 text-right font-semibold text-ink-900">Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                {keys.map((key) => (
-                  <tr key={key.id} className="border-b border-ink-100">
-                    <td className="px-4 py-3 font-medium text-ink-900">{key.name}</td>
-                    <td className="px-4 py-3">
-                      <Badge variant={key.type === 'secret' ? 'error' : 'primary'}>
-                        {key.type === 'secret' ? 'Secret' : 'Publishable'}
-                      </Badge>
-                    </td>
-                    <td className="px-4 py-3">
-                      <code className="font-mono text-xs text-ink-600">{key.prefix}</code>
-                    </td>
-                    <td className="px-4 py-3 text-ink-500">
-                      {new Date(key.created_at).toLocaleDateString()}
-                    </td>
-                    <td className="px-4 py-3 text-right">
-                      <button
-                        onClick={() => handleRevoke(key.id)}
-                        disabled={revokingId === key.id}
-                        className="inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-sm text-error-600 transition-colors hover:bg-error-50 disabled:opacity-60"
-                      >
-                        {revokingId === key.id ? (
-                          <Loader2 className="h-3.5 w-3.5 animate-spin" />
-                        ) : (
-                          <Trash2 className="h-3.5 w-3.5" />
-                        )}
-                        Revoke
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </DashboardCard>
       )}
 
+      {/* Security note */}
       <div className="rounded-xl border border-warning-500/20 bg-warning-500/5 p-4">
         <div className="flex items-start gap-2.5">
           <AlertCircle className="mt-0.5 h-4 w-4 shrink-0 text-warning-600" />
           <div className="text-sm text-ink-700">
-            <p className="font-medium text-warning-600">Protect your secret keys</p>
+            <p className="font-medium text-warning-600">Protect your API key</p>
             <p className="mt-1">
-              Never expose <code className="font-mono text-xs">sk_live_...</code> keys in frontend code.
-              Store them in server-side environment variables only. Publishable keys
-              (<code className="font-mono text-xs">pk_live_...</code>) are safe for browser use.
+              Never expose your API key in frontend code. Store it in server-side environment variables only.
+              Use it from your backend to create challenges and redeem verification results.
             </p>
           </div>
         </div>
       </div>
-    </div>
-  );
-}
 
-function KeyTypeOption({
-  selected,
-  onSelect,
-  label,
-  prefix,
-  description,
-}: {
-  selected: boolean;
-  onSelect: () => void;
-  label: string;
-  prefix: string;
-  description: string;
-}) {
-  return (
-    <button
-      onClick={onSelect}
-      className={`rounded-xl border p-4 text-left transition-colors ${
-        selected
-          ? 'border-primary-400 bg-primary-50/50 ring-1 ring-primary-400'
-          : 'border-ink-200 hover:border-ink-300'
-      }`}
-    >
-      <div className="flex items-center gap-2">
-        <KeyRound className={`h-4 w-4 ${selected ? 'text-primary-600' : 'text-ink-400'}`} />
-        <span className="text-sm font-semibold text-ink-900">{label}</span>
+      {/* Quick link to docs */}
+      <div className="flex items-center justify-between rounded-xl border border-ink-200 bg-white p-5">
+        <div>
+          <p className="text-sm font-semibold text-ink-900">Need help integrating?</p>
+          <p className="mt-0.5 text-xs text-ink-500">Read the quick start guide to learn how to use your API key.</p>
+        </div>
+        <button
+          onClick={() => navigate('/docs/quick-start')}
+          className="flex items-center gap-1.5 text-sm font-medium text-primary-600 hover:underline"
+        >
+          Read docs
+        </button>
       </div>
-      <code className="mt-2 block font-mono text-xs text-ink-500">{prefix}</code>
-      <p className="mt-1 text-xs text-ink-500">{description}</p>
-    </button>
+    </div>
   );
 }

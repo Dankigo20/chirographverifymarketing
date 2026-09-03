@@ -9,7 +9,7 @@ export interface DashboardNavItem {
 
 export const dashboardNav: DashboardNavItem[] = [
   { label: 'Overview', icon: <LayoutGrid className="h-4.5 w-4.5" />, path: '/dashboard' },
-  { label: 'API Keys', icon: <KeyRound className="h-4.5 w-4.5" />, path: '/dashboard/api-keys' },
+  { label: 'API Key', icon: <KeyRound className="h-4.5 w-4.5" />, path: '/dashboard/api-keys' },
   { label: 'Usage', icon: <Activity className="h-4.5 w-4.5" />, path: '/dashboard/usage' },
   { label: 'Analytics', icon: <BarChart3 className="h-4.5 w-4.5" />, path: '/dashboard/analytics' },
   { label: 'Webhooks', icon: <Webhook className="h-4.5 w-4.5" />, path: '/dashboard/webhooks' },

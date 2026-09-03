@@ -53,19 +53,18 @@ export interface AuthSession {
   } | null;
 }
 
-export interface ApiKey {
-  id: string;
-  name: string;
+export interface ApiKeyInfo {
+  exists: boolean;
   prefix: string;
-  type: 'secret' | 'publishable';
-  created_at: string;
+  created_at: string | null;
+  last_regenerated_at: string | null;
 }
 
 export interface OverviewData {
   plan: string;
   monthly_limit: number;
   used: number;
-  api_key_count: number;
+  api_key_exists: boolean;
   webhook_configured: boolean;
 }
 
@@ -137,15 +136,12 @@ export const api = {
       body: JSON.stringify({ origins }),
     }),
 
-  // API Keys
-  getApiKeys: () => request<ApiKey[]>('/api-keys'),
-  createApiKey: (name: string, type: 'secret' | 'publishable') =>
-    request<{ key: string; id: string }>('/api-keys', {
+  // API Key (single key per tenant)
+  getApiKeyInfo: () => request<ApiKeyInfo>('/dashboard/api-key'),
+  regenerateApiKey: () =>
+    request<{ key: string }>('/dashboard/api-key/regenerate', {
       method: 'POST',
-      body: JSON.stringify({ name, type }),
     }),
-  revokeApiKey: (id: string) =>
-    request<void>(`/api-keys/${id}`, { method: 'DELETE' }),
 };
 
 export { ApiError };
