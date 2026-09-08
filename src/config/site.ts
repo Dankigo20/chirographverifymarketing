@@ -10,7 +10,7 @@ export const siteConfig = {
   shortName: 'Chirograph',
   domain: 'chirographverify.com',
   siteUrl: 'https://chirographverify.com',
-  appUrl: (import.meta.env.VITE_APP_URL as string | undefined) ?? 'https://app.chirographverify.com',
+  appUrl: (import.meta.env.VITE_APP_URL as string | undefined) ?? 'https://verify.chirographverify.com',
   description:
     'Developer-focused human verification infrastructure. Verify real users with WebAuthn and server-side cryptographic verification — no passwords, no SMS, no CAPTCHA.',
   country: 'Egypt',
@@ -34,8 +34,8 @@ export const siteConfig = {
 } as const;
 
 export const appLinks = {
-  signIn: `${siteConfig.appUrl}/dashboard/login`,
+  signIn: `${siteConfig.appUrl}/login`,
   dashboard: `${siteConfig.appUrl}/dashboard`,
   developers: `${siteConfig.appUrl}/developers`,
-  getStarted: `${siteConfig.appUrl}/dashboard/login`,
+  getStarted: `${siteConfig.appUrl}/signup`,
 } as const;
