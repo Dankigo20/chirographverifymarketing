@@ -56,7 +56,7 @@ const capabilities = [
 
 export function Capabilities() {
   return (
-    <section id="capabilities" className="relative scroll-mt-20 py-20 lg:py-28">
+    <section id="capabilities" className="relative scroll-mt-20 py-24 lg:py-32">
       <div className="container-page">
         <Reveal>
           <SectionHeading
@@ -66,13 +66,13 @@ export function Capabilities() {
           />
         </Reveal>
 
-        <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {capabilities.map((cap, i) => {
             const Icon = cap.icon;
             return (
               <Reveal key={i} delay={(i % 4) * 80}>
-                <div className="group h-full rounded-2xl border border-ink-200 bg-white p-6 transition-all duration-300 hover:border-primary-200 hover:shadow-card hover:-translate-y-0.5">
-                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary-50 text-primary-600 transition-colors group-hover:bg-primary-600 group-hover:text-white">
+                <div className="group h-full rounded-2xl border border-ink-200 bg-white p-7 transition-all duration-300 hover:border-primary-200 hover:shadow-card-hover hover:-translate-y-0.5">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary-50 text-primary-600 transition-all duration-300 group-hover:bg-primary-600 group-hover:text-white group-hover:scale-105">
                     <Icon className="h-5 w-5" strokeWidth={2} />
                   </div>
                   <h3 className="mt-4 text-sm font-semibold text-ink-900">{cap.title}</h3>

@@ -62,9 +62,9 @@ export function DocCallout({
   children: ReactNode;
 }) {
   const styles = {
-    info: 'border-primary-200 bg-primary-50/50 text-ink-700',
-    warning: 'border-amber-200 bg-amber-50/50 text-ink-700',
-    danger: 'border-error-200 bg-error-500/5 text-ink-700',
+    info: 'border-primary-200 bg-primary-50/60 text-ink-700',
+    warning: 'border-amber-200 bg-amber-50/60 text-ink-700',
+    danger: 'border-error-200 bg-error-50/60 text-ink-700',
   };
   const labelColor = {
     info: 'text-primary-700',
@@ -91,8 +91,8 @@ export function ComingSoonBadge() {
 
 export function EndpointBadge({ method, path }: { method: string; path: string }) {
   return (
-    <div className="mt-4 flex items-center gap-3 rounded-xl border border-ink-200 bg-ink-50 px-4 py-3">
-      <span className="inline-flex rounded-md bg-primary-600 px-2.5 py-1 font-mono text-xs font-semibold text-white">
+    <div className="mt-4 flex items-center gap-3 rounded-xl border border-ink-200 bg-ink-50 px-4 py-3 transition-colors hover:border-ink-300">
+      <span className="inline-flex rounded-md bg-primary-600 px-2.5 py-1 font-mono text-xs font-semibold text-white shadow-soft">
         {method}
       </span>
       <code className="font-mono text-sm text-ink-800">{path}</code>

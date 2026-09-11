@@ -27,7 +27,7 @@ const steps = [
 
 export function ProductExplanation() {
   return (
-    <section id="product" className="relative scroll-mt-20 py-20 lg:py-28">
+    <section id="product" className="relative scroll-mt-20 py-24 lg:py-32">
       <div className="container-page">
         <Reveal>
           <SectionHeading
@@ -39,7 +39,7 @@ export function ProductExplanation() {
 
         {/* Horizontal flow */}
         <Reveal delay={100}>
-          <div className="mt-16">
+          <div className="mt-20">
             {/* Desktop horizontal */}
             <div className="hidden lg:block">
               <div className="flex items-stretch justify-between gap-2">

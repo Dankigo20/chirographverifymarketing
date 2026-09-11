@@ -6,23 +6,23 @@ import { pricingTiers, type PricingTier } from '@/config/pricing';
 
 export function PricingPreview() {
   return (
-    <section className="relative py-20 lg:py-28">
+    <section className="relative py-24 lg:py-32">
       <div className="container-page">
         <Reveal>
           <div className="mx-auto max-w-2xl text-center">
-            <div className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-accent-600">
+            <div className="mb-3.5 text-xs font-semibold uppercase tracking-[0.2em] text-accent-600">
               Pricing
             </div>
-            <h2 className="text-3xl font-semibold tracking-tight text-ink-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.1]">
+            <h2 className="text-3xl font-semibold tracking-tight text-ink-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.08]">
               Simple, usage-based pricing
             </h2>
-            <p className="mt-4 text-base leading-relaxed text-ink-500 sm:text-lg">
+            <p className="mt-5 text-base leading-relaxed text-ink-500 sm:text-lg">
               Start free and scale as you verify more users. No hidden fees, no per-seat costs.
             </p>
           </div>
         </Reveal>
 
-        <div className="mx-auto mt-14 grid max-w-7xl gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+        <div className="mx-auto mt-16 grid max-w-7xl gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
           {pricingTiers.map((tier, i) => (
             <Reveal key={tier.name} delay={i * 80}>
               <PreviewCard tier={tier} />
@@ -31,7 +31,7 @@ export function PricingPreview() {
         </div>
 
         <Reveal delay={300}>
-          <div className="mt-10 text-center">
+          <div className="mt-12 text-center">
             <p className="text-sm text-ink-500">
               Need higher volume or custom terms?{' '}
               <ButtonLink href="/pricing" variant="ghost" size="sm">

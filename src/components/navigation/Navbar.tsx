@@ -39,7 +39,7 @@ export function Navbar({ currentPath, navigate }: NavbarProps) {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ease-out-expo ${
         scrolled
-          ? 'border-b border-ink-200/80 bg-white/85 backdrop-blur-xl'
+          ? 'border-b border-ink-200/80 bg-white/85 backdrop-blur-xl shadow-soft'
           : 'border-b border-transparent bg-transparent'
       }`}
     >
@@ -166,7 +166,7 @@ function isActive(current: string, href: string): boolean {
 
 function Logo() {
   return (
-    <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-primary-600 to-accent-600 shadow-glow">
+    <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-primary-600 to-accent-600 shadow-glow transition-transform duration-300 hover:scale-105">
       <Fingerprint className="h-5 w-5 text-white" strokeWidth={2.2} />
     </span>
   );

@@ -37,7 +37,7 @@ const problems = [
 
 export function ProblemSection() {
   return (
-    <section className="relative py-20 lg:py-28">
+    <section className="relative py-24 lg:py-32">
       <div className="container-page">
         <Reveal>
           <SectionHeading
@@ -47,12 +47,12 @@ export function ProblemSection() {
           />
         </Reveal>
 
-        <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {problems.map((p, i) => {
             const Icon = p.icon;
             return (
               <Reveal key={i} delay={i * 80}>
-                <div className="group h-full rounded-2xl border border-ink-200 bg-white p-6 transition-all duration-300 hover:border-ink-300 hover:shadow-card">
+                <div className="group h-full rounded-2xl border border-ink-200 bg-white p-7 transition-all duration-300 hover:border-ink-300 hover:shadow-card-hover hover:-translate-y-0.5">
                   <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-error-500/10 text-error-500">
                     <Icon className="h-5 w-5" strokeWidth={2} />
                   </div>
@@ -66,8 +66,8 @@ export function ProblemSection() {
 
         {/* Transition */}
         <Reveal>
-          <div className="mt-16 flex flex-col items-center text-center">
-            <p className="max-w-xl text-lg text-ink-500">
+          <div className="mt-20 flex flex-col items-center text-center">
+            <p className="max-w-xl text-lg leading-relaxed text-ink-500">
               Chirograph takes a different approach — one built on cryptography, not puzzles.
             </p>
             <div className="mt-4 text-primary-500">

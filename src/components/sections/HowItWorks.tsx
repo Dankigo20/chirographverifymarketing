@@ -12,7 +12,7 @@ const steps: FlowStep[] = [
 
 export function HowItWorks() {
   return (
-    <section id="how-it-works" className="relative scroll-mt-20 overflow-hidden py-20 lg:py-28">
+    <section id="how-it-works" className="relative scroll-mt-20 overflow-hidden py-24 lg:py-32">
       {/* Dark surface */}
       <div className="dark-surface absolute inset-0 bg-ink-900" />
       <div className="absolute inset-0 bg-grid-dark opacity-40" />
@@ -28,7 +28,7 @@ export function HowItWorks() {
           />
         </Reveal>
 
-        <div className="mx-auto mt-16 max-w-2xl">
+        <div className="mx-auto mt-20 max-w-2xl">
           <Reveal delay={150}>
             <FlowDiagram steps={steps} dark />
           </Reveal>
@@ -36,7 +36,7 @@ export function HowItWorks() {
 
         {/* Legend */}
         <Reveal delay={300}>
-          <div className="mx-auto mt-12 flex flex-wrap justify-center gap-6">
+          <div className="mx-auto mt-14 flex flex-wrap justify-center gap-6">
             <LegendDot color="accent" label="Client / browser" />
             <LegendDot color="primary" label="Server-side" />
           </div>

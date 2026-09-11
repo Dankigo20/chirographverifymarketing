@@ -37,7 +37,7 @@ const useCases = [
 
 export function UseCases() {
   return (
-    <section className="relative py-20 lg:py-28">
+    <section className="relative py-24 lg:py-32">
       <div className="container-page">
         <Reveal>
           <SectionHeading
@@ -47,14 +47,14 @@ export function UseCases() {
           />
         </Reveal>
 
-        <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {useCases.map((uc, i) => {
             const Icon = uc.icon;
             return (
               <Reveal key={i} delay={(i % 3) * 80}>
-                <div className="group h-full rounded-2xl border border-ink-200 bg-white p-6 transition-all duration-300 hover:border-ink-300 hover:shadow-card">
+                <div className="group h-full rounded-2xl border border-ink-200 bg-white p-7 transition-all duration-300 hover:border-ink-300 hover:shadow-card-hover hover:-translate-y-0.5">
                   <div className="flex items-center gap-3">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-ink-50 text-ink-700 transition-colors group-hover:bg-primary-50 group-hover:text-primary-600">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-ink-50 text-ink-700 transition-all duration-300 group-hover:bg-primary-50 group-hover:text-primary-600 group-hover:scale-105">
                       <Icon className="h-5 w-5" strokeWidth={2} />
                     </div>
                     <h3 className="text-base font-semibold text-ink-900">{uc.title}</h3>

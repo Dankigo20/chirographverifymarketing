@@ -54,7 +54,7 @@ export function DocsSidebar({ currentSlug, navigate, isMobileOpen, onMobileClose
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Search docs..."
-              className="w-full rounded-lg border border-ink-200 bg-ink-50 py-2 pl-9 pr-3 text-sm text-ink-700 placeholder:text-ink-400 focus:border-primary-400 focus:bg-white focus:outline-none focus:ring-1 focus:ring-primary-400"
+              className="w-full rounded-lg border border-ink-200 bg-ink-50 py-2 pl-9 pr-3 text-sm text-ink-700 placeholder:text-ink-400 transition-colors focus:border-primary-400 focus:bg-white focus:outline-none focus:ring-1 focus:ring-primary-400"
             />
             {query && (
               <button
@@ -80,7 +80,7 @@ export function DocsSidebar({ currentSlug, navigate, isMobileOpen, onMobileClose
           <nav className="space-y-6">
             {filteredSections.map((section) => (
               <div key={section.label}>
-                <h3 className="mb-2 text-xs font-semibold uppercase tracking-wider text-ink-400">
+                <h3 className="mb-2.5 text-xs font-semibold uppercase tracking-[0.18em] text-ink-400">
                   {section.label}
                 </h3>
                 <ul className="space-y-0.5">
@@ -90,7 +90,7 @@ export function DocsSidebar({ currentSlug, navigate, isMobileOpen, onMobileClose
                       <li key={page.slug}>
                         <button
                           onClick={() => go(page.slug)}
-                          className={`flex w-full items-center justify-between rounded-lg px-3 py-2 text-left text-sm transition-colors ${
+                          className={`flex w-full items-center justify-between rounded-lg px-3 py-2 text-left text-sm transition-all duration-200 ${
                             active
                               ? 'bg-primary-50 font-medium text-primary-700'
                               : 'text-ink-600 hover:bg-ink-50 hover:text-ink-900'
@@ -99,7 +99,7 @@ export function DocsSidebar({ currentSlug, navigate, isMobileOpen, onMobileClose
                           <span className="flex items-center gap-2">
                             {page.title}
                             {page.comingSoon && (
-                              <span className="rounded bg-accent-100 px-1.5 py-0.5 text-2xs font-medium text-accent-700">
+                              <span className="rounded bg-accent-100 px-1.5 py-0.5 text-2xs font-medium text-accent-700 border border-accent-200">
                                 soon
                               </span>
                             )}

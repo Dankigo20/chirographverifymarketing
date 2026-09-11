@@ -18,21 +18,21 @@ export function PricingPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative overflow-hidden pt-28 pb-12 lg:pt-36 lg:pb-16">
+      <section className="relative overflow-hidden pt-32 pb-12 lg:pt-40 lg:pb-16">
         <div className="absolute inset-0 bg-grid mask-fade-b" />
-        <div className="absolute left-1/2 top-0 -z-10 h-[400px] w-[700px] -translate-x-1/2 rounded-full bg-gradient-to-b from-primary-100/40 to-transparent blur-3xl" />
+        <div className="absolute left-1/2 top-0 -z-10 h-[400px] w-[700px] -translate-x-1/2 rounded-full bg-gradient-to-b from-primary-100/50 to-transparent blur-3xl" />
         <div className="container-page">
           <Reveal>
             <div className="mx-auto max-w-2xl text-center">
               <Badge variant="primary" className="mb-5">
                 Pricing
               </Badge>
-              <h1 className="text-4xl font-semibold leading-[1.05] tracking-tight text-ink-900 sm:text-5xl lg:text-6xl lg:leading-[1.02]">
+              <h1 className="text-4xl font-semibold leading-[1.05] tracking-tight text-ink-900 sm:text-5xl lg:text-6xl lg:leading-[1.02] lg:tracking-tighter">
                 Pricing that scales
                 <br />
                 <span className="text-gradient">with your usage.</span>
               </h1>
-              <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-ink-500">
+              <p className="mx-auto mt-7 max-w-xl text-lg leading-relaxed text-ink-500">
                 Start free and pay only as you verify more users. No per-seat costs,
                 no hidden fees, no contracts required.
               </p>
@@ -42,7 +42,7 @@ export function PricingPage() {
       </section>
 
       {/* Pricing cards */}
-      <section className="pb-20 lg:pb-28">
+      <section className="pb-24 lg:pb-32">
         <div className="container-page">
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
             {pricingTiers.map((tier, i) => (
@@ -63,7 +63,7 @@ export function PricingPage() {
       </section>
 
       {/* Comparison table */}
-      <section className="pb-20 lg:pb-28">
+      <section className="pb-24 lg:pb-32">
         <div className="container-page">
           <Reveal>
             <SectionHeading
@@ -74,7 +74,7 @@ export function PricingPage() {
           </Reveal>
 
           <Reveal delay={100}>
-            <div className="mx-auto mt-12 max-w-5xl overflow-x-auto">
+            <div className="mx-auto mt-14 max-w-5xl overflow-x-auto">
               <table className="w-full border-collapse">
                 <thead>
                   <tr className="border-b border-ink-200">
@@ -114,10 +114,10 @@ export function PricingPage() {
       </section>
 
       {/* Enterprise CTA */}
-      <section className="pb-20 lg:pb-28">
+      <section className="pb-24 lg:pb-32">
         <div className="container-page">
           <Reveal>
-            <div className="mx-auto max-w-2xl rounded-3xl border border-ink-200 bg-gradient-to-br from-ink-50 to-primary-50/30 p-10 text-center lg:p-14">
+            <div className="mx-auto max-w-2xl rounded-3xl border border-ink-200 bg-gradient-to-br from-ink-50 to-primary-50/40 p-12 text-center lg:p-16">
               <h2 className="text-2xl font-semibold tracking-tight text-ink-900 sm:text-3xl">
                 Need something custom?
               </h2>
@@ -141,10 +141,10 @@ export function PricingPage() {
 function PricingCard({ tier }: { tier: PricingTier }) {
   return (
     <div
-      className={`relative flex h-full flex-col rounded-2xl border p-6 transition-all duration-300 ${
+      className={`relative flex h-full flex-col rounded-2xl border p-7 transition-all duration-300 ${
         tier.featured
           ? 'border-primary-300 bg-white shadow-glow lg:-translate-y-2'
-          : 'border-ink-200 bg-white hover:border-ink-300 hover:shadow-card'
+          : 'border-ink-200 bg-white hover:border-ink-300 hover:shadow-card-hover hover:-translate-y-0.5'
       }`}
     >
       {tier.featured && (

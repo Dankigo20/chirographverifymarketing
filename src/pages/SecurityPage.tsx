@@ -136,7 +136,7 @@ export function SecurityPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative overflow-hidden pt-28 pb-16 lg:pt-36 lg:pb-20">
+      <section className="relative overflow-hidden pt-32 pb-20 lg:pt-40 lg:pb-24">
         <div className="dark-surface absolute inset-0 bg-ink-900" />
         <div className="absolute inset-0 bg-grid-dark opacity-30" />
         <div className="absolute left-1/2 top-0 -z-0 h-[400px] w-[700px] -translate-x-1/2 rounded-full bg-primary-500/10 blur-3xl" />
@@ -168,14 +168,14 @@ export function SecurityPage() {
       </section>
 
       {/* Detailed sections */}
-      <section className="py-20 lg:py-28">
+      <section className="py-24 lg:py-32">
         <div className="container-page">
           <div className="grid gap-6 lg:grid-cols-2">
             {sections.map((s, i) => {
               const Icon = s.icon;
               return (
                 <Reveal key={i} delay={(i % 2) * 100}>
-                  <div className="h-full rounded-2xl border border-ink-200 bg-white p-7 transition-all duration-300 hover:border-ink-300 hover:shadow-card">
+                  <div className="h-full rounded-2xl border border-ink-200 bg-white p-7 transition-all duration-300 hover:border-ink-300 hover:shadow-card-hover hover:-translate-y-0.5">
                     <div className="flex items-center gap-3">
                       <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-primary-50 to-accent-50 text-primary-600">
                         <Icon className="h-5 w-5" strokeWidth={2} />
@@ -202,7 +202,7 @@ export function SecurityPage() {
       </section>
 
       {/* Webhook code example */}
-      <section className="py-20 lg:py-28">
+      <section className="py-24 lg:py-32">
         <div className="container-page">
           <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
             <Reveal>
@@ -242,10 +242,10 @@ export function SecurityPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 lg:py-24">
+      <section className="py-24 lg:py-28">
         <div className="container-page">
           <Reveal>
-            <div className="mx-auto max-w-2xl rounded-3xl border border-ink-200 bg-gradient-to-br from-ink-50 to-primary-50/30 p-10 text-center lg:p-14">
+            <div className="mx-auto max-w-2xl rounded-3xl border border-ink-200 bg-gradient-to-br from-ink-50 to-primary-50/40 p-12 text-center lg:p-16">
               <h2 className="text-2xl font-semibold tracking-tight text-ink-900 sm:text-3xl">
                 Start verifying users securely
               </h2>

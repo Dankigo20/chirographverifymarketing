@@ -54,7 +54,7 @@ export function FAQSection() {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="relative scroll-mt-20 py-20 lg:py-28">
+    <section id="faq" className="relative scroll-mt-20 py-24 lg:py-32">
       <div className="container-page">
         <Reveal>
           <SectionHeading
@@ -64,13 +64,13 @@ export function FAQSection() {
           />
         </Reveal>
 
-        <div className="mx-auto mt-12 max-w-3xl space-y-3">
+        <div className="mx-auto mt-14 max-w-3xl space-y-3">
           {faqs.map((faq, i) => (
             <Reveal key={i} delay={(i % 4) * 50}>
-              <div className="overflow-hidden rounded-2xl border border-ink-200 bg-white">
+              <div className="overflow-hidden rounded-2xl border border-ink-200 bg-white transition-colors duration-300 hover:border-ink-300">
                 <button
                   onClick={() => setOpen(open === i ? null : i)}
-                  className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left transition-colors hover:bg-ink-50"
+                  className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left transition-colors hover:bg-ink-50"
                   aria-expanded={open === i}
                 >
                   <span className="text-sm font-semibold text-ink-900 sm:text-base">{faq.q}</span>
@@ -86,7 +86,7 @@ export function FAQSection() {
                   }`}
                 >
                   <div className="overflow-hidden">
-                    <p className="px-5 pb-5 text-sm leading-relaxed text-ink-500">{faq.a}</p>
+                    <p className="px-6 pb-5 text-sm leading-relaxed text-ink-500">{faq.a}</p>
                   </div>
                 </div>
               </div>

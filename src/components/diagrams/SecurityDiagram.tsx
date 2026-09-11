@@ -76,7 +76,7 @@ function colorBg(color: string): string {
     case 'primary':
       return 'bg-gradient-to-br from-primary-500 to-primary-600';
     case 'success':
-      return 'bg-gradient-to-br from-emerald-500 to-emerald-600';
+      return 'bg-gradient-to-br from-accent-500 to-accent-600';
     default:
       return 'bg-gradient-to-br from-ink-600 to-ink-700';
   }

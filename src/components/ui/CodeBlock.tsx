@@ -62,7 +62,7 @@ export function CodeBlock({
             className={`flex items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium transition-colors ${dark ? 'text-ink-400 hover:bg-white/10 hover:text-ink-200' : 'text-ink-500 hover:bg-ink-200 hover:text-ink-700'}`}
             aria-label="Copy code"
           >
-            {copied ? <Check className="h-3.5 w-3.5 text-emerald-400" /> : <Copy className="h-3.5 w-3.5" />}
+            {copied ? <Check className="h-3.5 w-3.5 text-accent-400" /> : <Copy className="h-3.5 w-3.5" />}
             {copied ? 'Copied' : 'Copy'}
           </button>
         </div>

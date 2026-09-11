@@ -11,7 +11,7 @@ export function HeroVisual() {
   return (
     <div ref={ref} className="relative mx-auto w-full max-w-md">
       {/* Glow */}
-      <div className="absolute -inset-6 rounded-[2.5rem] bg-gradient-to-br from-primary-500/20 via-accent-500/10 to-transparent blur-2xl" />
+      <div className="absolute -inset-6 rounded-[2.5rem] bg-gradient-to-br from-primary-500/25 via-accent-500/15 to-transparent blur-2xl" />
 
       {/* Card */}
       <div
@@ -97,7 +97,7 @@ export function HeroVisual() {
         }`}
         style={{ transitionDelay: '900ms' }}
       >
-        <ShieldCheck className="h-4 w-4 text-emerald-400" />
+        <ShieldCheck className="h-4 w-4 text-accent-400" />
         <span className="text-xs font-medium text-ink-200">Cryptographically verified</span>
       </div>
     </div>
@@ -124,11 +124,11 @@ function VerifyStep({
     >
       <span
         className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full ${
-          success ? 'bg-emerald-500/20' : 'bg-primary-500/20'
+          success ? 'bg-accent-500/20' : 'bg-primary-500/20'
         }`}
       >
         <Check
-          className={`h-3 w-3 ${success ? 'text-emerald-400' : 'text-primary-400'}`}
+          className={`h-3 w-3 ${success ? 'text-accent-400' : 'text-primary-400'}`}
           strokeWidth={3}
         />
       </span>

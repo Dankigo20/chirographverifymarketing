@@ -27,10 +27,10 @@ const variants: Record<Variant, string> = {
   primary:
     'bg-primary-600 text-white shadow-soft hover:bg-primary-700 hover:shadow-glow active:scale-[0.98]',
   secondary:
-    'bg-white text-ink-900 border border-ink-200 shadow-soft hover:border-ink-300 hover:bg-ink-50 active:scale-[0.98]',
+    'bg-white text-ink-800 border border-ink-200 shadow-soft hover:border-ink-300 hover:bg-ink-50 hover:shadow-card active:scale-[0.98]',
   outline:
     'bg-transparent text-primary-700 border border-primary-200 hover:bg-primary-50 hover:border-primary-300 active:scale-[0.98]',
-  ghost: 'bg-transparent text-ink-700 hover:bg-ink-100 hover:text-ink-900 active:scale-[0.98]',
+  ghost: 'bg-transparent text-ink-600 hover:bg-ink-100 hover:text-ink-900 active:scale-[0.98]',
   dark: 'bg-ink-900 text-white shadow-soft hover:bg-ink-850 hover:shadow-glow active:scale-[0.98]',
 };
 

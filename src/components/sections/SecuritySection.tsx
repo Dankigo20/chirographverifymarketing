@@ -38,7 +38,7 @@ const pillars = [
 
 export function SecuritySection() {
   return (
-    <section className="relative overflow-hidden py-20 lg:py-28">
+    <section className="relative overflow-hidden py-24 lg:py-32">
       <div className="dark-surface absolute inset-0 bg-ink-900" />
       <div className="absolute inset-0 bg-grid-dark opacity-30" />
       <div className="absolute -top-40 left-1/2 -z-0 h-[400px] w-[700px] -translate-x-1/2 rounded-full bg-accent-500/10 blur-3xl" />
@@ -54,17 +54,17 @@ export function SecuritySection() {
         </Reveal>
 
         <Reveal delay={150}>
-          <div className="mt-16">
+          <div className="mt-20">
             <SecurityDiagram />
           </div>
         </Reveal>
 
-        <div className="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-20 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {pillars.map((p, i) => {
             const Icon = p.icon;
             return (
               <Reveal key={i} delay={(i % 3) * 80}>
-                <div className="h-full rounded-2xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur transition-colors hover:border-white/20">
+                <div className="h-full rounded-2xl border border-white/10 bg-white/[0.03] p-7 backdrop-blur transition-all duration-300 hover:border-white/20 hover:bg-white/[0.05]">
                   <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-primary-500/20 to-accent-500/20 text-primary-300">
                     <Icon className="h-5 w-5" strokeWidth={2} />
                   </div>

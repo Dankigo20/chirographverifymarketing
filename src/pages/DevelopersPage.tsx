@@ -123,7 +123,7 @@ export function DevelopersPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative overflow-hidden pt-28 pb-16 lg:pt-36 lg:pb-20">
+      <section className="relative overflow-hidden pt-32 pb-20 lg:pt-40 lg:pb-24">
         <div className="dark-surface absolute inset-0 bg-ink-900" />
         <div className="absolute inset-0 bg-grid-dark opacity-30" />
         <div className="absolute left-1/2 top-0 -z-0 h-[400px] w-[700px] -translate-x-1/2 rounded-full bg-accent-500/10 blur-3xl" />
@@ -158,7 +158,7 @@ export function DevelopersPage() {
       </section>
 
       {/* Quick start */}
-      <section className="py-20 lg:py-28">
+      <section className="py-24 lg:py-32">
         <div className="container-page">
           <Reveal>
             <SectionHeading
@@ -177,7 +177,7 @@ export function DevelopersPage() {
       </section>
 
       {/* Verification flow */}
-      <section className="py-20 lg:py-28">
+      <section className="py-24 lg:py-32">
         <div className="container-page">
           <Reveal>
             <SectionHeading
@@ -215,7 +215,7 @@ export function DevelopersPage() {
       </section>
 
       {/* Code examples */}
-      <section className="py-20 lg:py-28">
+      <section className="py-24 lg:py-32">
         <div className="container-page">
           <Reveal>
             <SectionHeading
@@ -241,7 +241,7 @@ export function DevelopersPage() {
       </section>
 
       {/* API reference */}
-      <section className="py-20 lg:py-28">
+      <section className="py-24 lg:py-32">
         <div className="container-page">
           <Reveal>
             <SectionHeading
@@ -268,7 +268,7 @@ export function DevelopersPage() {
       </section>
 
       {/* Architecture */}
-      <section className="relative overflow-hidden py-20 lg:py-28">
+      <section className="relative overflow-hidden py-24 lg:py-32">
         <div className="dark-surface absolute inset-0 bg-ink-900" />
         <div className="absolute inset-0 bg-grid-dark opacity-30" />
         <div className="container-page relative">
@@ -302,10 +302,10 @@ export function DevelopersPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 lg:py-24">
+      <section className="py-24 lg:py-28">
         <div className="container-page">
           <Reveal>
-            <div className="mx-auto max-w-2xl rounded-3xl border border-ink-200 bg-gradient-to-br from-ink-50 to-accent-50/30 p-10 text-center lg:p-14">
+            <div className="mx-auto max-w-2xl rounded-3xl border border-ink-200 bg-gradient-to-br from-ink-50 to-accent-50/40 p-12 text-center lg:p-16">
               <Zap className="mx-auto h-8 w-8 text-primary-600" />
               <h2 className="mt-4 text-2xl font-semibold tracking-tight text-ink-900 sm:text-3xl">
                 Ready to build?

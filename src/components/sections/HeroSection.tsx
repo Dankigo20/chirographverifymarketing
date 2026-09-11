@@ -6,10 +6,10 @@ import { appLinks } from '@/config/site';
 
 export function HeroSection() {
   return (
-    <section className="relative overflow-hidden pt-28 pb-20 lg:pt-36 lg:pb-28">
+    <section className="relative overflow-hidden pt-32 pb-24 lg:pt-40 lg:pb-32">
       {/* Background */}
       <div className="absolute inset-0 bg-grid mask-fade-b" />
-      <div className="absolute left-1/2 top-0 -z-10 h-[500px] w-[800px] -translate-x-1/2 rounded-full bg-gradient-to-b from-primary-100/40 via-accent-50/20 to-transparent blur-3xl" />
+      <div className="absolute left-1/2 top-0 -z-10 h-[500px] w-[800px] -translate-x-1/2 rounded-full bg-gradient-to-b from-primary-100/50 via-accent-50/25 to-transparent blur-3xl" />
 
       <div className="container-page">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
@@ -20,7 +20,7 @@ export function HeroSection() {
               WebAuthn-powered verification
             </Badge>
 
-            <h1 className="text-4xl font-semibold leading-[1.05] tracking-tight text-ink-900 sm:text-5xl lg:text-6xl lg:leading-[1.02]">
+            <h1 className="text-4xl font-semibold leading-[1.05] tracking-tight text-ink-900 sm:text-5xl lg:text-6xl lg:leading-[1.02] lg:tracking-tighter">
               Prove you're human.
               <br />
               <span className="text-gradient">Without passwords.</span>
@@ -28,13 +28,13 @@ export function HeroSection() {
               <span className="text-ink-400">Without SMS.</span>
             </h1>
 
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-ink-500">
+            <p className="mt-7 max-w-xl text-lg leading-relaxed text-ink-500">
               Chirograph Verify is a device-biometric bot-prevention API for developers.
               Verify real users with WebAuthn and platform authenticators like Face ID and
               Touch ID — with server-side cryptographic verification. No CAPTCHA, no friction.
             </p>
 
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
               <ButtonLink href={appLinks.getStarted} size="lg" external>
                 Start building
                 <ChevronRight className="h-4 w-4" />
@@ -45,7 +45,7 @@ export function HeroSection() {
               </ButtonLink>
             </div>
 
-            <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-ink-500">
+            <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-ink-500">
               <Feature>No CAPTCHA</Feature>
               <Feature>No SMS codes</Feature>
               <Feature>No passwords</Feature>

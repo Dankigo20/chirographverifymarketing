@@ -117,9 +117,9 @@ export function DocsPage({ slug, navigate }: DocsPageProps) {
         </div>
 
         {/* Doc content */}
-        <div className="container-page mx-auto max-w-4xl px-5 py-10 lg:px-10 lg:py-14">
+        <div className="container-page mx-auto max-w-4xl px-5 py-12 lg:px-10 lg:py-16">
           {/* Breadcrumb */}
-          <div className="mb-6 flex items-center gap-2 text-sm text-ink-400">
+          <div className="mb-8 flex items-center gap-2 text-sm text-ink-400">
             <button
               onClick={() => navigate('/docs')}
               className="hover:text-ink-700"

@@ -81,31 +81,31 @@ export async function POST(req) {
 
 export function DeveloperSection() {
   return (
-    <section id="developers-preview" className="relative scroll-mt-20 py-20 lg:py-28">
+    <section id="developers-preview" className="relative scroll-mt-20 py-24 lg:py-32">
       <div className="container-page">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <Reveal>
             <div>
-              <div className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-accent-600">
+              <div className="mb-3.5 text-xs font-semibold uppercase tracking-[0.2em] text-accent-600">
                 For developers
               </div>
-              <h2 className="text-3xl font-semibold tracking-tight text-ink-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.1]">
+              <h2 className="text-3xl font-semibold tracking-tight text-ink-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.08]">
                 Integrate in three calls
               </h2>
-              <p className="mt-4 text-base leading-relaxed text-ink-500 sm:text-lg">
+              <p className="mt-5 text-base leading-relaxed text-ink-500 sm:text-lg">
                 Create a challenge, redirect to the hosted ceremony, and redeem the
                 result on your backend. The browser never decides verification —
                 your server always does.
               </p>
 
-              <ul className="mt-6 space-y-3">
+              <ul className="mt-7 space-y-3.5">
                 <DevFeature>Server-side challenge creation with single-use flows</DevFeature>
                 <DevFeature>Redirect-based widget SDK — no iframe, no React dependency</DevFeature>
                 <DevFeature>Backend redemption of opaque verification results</DevFeature>
                 <DevFeature>Signed webhooks for real-time verification events</DevFeature>
               </ul>
 
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <div className="mt-9 flex flex-col gap-3 sm:flex-row">
                 <ButtonLink href="/docs" variant="primary" size="lg">
                   Read the docs
                   <ArrowRight className="h-4 w-4" />

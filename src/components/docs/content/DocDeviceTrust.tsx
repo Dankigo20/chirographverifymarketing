@@ -28,9 +28,9 @@ export function DocDeviceTrust() {
       <DocHeading level={3} id="outcomes">Verification outcomes</DocHeading>
 
       <div className="mt-5 space-y-4">
-        <div className="rounded-xl border border-emerald-200 bg-emerald-50/50 p-5">
+        <div className="rounded-xl border border-accent-200 bg-accent-50/50 p-5">
           <div className="flex items-center gap-2">
-            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-emerald-500 text-xs font-bold text-white">P</span>
+            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-accent-500 text-xs font-bold text-white">P</span>
             <h4 className="text-sm font-semibold text-ink-900">Pass</h4>
           </div>
           <p className="mt-2 text-sm text-ink-600">

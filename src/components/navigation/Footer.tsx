@@ -9,13 +9,13 @@ export function Footer({ navigate }: FooterProps) {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-ink-200 bg-ink-50">
-      <div className="container-page py-14 lg:py-16">
+    <footer className="border-t border-ink-200 bg-ink-50/80">
+      <div className="container-page py-16 lg:py-20">
         <div className="grid gap-10 lg:grid-cols-12">
           {/* Brand */}
           <div className="lg:col-span-4">
             <div className="flex items-center gap-2.5">
-              <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-primary-600 to-accent-600">
+              <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-primary-600 to-accent-600 shadow-glow">
                 <Fingerprint className="h-5 w-5 text-white" strokeWidth={2.2} />
               </span>
               <span className="text-[15px] font-semibold tracking-tight text-ink-900">
