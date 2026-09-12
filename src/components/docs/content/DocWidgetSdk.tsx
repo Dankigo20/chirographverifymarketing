@@ -16,13 +16,18 @@ export function DocWidgetSdk() {
       </DocParagraph>
       <DocCode code="npm install @chirograph/verify-widget" language="bash" filename="terminal" />
       <DocParagraph>
-        Or load via CDN:
+        Or load via CDN (not yet live):
       </DocParagraph>
       <DocCode
         code={`<script src="https://cdn.chirographverify.com/widget.js"></script>`}
         language="html"
         filename="index.html"
       />
+      <DocCallout variant="warning" title="CDN widget script not yet live">
+        The <code className="font-mono text-sm">cdn.chirographverify.com/widget.js</code>{' '}
+        script is planned but not yet published. Use the npm package when it is
+        available, or follow the CDN example once the script goes live.
+      </DocCallout>
 
       <DocHeading level={3} id="publishable-key">Publishable key</DocHeading>
       <DocParagraph>

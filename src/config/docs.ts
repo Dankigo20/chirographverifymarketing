@@ -42,10 +42,10 @@ export const docSections: DocSection[] = [
     pages: [
       { slug: 'api-challenge', title: 'POST /v1/challenge' },
       { slug: 'api-verify', title: 'POST /v1/verify' },
-      { slug: 'api-widget-flows', title: 'POST /v1/widget/flows' },
-      { slug: 'api-ceremony-options', title: 'POST /v1/widget/ceremony/options' },
-      { slug: 'api-ceremony-complete', title: 'POST /v1/widget/ceremony/complete' },
-      { slug: 'api-widget-redeem', title: 'POST /v1/widget/redeem' },
+      { slug: 'api-widget-flows', title: 'POST /widget/flow' },
+      { slug: 'api-ceremony-options', title: 'POST /widget/ceremony' },
+      { slug: 'api-ceremony-complete', title: 'POST /widget/ceremony (alias)' },
+      { slug: 'api-widget-redeem', title: 'POST /widget/redeem' },
     ],
   },
   {

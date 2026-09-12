@@ -106,10 +106,9 @@ export async function POST(req) {
 const endpoints = [
   { method: 'POST', path: '/v1/challenge', desc: 'Create a single-use verification challenge' },
   { method: 'POST', path: '/v1/verify', desc: 'Verify a WebAuthn assertion' },
-  { method: 'POST', path: '/v1/widget/flows', desc: 'Create a widget verification flow' },
-  { method: 'POST', path: '/v1/widget/ceremony/options', desc: 'Get WebAuthn ceremony options' },
-  { method: 'POST', path: '/v1/widget/ceremony/complete', desc: 'Complete the hosted ceremony' },
-  { method: 'POST', path: '/v1/widget/redeem', desc: 'Redeem an opaque verification result' },
+  { method: 'POST', path: '/widget/flow', desc: 'Create a widget verification flow' },
+  { method: 'POST', path: '/widget/ceremony', desc: 'Run the hosted WebAuthn ceremony' },
+  { method: 'POST', path: '/widget/redeem', desc: 'Redeem an opaque verification result' },
 ];
 
 export function DevelopersPage() {

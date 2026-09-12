@@ -6,10 +6,10 @@ import { appLinks } from '@/config/site';
 import { Terminal, ArrowRight } from 'lucide-react';
 
 const challengeCode = `// 1. Create a verification challenge (server-side)
-const res = await fetch('https://api.chirographverify.com/v1/challenge', {
+const res = await fetch('https://app.chirographverify.com/v1/challenge', {
   method: 'POST',
   headers: {
-    'Authorization': 'Bearer ' + process.env.CHIROGRAPH_SECRET_KEY,
+    'X-API-Key': process.env.CHIROGRAPH_SECRET_KEY,
     'Content-Type': 'application/json',
   },
   body: JSON.stringify({
@@ -37,10 +37,10 @@ const widgetCode = `<!-- 2. Trigger the widget from your frontend -->
 </script>`;
 
 const redeemCode = `// 3. Redeem the result on your backend (server-side)
-const res = await fetch('https://api.chirographverify.com/v1/widget/redeem', {
+const res = await fetch('https://app.chirographverify.com/widget/redeem', {
   method: 'POST',
   headers: {
-    'Authorization': 'Bearer ' + process.env.CHIROGRAPH_SECRET_KEY,
+    'X-API-Key': process.env.CHIROGRAPH_SECRET_KEY,
     'Content-Type': 'application/json',
   },
   body: JSON.stringify({

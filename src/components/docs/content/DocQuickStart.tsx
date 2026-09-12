@@ -5,8 +5,30 @@ export function DocQuickStart() {
     <DocPageWrapper>
       <DocHeading level={2}>Quick Start</DocHeading>
       <DocParagraph>
-        Get from zero to a working verification flow in five steps.
+        Get from zero to a working verification flow in six steps.
       </DocParagraph>
+
+      <DocHeading level={3} id="step-0">Step 0 — Get your API key</DocHeading>
+      <DocParagraph>
+        Sign up at{' '}
+        <a
+          href="https://verify.chirographverify.com/signup"
+          className="font-medium text-primary-600 hover:underline"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          https://verify.chirographverify.com/signup
+        </a>
+        , verify your email, and you'll land in your dashboard. Open{' '}
+        <strong>API Keys</strong> in the sidebar and click{' '}
+        <strong>Regenerate Key</strong> to get your secret key. It is shown{' '}
+        <strong>once — copy it immediately</strong>.
+      </DocParagraph>
+      <DocCallout variant="warning" title="The key cannot be retrieved again">
+        Your secret key is stored server-side only as a cryptographic hash. The
+        plaintext key is displayed exactly once, at generation. If you lose it,
+        regenerate a new key and update your environment variables.
+      </DocCallout>
 
       <DocHeading level={3} id="step-1">Step 1 — Install the SDK</DocHeading>
       <DocParagraph>
@@ -18,13 +40,18 @@ export function DocQuickStart() {
       </DocParagraph>
       <DocCode code="npm install @chirograph/verify-widget" language="bash" filename="terminal" />
       <DocParagraph>
-        Alternatively, load the widget via CDN:
+        Alternatively, load the widget via CDN (not yet live):
       </DocParagraph>
       <DocCode
         code={`<script src="https://cdn.chirographverify.com/widget.js"></script>`}
         language="html"
         filename="index.html"
       />
+      <DocCallout variant="warning" title="CDN widget script not yet live">
+        The <code className="font-mono text-sm">cdn.chirographverify.com/widget.js</code>{' '}
+        script is planned but not yet published. Use the npm package when it is
+        available, or follow the CDN example once the script goes live.
+      </DocCallout>
 
       <DocHeading level={3} id="step-2">Step 2 — Configure keys</DocHeading>
       <DocParagraph>
