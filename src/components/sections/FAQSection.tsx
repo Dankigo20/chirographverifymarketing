@@ -54,7 +54,7 @@ export function FAQSection() {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="relative scroll-mt-20 py-24 lg:py-32">
+    <section id="faq" className="relative scroll-mt-20 border-t border-ink-100 py-24 lg:py-32">
       <div className="container-page">
         <Reveal>
           <SectionHeading

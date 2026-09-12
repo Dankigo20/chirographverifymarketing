@@ -30,6 +30,13 @@ export function Navbar({ currentPath, navigate }: NavbarProps) {
     };
   }, [menuOpen]);
 
+  // Dark-hero routes (homepage hero is now dark, like /security and /developers).
+  // Navbar uses light text only over those heroes when not scrolled; everywhere
+  // else (e.g. /pricing with a light hero) it stays dark for contrast.
+  const isDarkHero =
+    currentPath === '/' || currentPath === '/security' || currentPath === '/developers';
+  const darkNav = isDarkHero && !scrolled;
+
   const go = (href: string) => {
     setMenuOpen(false);
     navigate(href);
@@ -51,9 +58,13 @@ export function Navbar({ currentPath, navigate }: NavbarProps) {
           aria-label="Chirograph Verify home"
         >
           <Logo />
-          <span className="text-[15px] font-semibold tracking-tight text-ink-900">
+          <span
+            className={`text-[15px] font-semibold tracking-tight transition-colors ${
+              darkNav ? 'text-white' : 'text-ink-900'
+            }`}
+          >
             Chirograph
-            <span className="text-primary-600"> Verify</span>
+            <span className={darkNav ? 'text-primary-300' : 'text-primary-600'}> Verify</span>
           </span>
         </button>
 
@@ -65,6 +76,7 @@ export function Navbar({ currentPath, navigate }: NavbarProps) {
               href={item.href}
               active={isActive(currentPath, item.href)}
               onClick={() => go(item.href)}
+              dark={darkNav}
             >
               {item.label}
             </NavLink>
@@ -73,7 +85,13 @@ export function Navbar({ currentPath, navigate }: NavbarProps) {
 
         {/* Desktop CTAs */}
         <div className="hidden items-center gap-2 md:flex">
-          <ButtonLink href={appLinks.signIn} variant="ghost" size="sm" external>
+          <ButtonLink
+            href={appLinks.signIn}
+            variant="ghost"
+            size="sm"
+            external
+            className={darkNav ? '!text-ink-200 hover:!bg-white/10 hover:!text-white' : ''}
+          >
             Sign in
           </ButtonLink>
           <ButtonLink href={appLinks.getStarted} variant="primary" size="sm" external>
@@ -85,7 +103,9 @@ export function Navbar({ currentPath, navigate }: NavbarProps) {
         {/* Mobile toggle */}
         <button
           onClick={() => setMenuOpen((v) => !v)}
-          className="flex h-10 w-10 items-center justify-center rounded-lg text-ink-700 hover:bg-ink-100 md:hidden"
+          className={`flex h-10 w-10 items-center justify-center rounded-lg md:hidden ${
+            darkNav ? 'text-ink-200 hover:bg-white/10' : 'text-ink-700 hover:bg-ink-100'
+          }`}
           aria-label={menuOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={menuOpen}
         >
@@ -136,17 +156,25 @@ function NavLink({
   active,
   onClick,
   children,
+  dark = false,
 }: {
   href: string;
   active: boolean;
   onClick: () => void;
   children: React.ReactNode;
+  dark?: boolean;
 }) {
   return (
     <button
       onClick={onClick}
       className={`relative rounded-lg px-3.5 py-2 text-sm font-medium transition-colors ${
-        active ? 'text-primary-700' : 'text-ink-600 hover:text-ink-900'
+        active
+          ? dark
+            ? 'text-white'
+            : 'text-primary-700'
+          : dark
+            ? 'text-ink-300 hover:text-white'
+            : 'text-ink-600 hover:text-ink-900'
       }`}
     >
       {children}

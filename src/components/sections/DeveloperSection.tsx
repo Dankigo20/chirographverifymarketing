@@ -81,7 +81,7 @@ export async function POST(req) {
 
 export function DeveloperSection() {
   return (
-    <section id="developers-preview" className="relative scroll-mt-20 py-24 lg:py-32">
+    <section id="developers-preview" className="relative scroll-mt-20 border-t border-ink-100 bg-ink-50/60 py-24 lg:py-32">
       <div className="container-page">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <Reveal>

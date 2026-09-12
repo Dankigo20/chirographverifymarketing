@@ -56,7 +56,7 @@ const capabilities = [
 
 export function Capabilities() {
   return (
-    <section id="capabilities" className="relative scroll-mt-20 py-24 lg:py-32">
+    <section id="capabilities" className="relative scroll-mt-20 border-t border-ink-100 py-24 lg:py-32">
       <div className="container-page">
         <Reveal>
           <SectionHeading

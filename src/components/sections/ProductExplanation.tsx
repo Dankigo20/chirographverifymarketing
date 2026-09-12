@@ -27,7 +27,7 @@ const steps = [
 
 export function ProductExplanation() {
   return (
-    <section id="product" className="relative scroll-mt-20 py-24 lg:py-32">
+    <section id="product" className="relative scroll-mt-20 border-t border-ink-100 py-24 lg:py-32">
       <div className="container-page">
         <Reveal>
           <SectionHeading
