@@ -38,15 +38,12 @@ const pillars = [
 
 export function SecuritySection() {
   return (
-    <section className="relative overflow-hidden py-24 lg:py-32">
-      <div className="dark-surface absolute inset-0 bg-ink-900" />
-      <div className="absolute inset-0 bg-grid-dark opacity-30" />
-      <div className="absolute -top-40 left-1/2 -z-0 h-[400px] w-[700px] -translate-x-1/2 rounded-full bg-accent-500/10 blur-3xl" />
+    <section className="relative overflow-hidden border-b border-ink-200 bg-white py-24 lg:py-32">
+      <div className="absolute inset-0 bg-grid opacity-50" />
 
       <div className="container-page relative">
         <Reveal>
           <SectionHeading
-            dark
             eyebrow="Security"
             title="Verified by cryptography, not by trust"
             description="The security model is designed so that no party — not the browser, not the user, not a man-in-the-middle — can forge a verification result."
@@ -64,12 +61,12 @@ export function SecuritySection() {
             const Icon = p.icon;
             return (
               <Reveal key={i} delay={(i % 3) * 80}>
-                <div className="h-full rounded-2xl border border-white/10 bg-white/[0.03] p-7 backdrop-blur transition-all duration-300 hover:border-white/20 hover:bg-white/[0.05]">
-                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-primary-500/20 to-accent-500/20 text-primary-300">
+                <div className="h-full rounded-xl border border-ink-200 bg-white p-7 shadow-card transition-colors duration-150 hover:border-ink-300">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-control border border-primary-200 bg-primary-50 text-primary-600">
                     <Icon className="h-5 w-5" strokeWidth={2} />
                   </div>
-                  <h3 className="mt-4 text-sm font-semibold text-white">{p.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-ink-400">{p.desc}</p>
+                  <h3 className="mt-4 text-sm font-semibold text-ink-900">{p.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-ink-500">{p.desc}</p>
                 </div>
               </Reveal>
             );

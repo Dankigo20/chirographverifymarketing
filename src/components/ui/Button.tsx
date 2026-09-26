@@ -21,23 +21,21 @@ interface AnchorProps {
 }
 
 const base =
-  'inline-flex items-center justify-center gap-2 font-medium rounded-xl transition-all duration-200 ease-out-expo focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none whitespace-nowrap';
+  'inline-flex items-center justify-center gap-2 font-medium rounded-control transition-colors duration-150 focus-visible:ring-2 focus-visible:ring-primary-500/35 disabled:opacity-55 disabled:pointer-events-none whitespace-nowrap';
 
 const variants: Record<Variant, string> = {
-  primary:
-    'bg-primary-600 text-white shadow-soft hover:bg-primary-700 hover:shadow-glow active:scale-[0.98]',
+  primary: 'bg-primary-600 text-white shadow-control hover:bg-primary-700 active:bg-primary-800',
   secondary:
-    'bg-white text-ink-800 border border-ink-200 shadow-soft hover:border-ink-300 hover:bg-ink-50 hover:shadow-card active:scale-[0.98]',
-  outline:
-    'bg-transparent text-primary-700 border border-primary-200 hover:bg-primary-50 hover:border-primary-300 active:scale-[0.98]',
-  ghost: 'bg-transparent text-ink-600 hover:bg-ink-100 hover:text-ink-900 active:scale-[0.98]',
-  dark: 'bg-ink-900 text-white shadow-soft hover:bg-ink-850 hover:shadow-glow active:scale-[0.98]',
+    'bg-white text-ink-900 border border-ink-200 shadow-control hover:border-ink-300 hover:bg-ink-50',
+  outline: 'bg-transparent text-primary-700 border border-primary-200 hover:bg-primary-50 hover:border-primary-300',
+  ghost: 'bg-transparent text-ink-600 hover:bg-ink-50 hover:text-ink-900',
+  dark: 'bg-ink-900 text-white shadow-control hover:bg-ink-800',
 };
 
 const sizes: Record<Size, string> = {
-  sm: 'text-sm px-3.5 py-2',
-  md: 'text-sm px-5 py-2.5',
-  lg: 'text-base px-6 py-3',
+  sm: 'text-sm px-3 py-1.5 h-8',
+  md: 'text-sm px-3.5 py-2 h-9',
+  lg: 'text-[15px] px-4 py-2.5 h-10',
 };
 
 function classes(variant: Variant, size: Size, className?: string) {

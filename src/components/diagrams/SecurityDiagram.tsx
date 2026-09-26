@@ -19,37 +19,34 @@ export function SecurityDiagram() {
 
   return (
     <div ref={ref} className="relative">
-      {/* Background grid */}
-      <div className="absolute inset-0 rounded-3xl bg-grid-dark opacity-40" />
-
       <div className="relative grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {layers.map((layer, i) => {
           const Icon = layer.icon;
           return (
             <div
               key={i}
-              className={`group relative flex flex-col gap-3 rounded-2xl border border-white/10 bg-white/[0.03] p-5 backdrop-blur transition-all duration-700 ease-out-expo ${
+              className={`group relative flex flex-col gap-3 rounded-xl border border-ink-200 bg-white p-5 shadow-card transition-all duration-700 ease-out-expo ${
                 visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
               }`}
               style={{ transitionDelay: `${i * 100}ms` }}
             >
               <div className="flex items-center gap-3">
                 <span
-                  className={`flex h-10 w-10 items-center justify-center rounded-xl ${colorBg(layer.color)}`}
+                  className={`flex h-9 w-9 items-center justify-center rounded-control ${colorBg(layer.color)}`}
                 >
-                  <Icon className="h-5 w-5 text-white" strokeWidth={2} />
+                  <Icon className="h-4.5 w-4.5" strokeWidth={2} />
                 </span>
-                <span className="text-xs font-semibold uppercase tracking-wider text-ink-400">
+                <span className="text-2xs font-semibold uppercase tracking-wider text-ink-400">
                   Layer {i + 1}
                 </span>
               </div>
               <div>
-                <h4 className="text-sm font-semibold text-white">{layer.label}</h4>
-                <p className="mt-1 text-xs leading-relaxed text-ink-400">{layer.desc}</p>
+                <h4 className="text-sm font-semibold text-ink-900">{layer.label}</h4>
+                <p className="mt-1 text-xs leading-relaxed text-ink-500">{layer.desc}</p>
               </div>
               {/* Connector arrow (hidden on last) */}
               {i < layers.length - 1 && (
-                <div className="absolute -bottom-2.5 left-1/2 hidden -translate-x-1/2 text-ink-600 lg:block">
+                <div className="absolute -bottom-2.5 left-1/2 hidden -translate-x-1/2 text-ink-400 lg:block">
                   {i % 3 !== 2 && <ChevronDown />}
                 </div>
               )}
@@ -72,12 +69,12 @@ function ChevronDown() {
 function colorBg(color: string): string {
   switch (color) {
     case 'accent':
-      return 'bg-gradient-to-br from-accent-500 to-accent-600';
+      return 'bg-accent-50 text-accent-600 border border-accent-200';
     case 'primary':
-      return 'bg-gradient-to-br from-primary-500 to-primary-600';
+      return 'bg-primary-50 text-primary-600 border border-primary-200';
     case 'success':
-      return 'bg-gradient-to-br from-accent-500 to-accent-600';
+      return 'bg-accent-50 text-accent-600 border border-accent-200';
     default:
-      return 'bg-gradient-to-br from-ink-600 to-ink-700';
+      return 'bg-ink-50 text-ink-600 border border-ink-200';
   }
 }

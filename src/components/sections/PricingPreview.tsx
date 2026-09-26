@@ -48,20 +48,20 @@ export function PricingPreview() {
 function PreviewCard({ tier }: { tier: PricingTier }) {
   return (
     <div
-      className={`relative flex h-full flex-col rounded-2xl border p-6 transition-all duration-300 ${
+      className={`relative flex h-full flex-col rounded-xl border p-6 transition-colors duration-150 ${
         tier.featured
-          ? 'border-primary-300 bg-white shadow-glow lg:-translate-y-2'
-          : 'border-ink-200 bg-white hover:border-ink-300 hover:shadow-card'
+          ? 'border-primary-300 bg-white shadow-card'
+          : 'border-ink-200 bg-white hover:border-ink-300'
       }`}
     >
       {tier.featured && (
-        <span className="absolute -top-3 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-primary-600 px-3 py-1 text-2xs font-semibold uppercase tracking-wider text-white">
+        <span className="absolute -top-2.5 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-primary-600 px-2.5 py-0.5 text-2xs font-semibold uppercase tracking-wider text-white">
           Most popular
         </span>
       )}
       <h3 className="text-base font-semibold text-ink-900">{tier.name}</h3>
       <div className="mt-4 flex items-baseline gap-1">
-        <span className="text-3xl font-semibold tracking-tight text-ink-900">
+        <span className="font-mono text-2xl font-semibold tracking-tight text-ink-900">
           {tier.price}
         </span>
         {tier.unit && (

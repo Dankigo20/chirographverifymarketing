@@ -15,8 +15,8 @@ export function Footer({ navigate }: FooterProps) {
           {/* Brand */}
           <div className="lg:col-span-4">
             <div className="flex items-center gap-2.5">
-              <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-primary-600 to-accent-600 shadow-glow">
-                <Fingerprint className="h-5 w-5 text-white" strokeWidth={2.2} />
+              <span className="flex h-8 w-8 items-center justify-center rounded-control border border-primary-200 bg-primary-50 text-primary-600">
+                <Fingerprint className="h-4 w-4" strokeWidth={2.1} />
               </span>
               <span className="text-[15px] font-semibold tracking-tight text-ink-900">
                 Chirograph<span className="text-primary-600"> Verify</span>
@@ -103,8 +103,8 @@ export function Footer({ navigate }: FooterProps) {
 function FooterCol({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div>
-      <h3 className="text-xs font-semibold uppercase tracking-wider text-ink-400">{title}</h3>
-      <ul className="mt-4 space-y-3">{children}</ul>
+      <h3 className="text-2xs font-semibold uppercase tracking-wider text-ink-400">{title}</h3>
+      <ul className="mt-4 space-y-2.5">{children}</ul>
     </div>
   );
 }
@@ -181,7 +181,7 @@ function SocialLink({
       target="_blank"
       rel="noopener noreferrer"
       aria-label={label}
-      className="flex h-9 w-9 items-center justify-center rounded-lg border border-ink-200 bg-white text-ink-500 transition-colors hover:border-ink-300 hover:text-ink-900"
+      className="flex h-9 w-9 items-center justify-center rounded-control border border-ink-200 bg-white text-ink-500 transition-colors hover:border-ink-300 hover:text-ink-900"
     >
       {children}
     </a>

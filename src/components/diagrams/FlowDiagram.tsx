@@ -83,13 +83,13 @@ function Node({
 }) {
   const color =
     side === 'client'
-      ? 'from-accent-500 to-accent-600'
+      ? 'bg-accent-50 text-accent-700 border border-accent-200'
       : side === 'server'
-        ? 'from-primary-500 to-primary-600'
-        : 'from-ink-500 to-ink-600';
+        ? 'bg-primary-50 text-primary-700 border border-primary-200'
+        : 'bg-ink-50 text-ink-700 border border-ink-200';
   return (
     <span
-      className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br ${color} text-sm font-semibold text-white shadow-lg`}
+      className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full font-mono text-sm font-semibold ${color}`}
     >
       {index + 1}
     </span>
