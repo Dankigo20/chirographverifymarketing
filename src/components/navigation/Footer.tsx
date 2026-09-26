@@ -9,7 +9,7 @@ export function Footer({ navigate }: FooterProps) {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-ink-200 bg-ink-50/80">
+    <footer className="border-t border-ink-800 bg-ink-50/80">
       <div className="container-page py-16 lg:py-20">
         <div className="grid gap-10 lg:grid-cols-12">
           {/* Brand */}
@@ -87,7 +87,7 @@ export function Footer({ navigate }: FooterProps) {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col items-start justify-between gap-4 border-t border-ink-200 pt-8 sm:flex-row sm:items-center">
+        <div className="mt-12 flex flex-col items-start justify-between gap-4 border-t border-ink-800 pt-8 sm:flex-row sm:items-center">
           <p className="text-sm text-ink-500">
             © {year} {siteConfig.name}. All rights reserved.
           </p>
@@ -181,7 +181,7 @@ function SocialLink({
       target="_blank"
       rel="noopener noreferrer"
       aria-label={label}
-      className="flex h-9 w-9 items-center justify-center rounded-control border border-ink-200 bg-white text-ink-500 transition-colors hover:border-ink-300 hover:text-ink-900"
+      className="flex h-9 w-9 items-center justify-center rounded-control border border-ink-800 bg-ink-950 text-ink-500 transition-colors hover:border-ink-700 hover:text-ink-900"
     >
       {children}
     </a>

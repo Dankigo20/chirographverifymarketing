@@ -24,7 +24,7 @@ export function FlowDiagram({ steps, dark = false, className }: FlowDiagramProps
       <div className="relative">
         {/* Center line */}
         <div
-          className={`absolute left-[19px] top-3 bottom-3 w-px ${dark ? 'bg-white/15' : 'bg-ink-200'} md:left-1/2 md:-translate-x-1/2`}
+          className={`absolute left-[19px] top-3 bottom-3 w-px ${dark ? 'bg-ink-950/15' : 'bg-ink-200'} md:left-1/2 md:-translate-x-1/2`}
         />
 
         <ol className="space-y-3 md:space-y-0">
@@ -86,7 +86,7 @@ function Node({
       ? 'bg-accent-50 text-accent-700 border border-accent-200'
       : side === 'server'
         ? 'bg-primary-50 text-primary-700 border border-primary-200'
-        : 'bg-ink-50 text-ink-700 border border-ink-200';
+        : 'bg-ink-50 text-ink-700 border border-ink-800';
   return (
     <span
       className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full font-mono text-sm font-semibold ${color}`}

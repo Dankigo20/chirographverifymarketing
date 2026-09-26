@@ -12,8 +12,8 @@ export function Card({ children, className, hover = false, dark = false }: CardP
     <div
       className={[
         'rounded-panel border',
-        dark ? 'bg-white/[0.03] border-white/10' : 'bg-white border-ink-200',
-        hover ? 'transition-colors duration-150  hover:border-ink-300' : '',
+        dark ? 'bg-ink-950/[0.03] border-white/10' : 'bg-ink-950 border-ink-800',
+        hover ? 'transition-colors duration-150  hover:border-ink-700' : '',
         className ?? '',
       ]
         .filter(Boolean)

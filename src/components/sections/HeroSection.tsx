@@ -5,7 +5,7 @@ import { appLinks } from '@/config/site';
 
 export function HeroSection() {
   return (
-    <section className="relative overflow-hidden border-b border-ink-200 bg-white pt-24 pb-16 lg:pt-28 lg:pb-20">
+    <section className="relative overflow-hidden border-b border-ink-800 bg-ink-950 pt-24 pb-16 lg:pt-28 lg:pb-20">
       <div className="absolute inset-0 bg-grid opacity-60" />
 
       <div className="container-page relative">
@@ -40,7 +40,7 @@ export function HeroSection() {
             </div>
 
             {/* Endpoint strip — the console's own vocabulary */}
-            <dl className="mt-9 grid grid-cols-2 border-t border-l border-ink-200 sm:grid-cols-4">
+            <dl className="mt-9 grid grid-cols-2 border-t border-l border-ink-800 sm:grid-cols-4">
               <Stat term="Protocol" value="WebAuthn" />
               <Stat term="Latency" value="12ms" />
               <Stat term="Uptime" value="99.99%" />
@@ -60,7 +60,7 @@ export function HeroSection() {
 
 function Stat({ term, value }: { term: string; value: string }) {
   return (
-    <div className="border-b border-r border-ink-200 px-3 py-2.5">
+    <div className="border-b border-r border-ink-800 px-3 py-2.5">
       <dt className="micro-label">{term}</dt>
       <dd className="mt-1 font-mono text-[13px] font-medium tabular-nums text-ink-900">{value}</dd>
     </div>

@@ -5,7 +5,7 @@ import { ArrowRight, BookOpen } from 'lucide-react';
 
 export function FinalCTA() {
   return (
-    <section className="relative overflow-hidden border-t border-ink-200 bg-ink-50/60 py-24 lg:py-32">
+    <section className="relative overflow-hidden border-t border-ink-800 bg-ink-50/60 py-24 lg:py-32">
       <div className="absolute inset-0 bg-grid opacity-60" />
 
       <div className="container-page relative">

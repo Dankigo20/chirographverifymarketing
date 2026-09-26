@@ -39,17 +39,17 @@ export function CodeBlock({
 
   return (
     <div
-      className={`group overflow-hidden rounded-panel border ${dark ? 'bg-ink-950 border-white/10' : 'bg-ink-50 border-ink-200'} ${className ?? ''}`.trim()}
+      className={`group overflow-hidden rounded-panel border ${dark ? 'bg-ink-950 border-white/10' : 'bg-ink-50 border-ink-800'} ${className ?? ''}`.trim()}
     >
       {(filename || language) && (
         <div
-          className={`flex items-center justify-between border-b px-4 py-2.5 ${dark ? 'border-white/10 bg-white/[0.02]' : 'border-ink-200 bg-white'}`}
+          className={`flex items-center justify-between border-b px-4 py-2.5 ${dark ? 'border-white/10 bg-ink-950/[0.02]' : 'border-ink-800 bg-ink-950'}`}
         >
           <div className="flex items-center gap-2">
             <div className="flex gap-1.5">
-              <span className={`h-2.5 w-2.5 rounded-full ${dark ? 'bg-white/15' : 'bg-ink-300'}`} />
-              <span className={`h-2.5 w-2.5 rounded-full ${dark ? 'bg-white/15' : 'bg-ink-300'}`} />
-              <span className={`h-2.5 w-2.5 rounded-full ${dark ? 'bg-white/15' : 'bg-ink-300'}`} />
+              <span className={`h-2.5 w-2.5 rounded-full ${dark ? 'bg-ink-950/15' : 'bg-ink-300'}`} />
+              <span className={`h-2.5 w-2.5 rounded-full ${dark ? 'bg-ink-950/15' : 'bg-ink-300'}`} />
+              <span className={`h-2.5 w-2.5 rounded-full ${dark ? 'bg-ink-950/15' : 'bg-ink-300'}`} />
             </div>
             {filename && (
               <span className={`ml-2 font-mono text-xs ${dark ? 'text-ink-400' : 'text-ink-500'}`}>
@@ -59,7 +59,7 @@ export function CodeBlock({
           </div>
           <button
             onClick={copy}
-            className={`flex items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium transition-colors ${dark ? 'text-ink-400 hover:bg-white/10 hover:text-ink-200' : 'text-ink-500 hover:bg-ink-200 hover:text-ink-700'}`}
+            className={`flex items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium transition-colors ${dark ? 'text-ink-400 hover:bg-ink-950/10 hover:text-ink-200' : 'text-ink-500 hover:bg-ink-200 hover:text-ink-700'}`}
             aria-label="Copy code"
           >
             {copied ? <Check className="h-3.5 w-3.5 text-accent-400" /> : <Copy className="h-3.5 w-3.5" />}
@@ -174,7 +174,7 @@ export function CodeTabs({ tabs, dark = true }: { tabs: CodeTab[]; dark?: boolea
             className={`rounded-lg px-3 py-1.5 text-xs font-medium transition-colors ${
               active === i
                 ? dark
-                  ? 'bg-white/10 text-white'
+                  ? 'bg-ink-950/10 text-white'
                   : 'bg-ink-100 text-ink-900'
                 : dark
                   ? 'text-ink-400 hover:text-ink-200'

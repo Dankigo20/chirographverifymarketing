@@ -175,7 +175,7 @@ export function SecurityPage() {
               const Icon = s.icon;
               return (
                 <Reveal key={i} delay={(i % 2) * 100}>
-                  <div className="h-full rounded-2xl border border-ink-200 bg-white p-7 transition-all duration-300 hover:border-ink-300 hover:shadow-card-hover hover:-translate-y-0.5">
+                  <div className="h-full rounded-2xl border border-ink-800 bg-ink-950 p-7 transition-all duration-300 hover:border-ink-700 hover:shadow-card-hover hover:-translate-y-0.5">
                     <div className="flex items-center gap-3">
                       <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-primary-50 to-accent-50 text-primary-600">
                         <Icon className="h-5 w-5" strokeWidth={2} />
@@ -245,7 +245,7 @@ export function SecurityPage() {
       <section className="py-24 lg:py-28">
         <div className="container-page">
           <Reveal>
-            <div className="mx-auto max-w-2xl rounded-3xl border border-ink-200 bg-gradient-to-br from-ink-50 to-primary-50/40 p-12 text-center lg:p-16">
+            <div className="mx-auto max-w-2xl rounded-3xl border border-ink-800 bg-gradient-to-br from-ink-50 to-primary-50/40 p-12 text-center lg:p-16">
               <h2 className="text-2xl font-semibold tracking-tight text-ink-900 sm:text-3xl">
                 Start verifying users securely
               </h2>

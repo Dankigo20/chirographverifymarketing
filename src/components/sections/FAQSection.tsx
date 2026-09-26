@@ -67,10 +67,10 @@ export function FAQSection() {
         <div className="mx-auto mt-14 max-w-3xl space-y-3">
           {faqs.map((faq, i) => (
             <Reveal key={i} delay={(i % 4) * 50}>
-              <div className="overflow-hidden rounded-panel border border-ink-200 bg-white transition-colors duration-100 hover:border-ink-300">
+              <div className="overflow-hidden rounded-panel border border-ink-800 bg-ink-950 transition-colors duration-100 hover:border-ink-700">
                 <button
                   onClick={() => setOpen(open === i ? null : i)}
-                  className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left transition-colors hover:bg-ink-50"
+                  className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left transition-colors hover:\bg-ink-950/[0.06]"
                   aria-expanded={open === i}
                 >
                   <span className="text-sm font-semibold text-ink-900 sm:text-base">{faq.q}</span>

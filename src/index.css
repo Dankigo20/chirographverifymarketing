@@ -6,18 +6,18 @@
 
 @layer base {
   :root {
-    --canvas: #FFFFFF;
-    --surface: #FFFFFF;
-    --surface-2: #F7F8FA;
-    --surface-3: #EFF1F4;
-    --line: #E4E6EB;
-    --line-strong: #D2D6DD;
-    --brand: #4F58C9;
-    --brand-800: #4149AE;
-    --accent: #0E8A5F;
-    --text: #0F1115;
-    --text-muted: #4A5159;
-    --text-subtle: #6E7681;
+    --canvas: #000000;
+    --surface: #0E0E0E;
+    --surface-2: #141414;
+    --surface-3: #1C1C1C;
+    --line: #262626;
+    --line-strong: #404040;
+    --brand: #E9E6E6;
+    --brand-800: #B0B0B0;
+    --accent: #10B981;
+    --text: #FFFFFF;
+    --text-muted: #A3A3A3;
+    --text-subtle: #737980;
   }
 
   .dark-surface {
@@ -63,49 +63,50 @@
     @apply mx-auto w-full max-w-8xl px-5 sm:px-6 lg:px-8;
   }
 
-  /* ── Shared vocabulary (console: mono-forward, hairline, dense) ── */
+  /* ── Shared vocabulary (X Developer Platform: black + white pills) ── */
   .page-title {
-    @apply text-xl font-semibold tracking-tight text-ink-900;
+    @apply text-3xl font-bold tracking-tight text-ink-900 sm:text-4xl;
+    letter-spacing: -0.025em;
   }
   .page-description {
-    @apply mt-1 text-[13px] leading-relaxed text-ink-500;
+    @apply mt-2 text-base leading-relaxed text-ink-400;
   }
   .section-title {
-    @apply text-[13px] font-semibold text-ink-900;
+    @apply text-base font-semibold tracking-tight text-ink-900;
   }
   .micro-label {
-    @apply font-mono text-[10px] font-medium uppercase tracking-micro text-ink-400;
+    @apply text-xs font-semibold uppercase tracking-[0.1em] text-ink-600;
   }
   .label-text {
-    @apply mb-1 block font-mono text-[10px] font-medium uppercase tracking-micro text-ink-400;
+    @apply mb-1.5 block text-sm font-medium text-ink-300;
   }
   .stat-value {
-    @apply font-mono text-lg font-semibold tabular-nums tracking-tight text-ink-900;
+    @apply font-mono text-2xl font-semibold tabular-nums tracking-tight text-ink-900;
   }
   .mono-value {
     @apply font-mono tabular-nums;
   }
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-1.5 rounded-control bg-primary-600 px-3 text-[13px] font-medium text-white transition-colors duration-100 hover:bg-primary-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/40 focus-visible:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-45;
-    height: 30px;
+    @apply inline-flex items-center justify-center gap-1.5 rounded-full bg-primary-100 px-4 text-[13px] font-semibold text-ink-950 transition-colors duration-150 hover:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-300/60 disabled:cursor-not-allowed disabled:opacity-50;
+    height: 36px;
   }
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-1.5 rounded-control border border-ink-200 bg-white px-3 text-[13px] font-medium text-ink-900 transition-colors duration-100 hover:bg-ink-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/40 focus-visible:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-45;
-    height: 30px;
+    @apply inline-flex items-center justify-center gap-1.5 rounded-full border border-ink-800 bg-transparent px-4 text-[13px] font-semibold text-ink-200 transition-colors duration-150 hover:border-ink-300 hover:bg-white/[0.06] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-300/60 disabled:cursor-not-allowed disabled:opacity-50;
+    height: 36px;
   }
   .btn-ghost {
-    @apply inline-flex items-center justify-center gap-1.5 rounded-control px-2 text-[13px] font-medium text-ink-500 transition-colors duration-100 hover:bg-ink-50 hover:text-ink-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/40;
-    height: 30px;
+    @apply inline-flex items-center justify-center gap-1.5 rounded-full px-3 text-[13px] font-medium text-ink-300 transition-colors duration-150 hover:bg-white/[0.08] hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-300/60;
+    height: 36px;
   }
   .input-field {
-    @apply w-full rounded-control border border-ink-200 bg-white px-2.5 font-mono text-[13px] text-ink-900 transition-colors duration-100 placeholder:font-sans placeholder:text-[13px] placeholder:text-ink-400 hover:border-ink-300 focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500/40 disabled:cursor-not-allowed disabled:bg-ink-50;
-    height: 30px;
+    @apply w-full rounded-lg border border-ink-800 bg-transparent px-3 font-mono text-[13px] text-ink-100 transition-colors duration-150 placeholder:font-sans placeholder:text-[13px] placeholder:text-ink-600 hover:border-ink-700 focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-300/40 disabled:cursor-not-allowed disabled:opacity-50;
+    height: 38px;
   }
   .card {
-    @apply rounded-panel border border-ink-200 bg-white;
+    @apply rounded-panel border border-ink-800 bg-ink-950;
   }
   .divider {
-    @apply border-t border-ink-200;
+    @apply border-t border-ink-800;
   }
   /* ──────────────────────────────────────────────────────────── */
 

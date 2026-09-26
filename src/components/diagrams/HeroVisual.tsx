@@ -12,12 +12,12 @@ export function HeroVisual() {
     <div ref={ref} className="w-full">
       {/* Terminal panel — the console's native idiom */}
       <div
-        className={`overflow-hidden rounded-panel border border-ink-200 bg-white transition-opacity duration-500 ${
+        className={`overflow-hidden rounded-panel border border-ink-800 bg-ink-950 transition-opacity duration-500 ${
           visible ? 'opacity-100' : 'opacity-0'
         }`}
       >
         {/* Title bar */}
-        <div className="flex items-center justify-between border-b border-ink-200 bg-surface-2 px-3 py-1.5">
+        <div className="flex items-center justify-between border-b border-ink-800 bg-surface-2 px-3 py-1.5">
           <span className="font-mono text-[10px] uppercase tracking-micro text-ink-400">
             verification-flow
           </span>
@@ -41,7 +41,7 @@ export function HeroVisual() {
           </div>
 
           {/* Divider */}
-          <div className="my-3 border-t border-ink-200" />
+          <div className="my-3 border-t border-ink-800" />
 
           {/* Response */}
           <pre className="overflow-x-auto font-mono text-[11px] leading-relaxed text-ink-500">
@@ -53,7 +53,7 @@ export function HeroVisual() {
           </pre>
 
           {/* Ceremony state */}
-          <div className="mt-4 border-t border-ink-200 pt-3">
+          <div className="mt-4 border-t border-ink-800 pt-3">
             <div className="micro-label mb-2">Ceremony</div>
             <div className="space-y-1.5">
               <Step label="WebAuthn challenge issued" delay={400} visible={visible} />
