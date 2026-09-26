@@ -6,25 +6,30 @@
 
 @layer base {
   :root {
-    --bg: #ffffff;
-    --bg-subtle: #f8fafc;
-    --bg-muted: #f1f5f9;
-    --border: #e2e8f0;
-    --border-strong: #cbd5e1;
-    --text: #0f172a;
-    --text-muted: #475569;
-    --text-subtle: #64748b;
+    --canvas: #FFFFFF;
+    --surface: #FFFFFF;
+    --surface-2: #F7F8FA;
+    --surface-3: #EFF1F4;
+    --line: #E4E6EB;
+    --line-strong: #D2D6DD;
+    --brand: #4F58C9;
+    --brand-800: #4149AE;
+    --accent: #0E8A5F;
+    --text: #0F1115;
+    --text-muted: #4A5159;
+    --text-subtle: #6E7681;
   }
 
   .dark-surface {
-    --bg: #0f172a;
-    --bg-subtle: #172033;
-    --bg-muted: #1e293b;
-    --border: #1e293b;
-    --border-strong: #334155;
-    --text: #f1f5f9;
-    --text-muted: #94a3b8;
-    --text-subtle: #64748b;
+    --canvas: #0F1115;
+    --surface: #1A1E25;
+    --surface-2: #1F242C;
+    --surface-3: #262C35;
+    --line: #262C35;
+    --line-strong: #333A44;
+    --text: #F7F8FA;
+    --text-muted: #A6ADB8;
+    --text-subtle: #6E7681;
   }
 
   html {
@@ -58,8 +63,55 @@
     @apply mx-auto w-full max-w-8xl px-5 sm:px-6 lg:px-8;
   }
 
+  /* ── Shared vocabulary (identical rules to the authenticated app) ── */
+  .page-title {
+    @apply text-2xl font-semibold tracking-tight text-ink-900;
+    letter-spacing: -0.015em;
+  }
+  .page-description {
+    @apply mt-1.5 text-sm leading-relaxed text-ink-500;
+  }
+  .section-title {
+    @apply text-sm font-semibold tracking-tight text-ink-900;
+  }
+  .micro-label {
+    @apply text-[11px] font-semibold uppercase tracking-micro text-ink-400;
+  }
+  .label-text {
+    @apply mb-1.5 block text-xs font-medium text-ink-700;
+  }
+  .stat-value {
+    @apply font-mono text-xl font-semibold tabular-nums tracking-tight text-ink-900;
+  }
+  .mono-value {
+    @apply font-mono tabular-nums;
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-control bg-primary-600 px-3.5 text-sm font-medium text-white shadow-control transition-colors duration-150 hover:bg-primary-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/35 disabled:cursor-not-allowed disabled:opacity-55;
+    height: 34px;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-control border border-ink-200 bg-white px-3.5 text-sm font-medium text-ink-900 shadow-control transition-colors duration-150 hover:border-ink-300 hover:bg-ink-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/35 disabled:cursor-not-allowed disabled:opacity-55;
+    height: 34px;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-control px-2.5 text-sm font-medium text-ink-500 transition-colors duration-150 hover:bg-ink-50 hover:text-ink-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/35;
+    height: 34px;
+  }
+  .input-field {
+    @apply w-full rounded-control border border-ink-200 bg-white px-3 font-mono text-sm text-ink-900 shadow-control transition-colors duration-150 placeholder:font-sans placeholder:text-ink-400 hover:border-ink-300 focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/25 disabled:cursor-not-allowed disabled:bg-ink-50;
+    height: 34px;
+  }
+  .card {
+    @apply rounded-xl border border-ink-200 bg-white shadow-card;
+  }
+  .divider {
+    @apply border-t border-ink-200;
+  }
+  /* ──────────────────────────────────────────────────────────── */
+
   .text-gradient {
-    @apply bg-gradient-to-r from-primary-600 via-primary-500 to-accent-500 bg-clip-text text-transparent;
+    @apply text-primary-600;
   }
 
   .text-gradient-light {
