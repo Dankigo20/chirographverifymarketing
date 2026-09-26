@@ -88,7 +88,9 @@ export default {
         'line-strong': '#2E2E2E',
         // `secondary` and `tertiary` are legacy aliases still referenced by
         // a handful of components; they map onto the dark ramp.
-        secondary: '#737980',
+        // `secondary` must clear 4.5:1 on the black canvas, so it is held at
+        // #8F8F8F rather than the original #737980.
+        secondary: '#8F8F8F',
         tertiary: '#262626',
         muted: '#8C8C8C',
       },

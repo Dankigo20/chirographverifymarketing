@@ -38,9 +38,9 @@ export function DocAuthentication() {
 
       <DocHeading level={3} id="visual-summary">Summary</DocHeading>
       <div className="mt-5 grid gap-4 sm:grid-cols-2">
-        <div className="rounded-xl border border-error-200 bg-error-500/5 p-5">
-          <div className="font-mono text-sm font-semibold text-error-600">sk_live_...</div>
-          <div className="mt-2 text-xs font-medium uppercase tracking-wider text-error-600">Secret</div>
+        <div className="rounded-xl border border-error-500/40 bg-error-500/10 p-5">
+          <div className="font-mono text-sm font-semibold text-error-400">sk_live_...</div>
+          <div className="mt-2 text-xs font-medium uppercase tracking-wider text-error-400">Secret</div>
           <ul className="mt-2 space-y-1 text-sm text-ink-600">
             <li>Server-side only</li>
             <li>Creates challenges</li>
@@ -49,8 +49,8 @@ export function DocAuthentication() {
           </ul>
         </div>
         <div className="rounded-xl border border-ink-300 bg-primary-50/50 p-5">
-          <div className="font-mono text-sm font-semibold text-primary-700">pk_live_...</div>
-          <div className="mt-2 text-xs font-medium uppercase tracking-wider text-primary-700">Publishable</div>
+          <div className="font-mono text-sm font-semibold text-ink-900">pk_live_...</div>
+          <div className="mt-2 text-xs font-medium uppercase tracking-wider text-ink-600">Publishable</div>
           <ul className="mt-2 space-y-1 text-sm text-ink-600">
             <li>Browser-safe</li>
             <li>Widget SDK initialization</li>

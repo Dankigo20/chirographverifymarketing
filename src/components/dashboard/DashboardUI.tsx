@@ -85,9 +85,9 @@ export function LoadingState({ label = 'Loading...' }: { label?: string }) {
 
 export function ErrorState({ message }: { message: string }) {
   return (
-    <div className="flex items-center justify-center rounded-xl border border-error-200 bg-error-500/5 px-6 py-12 text-center">
+    <div className="flex items-center justify-center rounded-xl border border-error-500/40 bg-error-500/10 px-6 py-12 text-center">
       <div>
-        <p className="text-sm font-medium text-error-600">Something went wrong</p>
+        <p className="text-sm font-medium text-error-400">Something went wrong</p>
         <p className="mt-1 text-sm text-ink-500">{message}</p>
       </div>
     </div>
@@ -97,10 +97,10 @@ export function ErrorState({ message }: { message: string }) {
 export function Badge({ variant = 'neutral', children }: { variant?: 'neutral' | 'success' | 'warning' | 'error' | 'primary'; children: ReactNode }) {
   const styles = {
     neutral: 'bg-ink-100 text-ink-600',
-    success: 'bg-success-500/10 text-success-600',
-    warning: 'bg-warning-500/10 text-warning-600',
-    error: 'bg-error-500/10 text-error-600',
-    primary: 'bg-primary-50 text-primary-700',
+    success: 'bg-accent-500/10 text-accent-400',
+    warning: 'bg-warning-500/10 text-warning-400',
+    error: 'bg-error-500/10 text-error-400',
+    primary: 'bg-ink-100 text-ink-900',
   };
   return (
     <span className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium ${styles[variant]}`}>

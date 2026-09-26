@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { useAuth } from '@/hooks/useAuth';
 import { useSeo } from '@/hooks/useSeo';
-import { Fingerprint, Mail, Lock, ArrowRight, AlertCircle, Loader2 } from 'lucide-react';
+import { Mail, Lock, ArrowRight, AlertCircle, Loader2 } from 'lucide-react';
+import { BrandMark } from '@/components/brand/BrandMark';
 
 export function LoginPage({ navigate }: { navigate: (to: string) => void }) {
   useSeo({
@@ -65,9 +66,7 @@ export function LoginPage({ navigate }: { navigate: (to: string) => void }) {
       {/* Top bar */}
       <header className="flex h-16 items-center justify-between px-5 lg:px-8">
         <button onClick={() => navigate('/')} className="flex items-center gap-2.5">
-          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-primary-600 to-accent-600">
-            <Fingerprint className="h-4.5 w-4.5 text-white" strokeWidth={2.2} />
-          </span>
+          <BrandMark className="h-7 w-7" />
           <span className="text-sm font-semibold tracking-tight text-ink-900">
             Chirograph<span className="text-primary-600"> Verify</span>
           </span>
@@ -132,16 +131,16 @@ export function LoginPage({ navigate }: { navigate: (to: string) => void }) {
                 )}
 
                 {error && (
-                  <div className="flex items-start gap-2.5 rounded-lg border border-error-200 bg-error-500/5 p-3">
-                    <AlertCircle className="mt-0.5 h-4 w-4 shrink-0 text-error-500" />
-                    <p className="text-sm text-error-600">{error}</p>
+                  <div className="flex items-start gap-2.5 rounded-lg border border-error-500/40 bg-error-500/10 p-3">
+                    <AlertCircle className="mt-0.5 h-4 w-4 shrink-0 text-error-400" />
+                    <p className="text-sm text-error-400">{error}</p>
                   </div>
                 )}
 
                 <button
                   type="submit"
                   disabled={loading}
-                  className="flex w-full items-center justify-center gap-2 rounded-xl bg-primary-600 px-5 py-3 text-sm font-semibold text-white shadow-soft transition-all hover:bg-primary-700 hover:shadow-glow active:scale-[0.98] disabled:opacity-60"
+                  className="flex w-full items-center justify-center gap-2 rounded-xl bg-ink-900 px-5 py-3 text-sm font-semibold text-ink-950 shadow-soft transition-all hover:bg-white hover:shadow-glow active:scale-[0.98] disabled:opacity-60"
                 >
                   {loading ? (
                     <>

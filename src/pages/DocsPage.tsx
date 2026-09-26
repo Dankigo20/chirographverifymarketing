@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Menu, Fingerprint } from 'lucide-react';
+import { Menu } from 'lucide-react';
+import { BrandMark } from '@/components/brand/BrandMark';
 import { DocsSidebar } from '@/components/docs/DocsSidebar';
 import { DocNav } from '@/components/docs/DocNav';
 import { useSeo } from '@/hooks/useSeo';
@@ -102,16 +103,14 @@ export function DocsPage({ slug, navigate }: DocsPageProps) {
         <div className="sticky top-16 z-30 flex items-center justify-between border-b border-ink-200 bg-black/90 px-5 py-3 backdrop-blur lg:hidden">
           <button
             onClick={() => setMobileSidebarOpen(true)}
-            className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-ink-700 hover:\bg-white/[0.04]"
+            className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-ink-700 hover:bg-white/[0.06]"
             aria-label="Open documentation navigation"
           >
             <Menu className="h-4 w-4" />
             Menu
           </button>
           <div className="flex items-center gap-2">
-            <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-gradient-to-br from-primary-600 to-accent-600">
-              <Fingerprint className="h-4 w-4 text-white" strokeWidth={2.2} />
-            </span>
+            <BrandMark className="h-6 w-6" />
             <span className="text-sm font-semibold text-ink-900">Docs</span>
           </div>
         </div>

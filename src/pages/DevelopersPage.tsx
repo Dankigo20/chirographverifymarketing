@@ -147,7 +147,10 @@ export function DevelopersPage() {
                   Get API keys
                   <ArrowRight className="h-4 w-4" />
                 </ButtonLink>
-                <ButtonLink href="/security" variant="secondary" size="lg" className="!bg-black/5 !border-white/15 !text-white hover:!bg-black/10">
+                {/* The `secondary` variant already targets the black canvas; the
+                    old !bg-black/5 overrides were light-theme values that made
+                    the pill's surface disappear. */}
+                <ButtonLink href="/security" variant="secondary" size="lg">
                   Security model
                 </ButtonLink>
               </div>
@@ -193,7 +196,7 @@ export function DevelopersPage() {
                 <Reveal key={i} delay={i * 100}>
                   <div className="relative h-full rounded-2xl border border-ink-200 bg-ink-100 p-6">
                     <div className="flex items-center gap-3">
-                      <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary-600 text-sm font-semibold text-white">
+                      <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-ink-900 text-sm font-semibold text-ink-950">
                         {i + 1}
                       </span>
                       <Icon className="h-5 w-5 text-primary-600" strokeWidth={2} />
@@ -253,7 +256,7 @@ export function DevelopersPage() {
           <div className="mx-auto mt-12 max-w-3xl overflow-hidden rounded-2xl border border-ink-200">
             {endpoints.map((ep, i) => (
               <Reveal key={i} delay={i * 40}>
-                <div className={`flex items-center gap-4 px-5 py-4 ${i > 0 ? 'border-t border-ink-200' : ''} hover:\bg-white/[0.04] transition-colors`}>
+                <div className={`flex items-center gap-4 px-5 py-4 ${i > 0 ? 'border-t border-ink-200' : ''} hover:bg-white/[0.04] transition-colors`}>
                   <span className="inline-flex shrink-0 rounded-md bg-primary-50 px-2.5 py-1 font-mono text-2xs font-semibold text-primary-700">
                     {ep.method}
                   </span>

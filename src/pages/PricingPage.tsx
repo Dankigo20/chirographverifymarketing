@@ -148,7 +148,7 @@ function PricingCard({ tier }: { tier: PricingTier }) {
       }`}
     >
       {tier.featured && (
-        <span className="absolute -top-3 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-primary-600 px-3 py-1 text-2xs font-semibold uppercase tracking-wider text-white">
+        <span className="absolute -top-3 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-ink-900 px-3 py-1 text-2xs font-semibold uppercase tracking-wider text-ink-950">
           Most popular
         </span>
       )}

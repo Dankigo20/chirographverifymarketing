@@ -1,4 +1,5 @@
-import { Fingerprint, Mail, Globe } from 'lucide-react';
+import { Mail, Globe } from 'lucide-react';
+import { BrandMark } from '@/components/brand/BrandMark';
 import { siteConfig, appLinks } from '@/config/site';
 
 interface FooterProps {
@@ -15,9 +16,7 @@ export function Footer({ navigate }: FooterProps) {
           {/* Brand */}
           <div className="lg:col-span-4">
             <div className="flex items-center gap-2.5">
-              <span className="flex h-8 w-8 items-center justify-center rounded-full border border-ink-300 text-ink-900">
-                <Fingerprint className="h-4 w-4" strokeWidth={2.1} />
-              </span>
+              <BrandMark className="h-7 w-7" />
               <span className="text-[15px] font-semibold tracking-tight text-ink-900">
                 Chirograph<span className="text-primary-600"> Verify</span>
               </span>

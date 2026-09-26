@@ -58,7 +58,7 @@ export function BillingPage({ navigate: _navigate }: { navigate: NavigateFn }) {
               >
                 {tier.featured && (
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                    <span className="rounded-full bg-primary-600 px-3 py-1 text-xs font-semibold text-white">
+                    <span className="rounded-full bg-ink-900 px-3 py-1 text-xs font-semibold text-ink-950">
                       Most popular
                     </span>
                   </div>
@@ -81,7 +81,7 @@ export function BillingPage({ navigate: _navigate }: { navigate: NavigateFn }) {
                       className={`flex w-full items-center justify-center gap-1.5 rounded-lg py-2.5 text-sm font-semibold transition-colors ${
                         tier.name === 'Enterprise'
                           ? 'border border-ink-200 text-ink-700 hover:bg-white/[0.06]'
-                          : 'bg-primary-600 text-white hover:bg-primary-700'
+                          : 'bg-ink-900 text-ink-950 hover:bg-white'
                       }`}
                     >
                       {tier.cta}

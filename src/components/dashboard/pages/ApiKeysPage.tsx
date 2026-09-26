@@ -76,7 +76,7 @@ export function ApiKeysPage({ navigate }: { navigate: NavigateFn }) {
                 </button>
                 <button
                   onClick={copyKey}
-                  className="flex items-center gap-1.5 rounded-lg bg-primary-600 px-3 py-2 text-sm font-medium text-white transition-colors hover:bg-primary-700"
+                  className="flex items-center gap-1.5 rounded-lg bg-ink-900 px-3 py-2 text-sm font-medium text-ink-950 transition-colors hover:bg-white"
                 >
                   {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
                   {copied ? 'Copied' : 'Copy'}
@@ -96,7 +96,7 @@ export function ApiKeysPage({ navigate }: { navigate: NavigateFn }) {
 
           <button
             onClick={() => { setRegeneratedKey(null); setShowKey(false); }}
-            className="mt-6 rounded-xl bg-ink-900 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-ink-850"
+            className="mt-6 rounded-xl bg-ink-900 px-5 py-2.5 text-sm font-semibold text-ink-950 transition-colors hover:bg-white"
           >
             Done
           </button>
@@ -189,7 +189,7 @@ export function ApiKeysPage({ navigate }: { navigate: NavigateFn }) {
             <button
               onClick={handleRegenerate}
               disabled={regenerating}
-              className="flex items-center gap-2 rounded-xl bg-primary-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-primary-700 disabled:opacity-60"
+              className="flex items-center gap-2 rounded-xl bg-ink-900 px-5 py-2.5 text-sm font-semibold text-ink-950 transition-colors hover:bg-white disabled:opacity-60"
             >
               {regenerating ? <Loader2 className="h-4 w-4 animate-spin" /> : <KeyRound className="h-4 w-4" />}
               Generate API key

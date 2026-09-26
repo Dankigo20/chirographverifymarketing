@@ -10,7 +10,7 @@ export function PricingPreview() {
       <div className="container-page">
         <Reveal>
           <div className="mx-auto max-w-2xl text-center">
-            <div className="mb-3.5 text-xs font-semibold uppercase tracking-[0.2em] text-accent-600">
+            <div className="mb-3.5 text-xs font-semibold uppercase tracking-[0.2em] text-accent-400">
               Pricing
             </div>
             <h2 className="text-3xl font-normal tracking-tight text-ink-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.08]">
@@ -55,7 +55,7 @@ function PreviewCard({ tier }: { tier: PricingTier }) {
       }`}
     >
       {tier.featured && (
-        <span className="absolute -top-2.5 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-primary-600 px-2.5 py-0.5 text-2xs font-semibold uppercase tracking-wider text-white">
+        <span className="absolute -top-2.5 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-ink-900 px-2.5 py-0.5 text-2xs font-semibold uppercase tracking-wider text-ink-950">
           Most popular
         </span>
       )}

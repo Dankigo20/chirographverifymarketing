@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Fingerprint, LayoutGrid, KeyRound, Activity, BarChart3, Webhook, CreditCard, Settings, FileText, UserCircle, LogOut, Menu, X, ChevronRight } from 'lucide-react';
+import { LayoutGrid, KeyRound, Activity, BarChart3, Webhook, CreditCard, Settings, FileText, UserCircle, LogOut, Menu, X, ChevronRight } from 'lucide-react';
+import { BrandMark } from '@/components/brand/BrandMark';
 
 export interface DashboardNavItem {
   label: string;
@@ -59,9 +60,7 @@ export function DashboardSidebar({
         {/* Logo */}
         <div className="flex h-16 items-center justify-between border-b border-ink-200 px-5">
           <button onClick={() => go('/')} className="flex items-center gap-2.5">
-            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-primary-600 to-accent-600">
-              <Fingerprint className="h-4.5 w-4.5 text-white" strokeWidth={2.2} />
-            </span>
+            <BrandMark className="h-7 w-7" />
             <span className="text-sm font-semibold tracking-tight text-ink-900">
               Chirograph<span className="text-primary-600"> Verify</span>
             </span>

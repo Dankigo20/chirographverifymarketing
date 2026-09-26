@@ -10,7 +10,7 @@ export function DocChangelog() {
 
       <div className="mt-8 rounded-xl border border-ink-200 bg-ink-100 p-6">
         <div className="flex items-center gap-3">
-          <span className="rounded-md bg-primary-100 px-2.5 py-1 text-xs font-semibold text-primary-700">
+          <span className="rounded-md bg-primary-100 px-2.5 py-1 text-xs font-semibold text-ink-950">
             Initial documentation
           </span>
           <span className="text-sm text-ink-400">September 2, 2026</span>

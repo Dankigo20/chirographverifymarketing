@@ -8,12 +8,12 @@ interface BadgeProps {
 }
 
 const variants = {
-  default: 'bg-ink-50 text-ink-700 border-ink-200',
-  primary: 'bg-primary-50 text-primary-700 border-ink-300',
-  accent: 'bg-accent-50 text-accent-700 border-accent-200',
-  success: 'bg-accent-50 text-accent-700 border-accent-200',
+  default: 'bg-ink-100 text-ink-700 border-ink-200',
+  primary: 'bg-ink-100 text-ink-900 border-ink-300',
+  accent: 'bg-accent-500/10 text-accent-400 border-accent-500/40',
+  success: 'bg-accent-500/10 text-accent-400 border-accent-500/40',
   outline: 'bg-transparent text-ink-600 border-ink-200',
-  dark: 'bg-black/5 text-primary-200 border-white/10 backdrop-blur',
+  dark: 'bg-ink-100 text-ink-900 border-ink-200 backdrop-blur',
 };
 
 export function Badge({ children, variant = 'default', className, icon }: BadgeProps) {

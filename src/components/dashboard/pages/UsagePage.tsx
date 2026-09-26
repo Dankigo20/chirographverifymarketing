@@ -75,7 +75,7 @@ export function UsagePage({ navigate }: { navigate: NavigateFn }) {
             action={
               <button
                 onClick={() => navigate('/docs/quick-start')}
-                className="rounded-xl bg-primary-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-primary-700"
+                className="rounded-xl bg-ink-900 px-5 py-2.5 text-sm font-semibold text-ink-950 transition-colors hover:bg-white"
               >
                 Read the quick start
               </button>

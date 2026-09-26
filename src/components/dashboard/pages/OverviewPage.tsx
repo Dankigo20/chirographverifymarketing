@@ -105,7 +105,7 @@ export function OverviewPage({ navigate }: { navigate: NavigateFn }) {
             action={
               <button
                 onClick={() => navigate('/docs/quick-start')}
-                className="flex items-center gap-2 rounded-xl bg-primary-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-primary-700"
+                className="flex items-center gap-2 rounded-xl bg-ink-900 px-5 py-2.5 text-sm font-semibold text-ink-950 transition-colors hover:bg-white"
               >
                 Read the quick start
                 <ArrowRight className="h-4 w-4" />
@@ -127,7 +127,7 @@ export function OverviewPage({ navigate }: { navigate: NavigateFn }) {
           </div>
           <button
             onClick={() => navigate('/dashboard/billing')}
-            className="rounded-xl bg-primary-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-primary-700"
+            className="rounded-xl bg-ink-900 px-5 py-2.5 text-sm font-semibold text-ink-950 transition-colors hover:bg-white"
           >
             View plans
           </button>

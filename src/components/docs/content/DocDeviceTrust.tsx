@@ -28,9 +28,9 @@ export function DocDeviceTrust() {
       <DocHeading level={3} id="outcomes">Verification outcomes</DocHeading>
 
       <div className="mt-5 space-y-4">
-        <div className="rounded-xl border border-accent-200 bg-accent-50/50 p-5">
+        <div className="rounded-xl border border-accent-500/40 bg-accent-500/10 p-5">
           <div className="flex items-center gap-2">
-            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-accent-500 text-xs font-bold text-white">P</span>
+            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-accent-500 text-xs font-bold text-ink-950">P</span>
             <h4 className="text-sm font-semibold text-ink-900">Pass</h4>
           </div>
           <p className="mt-2 text-sm text-ink-600">
@@ -39,9 +39,9 @@ export function DocDeviceTrust() {
           </p>
         </div>
 
-        <div className="rounded-xl border border-amber-200 bg-amber-50/50 p-5">
+        <div className="rounded-xl border border-warning-500/40 bg-warning-500/10 p-5">
           <div className="flex items-center gap-2">
-            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-amber-500 text-xs font-bold text-white">F</span>
+            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-warning-500 text-xs font-bold text-ink-950">F</span>
             <h4 className="text-sm font-semibold text-ink-900">Flag</h4>
           </div>
           <p className="mt-2 text-sm text-ink-600">
@@ -50,9 +50,9 @@ export function DocDeviceTrust() {
           </p>
         </div>
 
-        <div className="rounded-xl border border-error-200 bg-error-500/5 p-5">
+        <div className="rounded-xl border border-error-500/40 bg-error-500/10 p-5">
           <div className="flex items-center gap-2">
-            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-error-500 text-xs font-bold text-white">X</span>
+            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-error-500 text-xs font-bold text-ink-950">X</span>
             <h4 className="text-sm font-semibold text-ink-900">Fail</h4>
           </div>
           <p className="mt-2 text-sm text-ink-600">

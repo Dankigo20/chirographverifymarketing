@@ -86,7 +86,7 @@ export function DeveloperSection() {
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <Reveal>
             <div>
-              <div className="mb-3.5 text-xs font-semibold uppercase tracking-[0.2em] text-accent-600">
+              <div className="mb-3.5 text-xs font-semibold uppercase tracking-[0.2em] text-accent-400">
                 For developers
               </div>
               <h2 className="text-3xl font-normal tracking-tight text-ink-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.08]">

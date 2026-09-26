@@ -31,7 +31,7 @@ export function DocList({ items, ordered = false }: { items: ReactNode[]; ordere
       {items.map((item, i) => (
         <li key={i} className="flex items-start gap-2.5 text-[15px] leading-relaxed text-ink-600">
           {ordered ? (
-            <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary-100 text-xs font-semibold text-primary-700">
+            <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary-100 text-xs font-semibold text-ink-950">
               {i + 1}
             </span>
           ) : (
@@ -61,15 +61,18 @@ export function DocCallout({
   title?: string;
   children: ReactNode;
 }) {
+  // Dark-theme callouts. The previous amber-50/amber-200 pair came from
+  // Tailwind's default (light) palette and painted a near-white panel on the
+  // black canvas, which is what washed out the docs callouts.
   const styles = {
-    info: 'border-ink-300 bg-primary-50/60 text-ink-700',
-    warning: 'border-amber-200 bg-amber-50/60 text-ink-700',
-    danger: 'border-error-200 bg-error-50/60 text-ink-700',
+    info: 'border-ink-300 bg-ink-100 text-ink-600',
+    warning: 'border-warning-500/40 bg-warning-500/10 text-ink-600',
+    danger: 'border-error-500/40 bg-error-500/10 text-ink-600',
   };
   const labelColor = {
-    info: 'text-primary-700',
-    warning: 'text-amber-700',
-    danger: 'text-error-600',
+    info: 'text-ink-900',
+    warning: 'text-warning-400',
+    danger: 'text-error-400',
   };
   return (
     <div className={`mt-5 rounded-xl border p-4 ${styles[variant]}`}>
@@ -92,7 +95,7 @@ export function ComingSoonBadge() {
 export function EndpointBadge({ method, path }: { method: string; path: string }) {
   return (
     <div className="mt-4 flex items-center gap-3 rounded-xl border border-ink-200 bg-ink-50 px-4 py-3 transition-colors hover:border-ink-300">
-      <span className="inline-flex rounded-md bg-primary-600 px-2.5 py-1 font-mono text-xs font-semibold text-white shadow-soft">
+      <span className="inline-flex rounded-md bg-primary-100 px-2.5 py-1 font-mono text-xs font-semibold text-ink-950 shadow-soft">
         {method}
       </span>
       <code className="font-mono text-sm text-ink-800">{path}</code>

@@ -50,7 +50,7 @@ export function ProductExplanation() {
                       <div className="group flex flex-1 flex-col items-center text-center">
                         <div className="relative flex h-20 w-20 items-center justify-center rounded-panel border border-ink-200 bg-ink-100 transition-colors duration-100 group-hover:border-ink-300 group-">
                           <Icon className="h-8 w-8 text-primary-600" strokeWidth={1.8} />
-                          <span className="absolute -top-2 -right-2 flex h-6 w-6 items-center justify-center rounded-full bg-primary-600 text-xs font-semibold text-white">
+                          <span className="absolute -top-2 -right-2 flex h-6 w-6 items-center justify-center rounded-full bg-ink-900 text-xs font-semibold text-ink-950">
                             {i + 1}
                           </span>
                         </div>
@@ -78,7 +78,7 @@ export function ProductExplanation() {
                         <div className="relative flex gap-4">
                           <div className="relative z-10 flex h-20 w-20 shrink-0 items-center justify-center rounded-panel border border-ink-200 bg-ink-100">
                             <Icon className="h-8 w-8 text-primary-600" strokeWidth={1.8} />
-                            <span className="absolute -top-2 -right-2 flex h-6 w-6 items-center justify-center rounded-full bg-primary-600 text-xs font-semibold text-white">
+                            <span className="absolute -top-2 -right-2 flex h-6 w-6 items-center justify-center rounded-full bg-ink-900 text-xs font-semibold text-ink-950">
                               {i + 1}
                             </span>
                           </div>

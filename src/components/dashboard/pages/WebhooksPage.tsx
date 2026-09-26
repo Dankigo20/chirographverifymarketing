@@ -77,16 +77,16 @@ export function WebhooksPage({ navigate }: { navigate: NavigateFn }) {
           )}
 
           {saveError && (
-            <div className="flex items-start gap-2.5 rounded-lg border border-error-200 bg-error-500/5 p-3">
-              <AlertCircle className="mt-0.5 h-4 w-4 shrink-0 text-error-500" />
-              <p className="text-sm text-error-600">{saveError}</p>
+            <div className="flex items-start gap-2.5 rounded-lg border border-error-500/40 bg-error-500/10 p-3">
+              <AlertCircle className="mt-0.5 h-4 w-4 shrink-0 text-error-400" />
+              <p className="text-sm text-error-400">{saveError}</p>
             </div>
           )}
 
           <button
             onClick={handleSave}
             disabled={saving}
-            className="flex items-center gap-2 rounded-xl bg-primary-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-primary-700 disabled:opacity-60"
+            className="flex items-center gap-2 rounded-xl bg-ink-900 px-5 py-2.5 text-sm font-semibold text-ink-950 transition-colors hover:bg-white disabled:opacity-60"
           >
             {saving ? (
               <Loader2 className="h-4 w-4 animate-spin" />
@@ -120,7 +120,7 @@ export function WebhooksPage({ navigate }: { navigate: NavigateFn }) {
           action={
             <button
               onClick={() => navigate('/docs/webhooks')}
-              className="rounded-xl bg-primary-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-primary-700"
+              className="rounded-xl bg-ink-900 px-5 py-2.5 text-sm font-semibold text-ink-950 transition-colors hover:bg-white"
             >
               Read webhook docs
             </button>

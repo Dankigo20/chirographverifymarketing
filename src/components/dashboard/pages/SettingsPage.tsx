@@ -106,7 +106,7 @@ export function SettingsPage({ navigate: _navigate }: { navigate: NavigateFn }) 
             />
             <button
               onClick={addOrigin}
-              className="flex items-center gap-1.5 rounded-xl bg-primary-600 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-primary-700"
+              className="flex items-center gap-1.5 rounded-xl bg-ink-900 px-4 py-2.5 text-sm font-semibold text-ink-950 transition-colors hover:bg-white"
             >
               <Plus className="h-4 w-4" />
               Add

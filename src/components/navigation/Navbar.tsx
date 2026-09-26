@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { Menu, X, Fingerprint, ChevronRight } from 'lucide-react';
+import { Menu, X, ChevronRight } from 'lucide-react';
+import { BrandMark } from '@/components/brand/BrandMark';
 import { siteConfig, appLinks } from '@/config/site';
 import { ButtonLink } from '@/components/ui/Button';
 
@@ -85,7 +86,7 @@ export function Navbar({ currentPath, navigate }: NavbarProps) {
         {/* Mobile toggle */}
         <button
           onClick={() => setMenuOpen((v) => !v)}
-          className="flex h-9 w-9 items-center justify-center rounded-control text-ink-600 hover:\bg-white/[0.04] md:hidden"
+          className="flex h-9 w-9 items-center justify-center rounded-control text-ink-600 hover:bg-white/[0.06] md:hidden"
           aria-label={menuOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={menuOpen}
         >
@@ -108,7 +109,7 @@ export function Navbar({ currentPath, navigate }: NavbarProps) {
                 className={`flex items-center justify-between rounded-control px-4 py-3 text-left text-[15px] font-medium transition-colors ${
                   isActive(currentPath, item.href)
                     ? 'bg-primary-50 text-primary-700'
-                    : 'text-ink-700 hover:\bg-white/[0.04]'
+                    : 'text-ink-700 hover:bg-white/[0.06]'
                 }`}
               >
                 {item.label}
@@ -162,9 +163,5 @@ function isActive(current: string, href: string): boolean {
 }
 
 function Logo() {
-  return (
-    <span className="flex h-8 w-8 items-center justify-center rounded-full border border-ink-300 text-ink-900">
-      <Fingerprint className="h-4 w-4" strokeWidth={2.1} />
-    </span>
-  );
+  return <BrandMark className="h-7 w-7" />;
 }
