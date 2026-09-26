@@ -39,7 +39,7 @@ export function CodeBlock({
 
   return (
     <div
-      className={`group overflow-hidden rounded-xl border ${dark ? 'bg-ink-950 border-white/10' : 'bg-ink-50 border-ink-200'} ${className ?? ''}`.trim()}
+      className={`group overflow-hidden rounded-panel border ${dark ? 'bg-ink-950 border-white/10' : 'bg-ink-50 border-ink-200'} ${className ?? ''}`.trim()}
     >
       {(filename || language) && (
         <div

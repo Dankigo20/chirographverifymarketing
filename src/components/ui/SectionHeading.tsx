@@ -23,19 +23,20 @@ export function SectionHeading({
     >
       {eyebrow && (
         <div
-          className={`mb-3.5 text-xs font-semibold uppercase tracking-[0.2em] ${dark ? 'text-accent-300' : 'text-accent-600'}`}
+          className={`micro-label mb-3 flex items-center gap-2 ${dark ? 'text-accent-300' : 'text-ink-400'}`}
         >
+          <span className={`h-px w-4 ${dark ? 'bg-accent-400' : 'bg-ink-300'}`} />
           {eyebrow}
         </div>
       )}
       <h2
-        className={`text-3xl font-semibold tracking-tight sm:text-4xl lg:text-[2.75rem] lg:leading-[1.08] ${dark ? 'text-white' : 'text-ink-900'}`}
+        className={`text-2xl font-semibold tracking-tight sm:text-3xl ${dark ? 'text-white' : 'text-ink-900'}`}
       >
         {title}
       </h2>
       {description && (
         <p
-          className={`mt-5 text-base leading-relaxed sm:text-lg ${dark ? 'text-ink-300' : 'text-ink-500'}`}
+          className={`mt-3 text-sm leading-relaxed ${dark ? 'text-ink-300' : 'text-ink-500'}`}
         >
           {description}
         </p>

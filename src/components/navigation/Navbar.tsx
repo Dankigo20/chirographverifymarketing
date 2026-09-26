@@ -40,7 +40,7 @@ export function Navbar({ currentPath, navigate }: NavbarProps) {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 border-b bg-white/85 backdrop-blur-xl transition-shadow duration-200 ease-out-expo ${
-        scrolled ? 'border-ink-200 shadow-soft' : 'border-ink-200/60'
+        scrolled ? 'border-ink-200' : 'border-ink-200/60'
       }`}
     >
       <nav className="container-page flex h-14 items-center justify-between lg:h-16">

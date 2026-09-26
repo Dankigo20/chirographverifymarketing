@@ -67,7 +67,7 @@ export function FAQSection() {
         <div className="mx-auto mt-14 max-w-3xl space-y-3">
           {faqs.map((faq, i) => (
             <Reveal key={i} delay={(i % 4) * 50}>
-              <div className="overflow-hidden rounded-2xl border border-ink-200 bg-white transition-colors duration-300 hover:border-ink-300">
+              <div className="overflow-hidden rounded-panel border border-ink-200 bg-white transition-colors duration-100 hover:border-ink-300">
                 <button
                   onClick={() => setOpen(open === i ? null : i)}
                   className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left transition-colors hover:bg-ink-50"
@@ -81,7 +81,7 @@ export function FAQSection() {
                   />
                 </button>
                 <div
-                  className={`grid transition-all duration-300 ease-out-expo ${
+                  className={`grid transition-colors duration-100 ease-out-expo ${
                     open === i ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
                   }`}
                 >

@@ -63,47 +63,46 @@
     @apply mx-auto w-full max-w-8xl px-5 sm:px-6 lg:px-8;
   }
 
-  /* ── Shared vocabulary (identical rules to the authenticated app) ── */
+  /* ── Shared vocabulary (console: mono-forward, hairline, dense) ── */
   .page-title {
-    @apply text-2xl font-semibold tracking-tight text-ink-900;
-    letter-spacing: -0.015em;
+    @apply text-xl font-semibold tracking-tight text-ink-900;
   }
   .page-description {
-    @apply mt-1.5 text-sm leading-relaxed text-ink-500;
+    @apply mt-1 text-[13px] leading-relaxed text-ink-500;
   }
   .section-title {
-    @apply text-sm font-semibold tracking-tight text-ink-900;
+    @apply text-[13px] font-semibold text-ink-900;
   }
   .micro-label {
-    @apply text-[11px] font-semibold uppercase tracking-micro text-ink-400;
+    @apply font-mono text-[10px] font-medium uppercase tracking-micro text-ink-400;
   }
   .label-text {
-    @apply mb-1.5 block text-xs font-medium text-ink-700;
+    @apply mb-1 block font-mono text-[10px] font-medium uppercase tracking-micro text-ink-400;
   }
   .stat-value {
-    @apply font-mono text-xl font-semibold tabular-nums tracking-tight text-ink-900;
+    @apply font-mono text-lg font-semibold tabular-nums tracking-tight text-ink-900;
   }
   .mono-value {
     @apply font-mono tabular-nums;
   }
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-control bg-primary-600 px-3.5 text-sm font-medium text-white shadow-control transition-colors duration-150 hover:bg-primary-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/35 disabled:cursor-not-allowed disabled:opacity-55;
-    height: 34px;
+    @apply inline-flex items-center justify-center gap-1.5 rounded-control bg-primary-600 px-3 text-[13px] font-medium text-white transition-colors duration-100 hover:bg-primary-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/40 focus-visible:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-45;
+    height: 30px;
   }
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 rounded-control border border-ink-200 bg-white px-3.5 text-sm font-medium text-ink-900 shadow-control transition-colors duration-150 hover:border-ink-300 hover:bg-ink-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/35 disabled:cursor-not-allowed disabled:opacity-55;
-    height: 34px;
+    @apply inline-flex items-center justify-center gap-1.5 rounded-control border border-ink-200 bg-white px-3 text-[13px] font-medium text-ink-900 transition-colors duration-100 hover:bg-ink-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/40 focus-visible:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-45;
+    height: 30px;
   }
   .btn-ghost {
-    @apply inline-flex items-center justify-center gap-2 rounded-control px-2.5 text-sm font-medium text-ink-500 transition-colors duration-150 hover:bg-ink-50 hover:text-ink-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/35;
-    height: 34px;
+    @apply inline-flex items-center justify-center gap-1.5 rounded-control px-2 text-[13px] font-medium text-ink-500 transition-colors duration-100 hover:bg-ink-50 hover:text-ink-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/40;
+    height: 30px;
   }
   .input-field {
-    @apply w-full rounded-control border border-ink-200 bg-white px-3 font-mono text-sm text-ink-900 shadow-control transition-colors duration-150 placeholder:font-sans placeholder:text-ink-400 hover:border-ink-300 focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/25 disabled:cursor-not-allowed disabled:bg-ink-50;
-    height: 34px;
+    @apply w-full rounded-control border border-ink-200 bg-white px-2.5 font-mono text-[13px] text-ink-900 transition-colors duration-100 placeholder:font-sans placeholder:text-[13px] placeholder:text-ink-400 hover:border-ink-300 focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500/40 disabled:cursor-not-allowed disabled:bg-ink-50;
+    height: 30px;
   }
   .card {
-    @apply rounded-xl border border-ink-200 bg-white shadow-card;
+    @apply rounded-panel border border-ink-200 bg-white;
   }
   .divider {
     @apply border-t border-ink-200;

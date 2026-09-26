@@ -15,73 +15,96 @@ const capabilities = [
   {
     icon: Fingerprint,
     title: 'WebAuthn verification',
+    surface: 'Device',
     desc: 'Device-level authentication using passkeys and platform authenticators — no shared secrets.',
   },
   {
     icon: RefreshCw,
     title: 'Single-use challenges',
+    surface: 'API',
     desc: 'Every verification flow issues a one-time challenge that cannot be replayed or reused.',
   },
   {
     icon: ServerCog,
     title: 'Server-side verification',
+    surface: 'Server',
     desc: 'Cryptographic assertions are verified on the Chirograph server — never trusted to the browser.',
   },
   {
     icon: Building2,
     title: 'Tenant isolation',
+    surface: 'Platform',
     desc: 'Each tenant gets isolated API keys, widget keys, and verification state — no cross-tenant leakage.',
   },
   {
     icon: Gauge,
     title: 'Verification trust score',
+    surface: 'Response',
     desc: 'Each result includes a trust/device score so you can apply risk-based decisions.',
   },
   {
     icon: Webhook,
     title: 'Signed webhook events',
+    surface: 'Webhooks',
     desc: 'Verification results are delivered to your backend via cryptographically signed webhooks.',
   },
   {
     icon: Code2,
     title: 'API integration',
+    surface: 'REST',
     desc: 'Simple challenge-and-verify endpoints plus a redirect-based widget SDK for the browser.',
   },
   {
     icon: ExternalLink,
     title: 'Redirect-based widget',
+    surface: 'Browser',
     desc: 'A lightweight JavaScript SDK that redirects to a hosted ceremony and returns to your app.',
   },
 ];
 
 export function Capabilities() {
   return (
-    <section id="capabilities" className="relative scroll-mt-20 border-t border-ink-100 py-24 lg:py-32">
+    <section id="capabilities" className="relative scroll-mt-20 border-t border-ink-200 py-20">
       <div className="container-page">
         <Reveal>
           <SectionHeading
+            align="left"
             eyebrow="Capabilities"
-            title="Everything you need to verify real users"
-            description="A complete verification infrastructure — from the browser SDK to server-side redemption — designed for developers who need to stop bots without stopping humans."
+            title="Everything needed to verify real users"
+            description="Complete verification infrastructure — browser SDK through server-side redemption."
           />
         </Reveal>
 
-        <div className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {capabilities.map((cap, i) => {
-            const Icon = cap.icon;
-            return (
-              <Reveal key={i} delay={(i % 4) * 80}>
-                <div className="group h-full rounded-2xl border border-ink-200 bg-white p-7 transition-all duration-300 hover:border-primary-200 hover:shadow-card-hover hover:-translate-y-0.5">
-                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary-50 text-primary-600 transition-all duration-300 group-hover:bg-primary-600 group-hover:text-white group-hover:scale-105">
-                    <Icon className="h-5 w-5" strokeWidth={2} />
+        {/* Specification table, not a card grid */}
+        <Reveal delay={120}>
+          <div className="mt-10 overflow-hidden rounded-panel border border-ink-200">
+            <div className="hidden grid-cols-[220px_minmax(0,1fr)_140px] border-b border-ink-200 bg-surface-2 px-4 py-2 sm:grid">
+              <span className="micro-label">Capability</span>
+              <span className="micro-label">Description</span>
+              <span className="micro-label text-right">Surface</span>
+            </div>
+            {capabilities.map((cap, i) => {
+              const Icon = cap.icon;
+              return (
+                <div
+                  key={i}
+                  className={`grid grid-cols-1 items-start gap-1 px-4 py-3 transition-colors hover:bg-ink-50 sm:grid-cols-[220px_minmax(0,1fr)_140px] sm:items-center sm:gap-4 ${
+                    i > 0 ? 'border-t border-ink-200' : ''
+                  }`}
+                >
+                  <div className="flex items-center gap-2">
+                    <Icon className="h-4 w-4 shrink-0 text-primary-600" strokeWidth={1.9} />
+                    <span className="text-[13px] font-medium text-ink-900">{cap.title}</span>
                   </div>
-                  <h3 className="mt-4 text-sm font-semibold text-ink-900">{cap.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-ink-500">{cap.desc}</p>
+                  <p className="text-[13px] leading-relaxed text-ink-500">{cap.desc}</p>
+                  <span className="justify-self-start rounded-xs border border-ink-200 bg-surface-2 px-1.5 py-0.5 font-mono text-[10px] uppercase tracking-wide text-ink-400 sm:justify-self-end">
+                    {cap.surface}
+                  </span>
                 </div>
-              </Reveal>
-            );
-          })}
-        </div>
+              );
+            })}
+          </div>
+        </Reveal>
       </div>
     </section>
   );

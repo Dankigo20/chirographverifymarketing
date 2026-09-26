@@ -52,9 +52,9 @@ export function UseCases() {
             const Icon = uc.icon;
             return (
               <Reveal key={i} delay={(i % 3) * 80}>
-                <div className="group h-full rounded-2xl border border-ink-200 bg-white p-7 transition-all duration-300 hover:border-ink-300 hover:shadow-card-hover hover:-translate-y-0.5">
+                <div className="group h-full rounded-panel border border-ink-200 bg-white p-7 transition-colors duration-100 hover:border-ink-300  ">
                   <div className="flex items-center gap-3">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-ink-50 text-ink-700 transition-all duration-300 group-hover:bg-primary-50 group-hover:text-primary-600 group-hover:scale-105">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-panel bg-ink-50 text-ink-700 transition-colors duration-100 group-hover:bg-primary-50 group-hover:text-primary-600 ">
                       <Icon className="h-5 w-5" strokeWidth={2} />
                     </div>
                     <h3 className="text-base font-semibold text-ink-900">{uc.title}</h3>

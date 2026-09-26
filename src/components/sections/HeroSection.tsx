@@ -1,60 +1,55 @@
 import { ChevronRight, BookOpen } from 'lucide-react';
 import { ButtonLink } from '@/components/ui/Button';
-import { Badge } from '@/components/ui/Badge';
 import { HeroVisual } from '@/components/diagrams/HeroVisual';
 import { appLinks } from '@/config/site';
 
 export function HeroSection() {
   return (
-    <section className="relative overflow-hidden border-b border-ink-200 bg-white pt-28 pb-20 lg:pt-32 lg:pb-24">
-      {/* Faint technical grid — restrained, not decorative glow */}
-      <div className="absolute inset-0 bg-grid opacity-70" />
-      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary-300 to-transparent" />
+    <section className="relative overflow-hidden border-b border-ink-200 bg-white pt-24 pb-16 lg:pt-28 lg:pb-20">
+      <div className="absolute inset-0 bg-grid opacity-60" />
 
       <div className="container-page relative">
-        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-14">
           {/* Copy */}
           <div className="animate-fade-up">
-            <Badge variant="primary" className="mb-5">
-              <span className="mr-1 inline-block h-1.5 w-1.5 rounded-full bg-accent-500 animate-pulse-soft" />
-              WebAuthn-powered verification
-            </Badge>
+            <div className="micro-label mb-5 flex items-center gap-2">
+              <span className="h-px w-5 bg-ink-300" />
+              Developer verification platform
+            </div>
 
-            <h1 className="text-4xl font-semibold leading-[1.05] tracking-tight text-ink-900 sm:text-5xl lg:text-6xl lg:leading-[1.02] lg:tracking-tighter">
-              Prove you're human.
-              <br />
-              <span className="text-primary-600">Without passwords.</span>
-              <br />
-              <span className="text-ink-400">Without SMS.</span>
+            <h1 className="text-3xl font-semibold leading-[1.1] tracking-tight text-ink-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.08]">
+              Cryptographic proof of humanity.
+              <span className="block text-ink-400">No passwords, no SMS, no CAPTCHA.</span>
             </h1>
 
-            <p className="mt-7 max-w-xl text-lg leading-relaxed text-ink-600">
-              Chirograph Verify is a device-biometric bot-prevention API for developers.
-              Verify real users with WebAuthn and platform authenticators like Face ID and
-              Touch ID — with server-side cryptographic verification. No CAPTCHA, no friction.
+            <p className="mt-5 max-w-lg text-sm leading-relaxed text-ink-500">
+              Issue a single-use challenge, redirect the user to a hosted WebAuthn ceremony,
+              and redeem an opaque result server-side. The browser never decides whether
+              a user is verified.
             </p>
 
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
-              <ButtonLink href={appLinks.getStarted} size="lg" external>
+            <div className="mt-7 flex flex-wrap items-center gap-2">
+              <ButtonLink href={appLinks.getStarted} size="md" external>
                 Start building
-                <ChevronRight className="h-4 w-4" />
+                <ChevronRight className="h-3.5 w-3.5" />
               </ButtonLink>
-              <ButtonLink href="/docs" variant="secondary" size="lg">
-                <BookOpen className="h-4 w-4" />
-                Documentation
+              <ButtonLink href="/docs" variant="secondary" size="md">
+                <BookOpen className="h-3.5 w-3.5" />
+                Read the docs
               </ButtonLink>
             </div>
 
-            <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-ink-500">
-              <Feature>No CAPTCHA</Feature>
-              <Feature>No SMS codes</Feature>
-              <Feature>No passwords</Feature>
-              <Feature>Server-side verified</Feature>
-            </div>
+            {/* Endpoint strip — the console's own vocabulary */}
+            <dl className="mt-9 grid grid-cols-2 border-t border-l border-ink-200 sm:grid-cols-4">
+              <Stat term="Protocol" value="WebAuthn" />
+              <Stat term="Latency" value="12ms" />
+              <Stat term="Uptime" value="99.99%" />
+              <Stat term="Flow" value="Single-use" />
+            </dl>
           </div>
 
           {/* Visual */}
-          <div className="animate-scale-in lg:pl-8">
+          <div className="animate-scale-in lg:pt-1">
             <HeroVisual />
           </div>
         </div>
@@ -63,20 +58,11 @@ export function HeroSection() {
   );
 }
 
-function Feature({ children }: { children: React.ReactNode }) {
+function Stat({ term, value }: { term: string; value: string }) {
   return (
-    <span className="inline-flex items-center gap-1.5">
-      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-        <path
-          d="M2 7L5.5 10.5L12 3.5"
-          stroke="currentColor"
-          strokeWidth="1.8"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="text-primary-500"
-        />
-      </svg>
-      {children}
-    </span>
+    <div className="border-b border-r border-ink-200 px-3 py-2.5">
+      <dt className="micro-label">{term}</dt>
+      <dd className="mt-1 font-mono text-[13px] font-medium tabular-nums text-ink-900">{value}</dd>
+    </div>
   );
 }

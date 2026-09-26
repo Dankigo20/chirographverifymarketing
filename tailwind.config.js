@@ -93,22 +93,26 @@ export default {
         micro: '.08em',
       },
       borderRadius: {
-        // 6px controls / 8px cards / 10px panels (shared with the app).
-        control: '6px',
-        panel: '10px',
-        '4xl': '2rem',
+        // Near-zero radius: a console, not a card deck. (Shared with the app.)
+        none: '0px',
+        xs: '2px',
+        control: '2px',
+        panel: '3px',
+        '4xl': '3px',
       },
       maxWidth: {
         '8xl': '88rem',
       },
       boxShadow: {
-        control: '0 1px 2px rgb(15 17 21 / 0.06)',
-        'soft': '0 1px 2px 0 rgb(15 17 21 / 0.04)',
-        'card': '0 1px 3px 0 rgb(15 17 21 / 0.07), 0 1px 2px 0 rgb(15 17 21 / 0.04)',
-        'card-hover': '0 2px 8px -2px rgb(15 17 21 / 0.08), 0 8px 20px -6px rgb(15 17 21 / 0.08)',
-        'elevated': '0 4px 6px -1px rgb(15 17 21 / 0.05), 0 20px 40px -8px rgb(15 17 21 / 0.1)',
-        'glow': '0 0 0 3px rgb(79 88 201 / 0.18)',
-        'glow-accent': '0 0 0 3px rgb(14 138 95 / 0.18)',
+        // Elevation is expressed through hairlines, not shadows.
+        none: 'none',
+        control: 'none',
+        'soft': 'none',
+        'card': 'none',
+        'card-hover': 'none',
+        'elevated': '0 1px 0 rgb(15 17 21 / 0.04)',
+        'glow': 'none',
+        'glow-accent': 'none',
       },
       keyframes: {
         'fade-up': {

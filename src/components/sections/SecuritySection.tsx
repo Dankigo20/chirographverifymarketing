@@ -61,7 +61,7 @@ export function SecuritySection() {
             const Icon = p.icon;
             return (
               <Reveal key={i} delay={(i % 3) * 80}>
-                <div className="h-full rounded-xl border border-ink-200 bg-white p-7 shadow-card transition-colors duration-150 hover:border-ink-300">
+                <div className="h-full rounded-panel border border-ink-200 bg-white p-7 transition-colors duration-150 hover:border-ink-300">
                   <div className="flex h-10 w-10 items-center justify-center rounded-control border border-primary-200 bg-primary-50 text-primary-600">
                     <Icon className="h-5 w-5" strokeWidth={2} />
                   </div>

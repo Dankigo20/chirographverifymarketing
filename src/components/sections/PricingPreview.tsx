@@ -48,9 +48,9 @@ export function PricingPreview() {
 function PreviewCard({ tier }: { tier: PricingTier }) {
   return (
     <div
-      className={`relative flex h-full flex-col rounded-xl border p-6 transition-colors duration-150 ${
+      className={`relative flex h-full flex-col rounded-panel border p-6 transition-colors duration-150 ${
         tier.featured
-          ? 'border-primary-300 bg-white shadow-card'
+          ? 'border-primary-300 bg-white'
           : 'border-ink-200 bg-white hover:border-ink-300'
       }`}
     >
