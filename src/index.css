@@ -144,15 +144,6 @@
       linear-gradient(115deg, transparent 42%, rgb(255 255 255 / 0.055) 50%, transparent 58%);
   }
 
-  /* Oversized brand mark, ghosted, sitting behind the footer. */
-  .bg-watermark {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none' stroke='%23FFFFFF' stroke-width='6'%3E%3Cpath d='M8 8 L92 92 M92 8 L8 92'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 420px 420px;
-    opacity: 0.06;
-  }
-
   /* Grid background */
   .bg-grid {
     background-image:

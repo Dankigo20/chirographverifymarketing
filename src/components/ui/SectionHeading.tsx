@@ -39,7 +39,7 @@ export function SectionHeading({
       </h2>
       {description && (
         <p
-          className={`mt-5 text-base leading-relaxed ${dark ? 'text-ink-300' : 'text-ink-500'}`}
+          className={`mt-5 text-base leading-relaxed ${dark ? 'text-ink-500' : 'text-ink-500'}`}
         >
           {description}
         </p>

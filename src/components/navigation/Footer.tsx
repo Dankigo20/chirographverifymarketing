@@ -10,8 +10,6 @@ export function Footer({ navigate }: FooterProps) {
 
   return (
     <footer className="relative overflow-hidden border-t border-ink-200 bg-ink-50">
-      {/* Oversized ghosted mark behind the footer, as on the reference. */}
-      <div className="bg-watermark pointer-events-none absolute inset-x-0 top-10 h-[420px]" aria-hidden="true" />
       <div className="container-page relative py-20 lg:py-24">
         <div className="grid gap-10 lg:grid-cols-12">
           {/* Brand */}

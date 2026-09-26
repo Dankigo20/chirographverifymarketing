@@ -18,7 +18,7 @@ export default {
           100: '#0A0A0A',  // raised surface
           200: '#141414',  // hairline border
           300: '#1F1F1F',  // stronger border
-          400: '#2E2E2E',
+          400: '#7A7A7A',  // subtle text / placeholders
           500: '#8C8C8C',  // muted body text
           600: '#A3A3A3',  // secondary body text
           700: '#B8B8B8',

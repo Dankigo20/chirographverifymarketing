@@ -43,13 +43,13 @@ export function CodeBlock({
     >
       {(filename || language) && (
         <div
-          className={`flex items-center justify-between border-b px-4 py-2.5 ${dark ? 'border-white/10 bg-surface/[0.02]' : 'border-ink-200 bg-ink-100'}`}
+          className={`flex items-center justify-between border-b px-4 py-2.5 ${dark ? 'border-white/10 bg-white/[0.03]' : 'border-ink-200 bg-ink-100'}`}
         >
           <div className="flex items-center gap-2">
             <div className="flex gap-1.5">
-              <span className={`h-2.5 w-2.5 rounded-full ${dark ? 'bg-black/15' : 'bg-ink-300'}`} />
-              <span className={`h-2.5 w-2.5 rounded-full ${dark ? 'bg-black/15' : 'bg-ink-300'}`} />
-              <span className={`h-2.5 w-2.5 rounded-full ${dark ? 'bg-black/15' : 'bg-ink-300'}`} />
+              <span className={`h-2.5 w-2.5 rounded-full ${dark ? 'bg-ink-400' : 'bg-ink-300'}`} />
+              <span className={`h-2.5 w-2.5 rounded-full ${dark ? 'bg-ink-400' : 'bg-ink-300'}`} />
+              <span className={`h-2.5 w-2.5 rounded-full ${dark ? 'bg-ink-400' : 'bg-ink-300'}`} />
             </div>
             {filename && (
               <span className={`ml-2 font-mono text-xs ${dark ? 'text-secondary' : 'text-ink-500'}`}>
@@ -68,13 +68,13 @@ export function CodeBlock({
         </div>
       )}
       <div className="code-scroll overflow-x-auto">
-        <pre className={`p-4 text-[13px] leading-relaxed ${dark ? 'text-ink-200' : 'text-ink-800'}`}>
+        <pre className={`p-4 text-[13px] leading-relaxed ${dark ? 'text-ink-700' : 'text-ink-800'}`}>
           <code className="font-mono">
             {lines.map((line, i) => (
               <div key={i} className="flex">
                 {showLineNumbers && (
                   <span
-                    className={`mr-4 inline-block w-6 shrink-0 select-none text-right ${dark ? 'text-ink-600' : 'text-secondary'}`}
+                    className={`mr-4 inline-block w-6 shrink-0 select-none text-right ${dark ? 'text-ink-500' : 'text-secondary'}`}
                   >
                     {i + 1}
                   </span>
@@ -102,12 +102,12 @@ function tokenize(line: string, lang: string, dark: boolean): string {
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;');
 
-  const commentColor = dark ? '#475569' : '#94a3b8';
-  const stringColor = dark ? '#86efac' : '#16a34a';
-  const keywordColor = dark ? '#93c5fd' : '#2563eb';
-  const fnColor = dark ? '#c4b5fd' : '#7c3aed';
-  const numColor = dark ? '#fca5a5' : '#dc2626';
-  const punctColor = dark ? '#94a3b8' : '#64748b';
+  const commentColor = dark ? '#8C8C8C' : '#64748b';
+  const stringColor = dark ? '#7EE2B8' : '#16a34a';
+  const keywordColor = dark ? '#B9D4F5' : '#2563eb';
+  const fnColor = dark ? '#D9CCF7' : '#7c3aed';
+  const numColor = dark ? '#F3B0AC' : '#dc2626';
+  const punctColor = dark ? '#B0B0B0' : '#64748b';
 
   // Comments
   if (lang === 'bash' || lang === 'shell') {
@@ -174,10 +174,10 @@ export function CodeTabs({ tabs, dark = true }: { tabs: CodeTab[]; dark?: boolea
             className={`rounded-lg px-3 py-1.5 text-xs font-medium transition-colors ${
               active === i
                 ? dark
-                  ? 'bg-black/10 text-white'
+                  ? 'bg-white/10 text-white'
                   : 'bg-ink-100 text-ink-900'
                 : dark
-                  ? 'text-secondary hover:text-ink-200'
+                  ? 'text-secondary hover:text-ink-900'
                   : 'text-ink-500 hover:text-ink-700'
             }`}
           >

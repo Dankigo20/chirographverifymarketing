@@ -16,7 +16,7 @@ export function AnalyticsPage({ navigate }: { navigate: NavigateFn }) {
       <DashboardCard title="Verification trends" description="Daily verification volume over the last 30 days.">
         <div className="flex h-64 items-center justify-center rounded-xl border border-dashed border-ink-300 bg-white/[0.02]">
           <div className="text-center">
-            <BarChart3 className="mx-auto h-10 w-10 text-ink-300" />
+            <BarChart3 className="mx-auto h-10 w-10 text-ink-500" />
             <p className="mt-3 text-sm font-medium text-ink-500">No analytics data yet</p>
             <p className="mt-1 text-xs text-ink-400">
               Analytics charts will populate once verification data is available from the backend.
