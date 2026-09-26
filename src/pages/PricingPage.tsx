@@ -27,7 +27,7 @@ export function PricingPage() {
               <Badge variant="primary" className="mb-5">
                 Pricing
               </Badge>
-              <h1 className="text-4xl font-semibold leading-[1.05] tracking-tight text-ink-900 sm:text-5xl lg:text-6xl lg:leading-[1.02] lg:tracking-tighter">
+              <h1 className="text-4xl font-normal leading-[1.05] tracking-tight text-ink-900 sm:text-5xl lg:text-6xl lg:leading-[1.02] lg:tracking-tighter">
                 Pricing that scales
                 <br />
                 <span className="text-gradient">with your usage.</span>
@@ -77,8 +77,8 @@ export function PricingPage() {
             <div className="mx-auto mt-14 max-w-5xl overflow-x-auto">
               <table className="w-full border-collapse">
                 <thead>
-                  <tr className="border-b border-tertiary">
-                    <th className="sticky left-0 z-10 w-1/3 bg-surface px-4 py-4 text-left text-sm font-semibold text-ink-900">
+                  <tr className="border-b border-ink-200">
+                    <th className="sticky left-0 z-10 w-1/3 bg-ink-100 px-4 py-4 text-left text-sm font-semibold text-ink-900">
                       Feature
                     </th>
                     {pricingTiers.map((t) => (
@@ -95,7 +95,7 @@ export function PricingPage() {
                 </thead>
                 <tbody>
                   {comparisonRows.map((row, i) => (
-                    <tr key={row.label} className={`border-b border-ink-100 ${i % 2 === 0 ? 'bg-ink-50/50' : ''}`}>
+                    <tr key={row.label} className={`border-b border-ink-200 ${i % 2 === 0 ? 'bg-white/[0.02]' : ''}`}>
                       <td className="sticky left-0 z-10 bg-inherit px-4 py-3.5 text-left text-sm text-ink-700">
                         {row.label}
                       </td>
@@ -117,8 +117,8 @@ export function PricingPage() {
       <section className="pb-24 lg:pb-32">
         <div className="container-page">
           <Reveal>
-            <div className="mx-auto max-w-2xl rounded-3xl border border-tertiary bg-gradient-to-br from-ink-50 to-primary-50/40 p-12 text-center lg:p-16">
-              <h2 className="text-2xl font-semibold tracking-tight text-ink-900 sm:text-3xl">
+            <div className="mx-auto max-w-2xl rounded-3xl border border-ink-200 bg-gradient-to-br from-ink-50 to-primary-50/40 p-12 text-center lg:p-16">
+              <h2 className="text-2xl font-normal tracking-tight text-ink-900 sm:text-3xl">
                 Need something custom?
               </h2>
               <p className="mx-auto mt-3 max-w-md text-ink-500">
@@ -143,8 +143,8 @@ function PricingCard({ tier }: { tier: PricingTier }) {
     <div
       className={`relative flex h-full flex-col rounded-2xl border p-7 transition-all duration-300 ${
         tier.featured
-          ? 'border-primary-300 bg-surface shadow-glow lg:-translate-y-2'
-          : 'border-tertiary bg-surface hover:border-line-strong hover:shadow-card-hover hover:-translate-y-0.5'
+          ? 'border-ink-300 bg-ink-100 shadow-glow lg:-translate-y-2'
+          : 'border-ink-200 bg-ink-100 hover:border-line-strong hover:shadow-card-hover hover:-translate-y-0.5'
       }`}
     >
       {tier.featured && (
@@ -154,7 +154,7 @@ function PricingCard({ tier }: { tier: PricingTier }) {
       )}
       <h3 className="text-base font-semibold text-ink-900">{tier.name}</h3>
       <div className="mt-4 flex items-baseline gap-1">
-        <span className="text-3xl font-semibold tracking-tight text-ink-900">
+        <span className="text-3xl font-normal tracking-tight text-ink-900">
           {tier.price}
         </span>
         {tier.unit && (

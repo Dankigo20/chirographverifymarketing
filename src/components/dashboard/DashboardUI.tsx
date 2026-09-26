@@ -13,12 +13,12 @@ export function StatCard({
   icon?: ReactNode;
 }) {
   return (
-    <div className="rounded-xl border border-ink-200 bg-white p-5 shadow-soft">
+    <div className="rounded-xl border border-ink-200 bg-ink-100 p-5 shadow-soft">
       <div className="flex items-center justify-between">
         <span className="text-sm font-medium text-ink-500">{label}</span>
         {icon && <span className="text-ink-400">{icon}</span>}
       </div>
-      <p className="mt-3 text-2xl font-semibold tracking-tight text-ink-900">{value}</p>
+      <p className="mt-3 text-2xl font-normal tracking-tight text-ink-900">{value}</p>
       {sublabel && <p className="mt-1 text-xs text-ink-400">{sublabel}</p>}
     </div>
   );
@@ -36,7 +36,7 @@ export function DashboardCard({
   action?: ReactNode;
 }) {
   return (
-    <div className="rounded-xl border border-ink-200 bg-white p-6 shadow-soft">
+    <div className="rounded-xl border border-ink-200 bg-ink-100 p-6 shadow-soft">
       {(title || action) && (
         <div className="mb-4 flex items-start justify-between gap-4">
           <div>
@@ -61,7 +61,7 @@ export function EmptyState({
   action?: ReactNode;
 }) {
   return (
-    <div className="flex flex-col items-center justify-center rounded-xl border border-dashed border-ink-300 bg-ink-50/50 px-6 py-16 text-center">
+    <div className="flex flex-col items-center justify-center rounded-xl border border-dashed border-ink-300 bg-white/[0.02] px-6 py-16 text-center">
       <span className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary-50">
         <Fingerprint className="h-7 w-7 text-primary-400" />
       </span>

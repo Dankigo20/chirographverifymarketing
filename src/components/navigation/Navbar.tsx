@@ -39,8 +39,8 @@ export function Navbar({ currentPath, navigate }: NavbarProps) {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 border-b bg-surface/85 backdrop-blur-xl transition-shadow duration-200 ease-out-expo ${
-        scrolled ? 'border-tertiary' : 'border-tertiary/60'
+      className={`fixed inset-x-0 top-0 z-50 border-b bg-black/85 backdrop-blur-xl transition-shadow duration-200 ease-out-expo ${
+        scrolled ? 'border-ink-200' : 'border-ink-200/60'
       }`}
     >
       <nav className="container-page flex h-14 items-center justify-between lg:h-16">
@@ -85,7 +85,7 @@ export function Navbar({ currentPath, navigate }: NavbarProps) {
         {/* Mobile toggle */}
         <button
           onClick={() => setMenuOpen((v) => !v)}
-          className="flex h-9 w-9 items-center justify-center rounded-control text-ink-600 hover:\bg-surface/[0.06] md:hidden"
+          className="flex h-9 w-9 items-center justify-center rounded-control text-ink-600 hover:\bg-white/[0.04] md:hidden"
           aria-label={menuOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={menuOpen}
         >
@@ -99,7 +99,7 @@ export function Navbar({ currentPath, navigate }: NavbarProps) {
         role="dialog"
         aria-modal="true"
       >
-        <div className="fixed inset-0 top-14 z-40 bg-surface/95 backdrop-blur-xl">
+        <div className="fixed inset-0 top-14 z-40 bg-black/95 backdrop-blur-xl">
           <div className="container-page flex h-full flex-col gap-1 overflow-y-auto pt-6 pb-32">
             {siteConfig.nav.map((item) => (
               <button
@@ -108,7 +108,7 @@ export function Navbar({ currentPath, navigate }: NavbarProps) {
                 className={`flex items-center justify-between rounded-control px-4 py-3 text-left text-[15px] font-medium transition-colors ${
                   isActive(currentPath, item.href)
                     ? 'bg-primary-50 text-primary-700'
-                    : 'text-ink-700 hover:\bg-surface/[0.06]'
+                    : 'text-ink-700 hover:\bg-white/[0.04]'
                 }`}
               >
                 {item.label}
@@ -149,7 +149,7 @@ function NavLink({
       }`}
     >
       {children}
-      {active && <span className="absolute inset-x-3 -bottom-px h-[2px] rounded-full bg-primary-600" />}
+      {active && <span className="absolute inset-x-3 -bottom-px h-[2px] rounded-full bg-ink-900" />}
     </button>
   );
 }
@@ -163,7 +163,7 @@ function isActive(current: string, href: string): boolean {
 
 function Logo() {
   return (
-    <span className="flex h-8 w-8 items-center justify-center rounded-control border border-primary-200 bg-primary-50 text-primary-600">
+    <span className="flex h-8 w-8 items-center justify-center rounded-full border border-ink-300 text-ink-900">
       <Fingerprint className="h-4 w-4" strokeWidth={2.1} />
     </span>
   );

@@ -38,7 +38,7 @@ const pillars = [
 
 export function SecuritySection() {
   return (
-    <section className="relative overflow-hidden border-b border-tertiary bg-surface py-24 lg:py-32">
+    <section className="relative overflow-hidden border-b border-ink-200 bg-ink-100 py-24 lg:py-32">
       <div className="absolute inset-0 bg-grid opacity-50" />
 
       <div className="container-page relative">
@@ -61,8 +61,8 @@ export function SecuritySection() {
             const Icon = p.icon;
             return (
               <Reveal key={i} delay={(i % 3) * 80}>
-                <div className="h-full rounded-panel border border-tertiary bg-surface p-7 transition-colors duration-150 hover:border-line-strong">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-control border border-primary-200 bg-primary-50 text-primary-600">
+                <div className="h-full rounded-panel border border-ink-200 bg-ink-100 p-7 transition-colors duration-150 hover:border-line-strong">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-control border border-ink-300 bg-primary-50 text-primary-600">
                     <Icon className="h-5 w-5" strokeWidth={2} />
                   </div>
                   <h3 className="mt-4 text-sm font-semibold text-ink-900">{p.title}</h3>

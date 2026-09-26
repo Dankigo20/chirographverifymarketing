@@ -13,7 +13,7 @@ export function PricingPreview() {
             <div className="mb-3.5 text-xs font-semibold uppercase tracking-[0.2em] text-accent-600">
               Pricing
             </div>
-            <h2 className="text-3xl font-semibold tracking-tight text-ink-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.08]">
+            <h2 className="text-3xl font-normal tracking-tight text-ink-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.08]">
               Simple, usage-based pricing
             </h2>
             <p className="mt-5 text-base leading-relaxed text-ink-500 sm:text-lg">
@@ -50,8 +50,8 @@ function PreviewCard({ tier }: { tier: PricingTier }) {
     <div
       className={`relative flex h-full flex-col rounded-panel border p-6 transition-colors duration-150 ${
         tier.featured
-          ? 'border-primary-300 bg-surface'
-          : 'border-tertiary bg-surface hover:border-line-strong'
+          ? 'border-ink-300 bg-ink-100'
+          : 'border-ink-200 bg-ink-100 hover:border-line-strong'
       }`}
     >
       {tier.featured && (
@@ -61,7 +61,7 @@ function PreviewCard({ tier }: { tier: PricingTier }) {
       )}
       <h3 className="text-base font-semibold text-ink-900">{tier.name}</h3>
       <div className="mt-4 flex items-baseline gap-1">
-        <span className="font-mono text-2xl font-semibold tracking-tight text-ink-900">
+        <span className="font-mono text-2xl font-normal tracking-tight text-ink-900">
           {tier.price}
         </span>
         {tier.unit && (

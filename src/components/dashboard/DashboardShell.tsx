@@ -52,7 +52,7 @@ export function DashboardSidebar({
       )}
 
       <aside
-        className={`fixed left-0 top-0 z-50 flex h-screen w-64 flex-col border-r border-ink-200 bg-white transition-transform duration-300 ease-out-expo lg:sticky lg:translate-x-0 ${
+        className={`fixed left-0 top-0 z-50 flex h-screen w-64 flex-col border-r border-ink-200 bg-ink-100 transition-transform duration-300 ease-out-expo lg:sticky lg:translate-x-0 ${
           isMobileOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
@@ -87,7 +87,7 @@ export function DashboardSidebar({
                     className={`flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left text-sm font-medium transition-colors ${
                       active
                         ? 'bg-primary-50 text-primary-700'
-                        : 'text-ink-600 hover:bg-ink-50 hover:text-ink-900'
+                        : 'text-ink-600 hover:bg-white/[0.06] hover:text-ink-900'
                     }`}
                   >
                     <span className={active ? 'text-primary-600' : 'text-ink-400'}>{item.icon}</span>
@@ -125,7 +125,7 @@ interface DashboardTopbarProps {
 
 export function DashboardTopbar({ onMenuClick, title }: DashboardTopbarProps) {
   return (
-    <header className="sticky top-0 z-30 flex h-16 items-center justify-between border-b border-ink-200 bg-white/90 px-5 backdrop-blur lg:px-8">
+    <header className="sticky top-0 z-30 flex h-16 items-center justify-between border-b border-ink-200 bg-black/90 px-5 backdrop-blur lg:px-8">
       <div className="flex items-center gap-3">
         <button
           onClick={onMenuClick}
@@ -134,7 +134,7 @@ export function DashboardTopbar({ onMenuClick, title }: DashboardTopbarProps) {
         >
           <Menu className="h-5 w-5" />
         </button>
-        <h1 className="text-lg font-semibold text-ink-900">{title}</h1>
+        <h1 className="text-lg font-normal text-ink-900">{title}</h1>
       </div>
     </header>
   );

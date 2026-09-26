@@ -21,7 +21,7 @@ export function UsagePage({ navigate }: { navigate: NavigateFn }) {
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-xl font-semibold text-ink-900">Usage</h2>
+        <h2 className="text-xl font-normal text-ink-900">Usage</h2>
         <p className="mt-1 text-sm text-ink-500">Track your verification usage for the current billing period.</p>
       </div>
 

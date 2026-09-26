@@ -54,7 +54,7 @@ export function FAQSection() {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="relative scroll-mt-20 border-t border-ink-100 py-24 lg:py-32">
+    <section id="faq" className="relative scroll-mt-20 border-t border-ink-200 py-24 lg:py-32">
       <div className="container-page">
         <Reveal>
           <SectionHeading
@@ -67,10 +67,10 @@ export function FAQSection() {
         <div className="mx-auto mt-14 max-w-3xl space-y-3">
           {faqs.map((faq, i) => (
             <Reveal key={i} delay={(i % 4) * 50}>
-              <div className="overflow-hidden rounded-panel border border-tertiary bg-surface transition-colors duration-100 hover:border-line-strong">
+              <div className="overflow-hidden rounded-panel border border-ink-200 bg-ink-100 transition-colors duration-100 hover:border-line-strong">
                 <button
                   onClick={() => setOpen(open === i ? null : i)}
-                  className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left transition-colors hover:\bg-surface/[0.06]"
+                  className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left transition-colors hover:\bg-white/[0.04]"
                   aria-expanded={open === i}
                 >
                   <span className="text-sm font-semibold text-ink-900 sm:text-base">{faq.q}</span>

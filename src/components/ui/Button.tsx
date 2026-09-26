@@ -21,21 +21,25 @@ interface AnchorProps {
 }
 
 const base =
-  'inline-flex items-center justify-center gap-2 font-medium rounded-control transition-colors duration-150 focus-visible:ring-2 focus-visible:ring-primary-500/35 disabled:opacity-55 disabled:pointer-events-none whitespace-nowrap';
+  'inline-flex items-center justify-center gap-2 font-medium rounded-full transition-all duration-200 focus-visible:ring-2 focus-visible:ring-primary-500/60 disabled:opacity-55 disabled:pointer-events-none whitespace-nowrap';
 
+// On developer.x.com the primary action is a solid white pill carrying a
+// black label and a soft white glow; the secondary is a hairline outline.
 const variants: Record<Variant, string> = {
-  primary: 'bg-primary-600 text-white shadow-control hover:bg-primary-700 active:bg-primary-800',
+  primary:
+    'bg-primary-100 text-ink-950 hover:bg-white hover:shadow-glow active:bg-white',
   secondary:
-    'bg-surface text-ink-900 border border-tertiary shadow-control hover:border-line-strong hover:\bg-surface/[0.06]',
-  outline: 'bg-transparent text-primary-700 border border-primary-200 hover:bg-primary-50 hover:border-primary-300',
-  ghost: 'bg-transparent text-ink-600 hover:\bg-surface/[0.06] hover:text-ink-900',
-  dark: 'bg-primary text-white shadow-control hover:bg-ink-800',
+    'bg-transparent text-ink-900 border border-ink-300 hover:border-ink-500 hover:bg-white/[0.06]',
+  outline:
+    'bg-transparent text-ink-900 border border-ink-300 hover:bg-white/[0.06] hover:border-ink-500',
+  ghost: 'bg-transparent text-ink-600 hover:bg-white/[0.08] hover:text-ink-900',
+  dark: 'bg-ink-800 text-ink-900 hover:bg-ink-700',
 };
 
 const sizes: Record<Size, string> = {
-  sm: 'text-sm px-3 py-1.5 h-8',
-  md: 'text-sm px-3.5 py-2 h-9',
-  lg: 'text-[15px] px-4 py-2.5 h-10',
+  sm: 'text-[13px] px-4 h-9',
+  md: 'text-[15px] px-5 h-11',
+  lg: 'text-[15px] px-6 h-12',
 };
 
 function classes(variant: Variant, size: Size, className?: string) {

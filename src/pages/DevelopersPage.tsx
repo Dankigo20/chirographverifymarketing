@@ -133,7 +133,7 @@ export function DevelopersPage() {
                 <Terminal className="h-3.5 w-3.5" />
                 Developer documentation
               </Badge>
-              <h1 className="text-4xl font-semibold leading-[1.05] tracking-tight text-white sm:text-5xl lg:text-6xl lg:leading-[1.02]">
+              <h1 className="text-4xl font-normal leading-[1.05] tracking-tight text-white sm:text-5xl lg:text-6xl lg:leading-[1.02]">
                 Integrate in
                 <br />
                 <span className="text-gradient-light">three calls.</span>
@@ -147,7 +147,7 @@ export function DevelopersPage() {
                   Get API keys
                   <ArrowRight className="h-4 w-4" />
                 </ButtonLink>
-                <ButtonLink href="/security" variant="secondary" size="lg" className="!bg-surface/5 !border-white/15 !text-white hover:!bg-surface/10">
+                <ButtonLink href="/security" variant="secondary" size="lg" className="!bg-black/5 !border-white/15 !text-white hover:!bg-black/10">
                   Security model
                 </ButtonLink>
               </div>
@@ -191,7 +191,7 @@ export function DevelopersPage() {
               const Icon = step.icon;
               return (
                 <Reveal key={i} delay={i * 100}>
-                  <div className="relative h-full rounded-2xl border border-tertiary bg-surface p-6">
+                  <div className="relative h-full rounded-2xl border border-ink-200 bg-ink-100 p-6">
                     <div className="flex items-center gap-3">
                       <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary-600 text-sm font-semibold text-white">
                         {i + 1}
@@ -250,10 +250,10 @@ export function DevelopersPage() {
             />
           </Reveal>
 
-          <div className="mx-auto mt-12 max-w-3xl overflow-hidden rounded-2xl border border-tertiary">
+          <div className="mx-auto mt-12 max-w-3xl overflow-hidden rounded-2xl border border-ink-200">
             {endpoints.map((ep, i) => (
               <Reveal key={i} delay={i * 40}>
-                <div className={`flex items-center gap-4 px-5 py-4 ${i > 0 ? 'border-t border-tertiary' : ''} hover:\bg-surface/[0.06] transition-colors`}>
+                <div className={`flex items-center gap-4 px-5 py-4 ${i > 0 ? 'border-t border-ink-200' : ''} hover:\bg-white/[0.04] transition-colors`}>
                   <span className="inline-flex shrink-0 rounded-md bg-primary-50 px-2.5 py-1 font-mono text-2xs font-semibold text-primary-700">
                     {ep.method}
                   </span>
@@ -304,9 +304,9 @@ export function DevelopersPage() {
       <section className="py-24 lg:py-28">
         <div className="container-page">
           <Reveal>
-            <div className="mx-auto max-w-2xl rounded-3xl border border-tertiary bg-gradient-to-br from-ink-50 to-accent-50/40 p-12 text-center lg:p-16">
+            <div className="mx-auto max-w-2xl rounded-3xl border border-ink-200 bg-gradient-to-br from-ink-50 to-accent-50/40 p-12 text-center lg:p-16">
               <Zap className="mx-auto h-8 w-8 text-primary-600" />
-              <h2 className="mt-4 text-2xl font-semibold tracking-tight text-ink-900 sm:text-3xl">
+              <h2 className="mt-4 text-2xl font-normal tracking-tight text-ink-900 sm:text-3xl">
                 Ready to build?
               </h2>
               <p className="mx-auto mt-3 max-w-md text-ink-500">
@@ -378,7 +378,7 @@ function ArchRow({
 
 function ArchArrow() {
   return (
-    <div className="ml-[22px] flex h-6 w-px bg-surface/15" aria-hidden="true">
+    <div className="ml-[22px] flex h-6 w-px bg-black/15" aria-hidden="true">
       <svg className="ml-[-6px] mt-5 h-3 w-3 text-white/30" viewBox="0 0 12 12" fill="none">
         <path d="M6 1V11M6 11L2 7M6 11L10 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
       </svg>

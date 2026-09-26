@@ -46,10 +46,10 @@ export function DocFaq() {
 
       <div className="mt-6 space-y-3">
         {faqs.map((faq, i) => (
-          <div key={i} className="overflow-hidden rounded-xl border border-ink-200 bg-white">
+          <div key={i} className="overflow-hidden rounded-xl border border-ink-200 bg-ink-100">
             <button
               onClick={() => setOpen(open === i ? null : i)}
-              className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left transition-colors hover:bg-ink-50"
+              className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left transition-colors hover:bg-white/[0.06]"
               aria-expanded={open === i}
             >
               <span className="text-sm font-semibold text-ink-900">{faq.q}</span>

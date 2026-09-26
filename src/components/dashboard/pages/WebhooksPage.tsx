@@ -50,7 +50,7 @@ export function WebhooksPage({ navigate }: { navigate: NavigateFn }) {
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-xl font-semibold text-ink-900">Webhooks</h2>
+        <h2 className="text-xl font-normal text-ink-900">Webhooks</h2>
         <p className="mt-1 text-sm text-ink-500">
           Configure a webhook endpoint to receive signed verification events in real time.
         </p>
@@ -65,7 +65,7 @@ export function WebhooksPage({ navigate }: { navigate: NavigateFn }) {
               value={url}
               onChange={(e) => setUrl(e.target.value)}
               placeholder="https://yourapp.com/api/chirograph-webhook"
-              className="w-full rounded-xl border border-ink-200 bg-ink-50 px-4 py-2.5 text-sm text-ink-800 placeholder:text-ink-400 focus:border-primary-400 focus:bg-white focus:outline-none focus:ring-1 focus:ring-primary-400"
+              className="w-full rounded-xl border border-ink-200 bg-ink-50 px-4 py-2.5 text-sm text-ink-800 placeholder:text-ink-400 focus:border-ink-300 focus:bg-ink-100 focus:outline-none focus:ring-1 focus:ring-primary-500"
             />
           </div>
 

@@ -4,81 +4,93 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Primary — X Minimal Light ink
-        primary: {
-          50: '#F7F8FA',
-          100: '#EEF1F4',
-          200: '#D1D5DB',
-          300: '#AEB6C1',
-          400: '#8892A0',
-          500: '#5B6572',
-          600: '#46505C',
-          700: '#333C46',
-          800: '#1F252C',
-          900: '#0F141A',
-          950: '#080B0E',
-        },
-        // Accent — platform blue, reserved for focus and links
-        accent: {
-          50: '#E8F5FD',
-          100: '#C8E6FB',
-          200: '#9BD4F7',
-          300: '#6BBEF2',
-          400: '#3FAAEE',
-          500: '#1D9BF0',
-          600: '#1687D6',
-          700: '#1273B5',
-          800: '#0F5F94',
-          900: '#0C4A73',
-          950: '#08304B',
-        },
-        // Neutral — the spec's ink ramp
+        // ── Chirograph Verify — X Developer Platform system ────────
+        // The canvas is true black (#000). Depth comes from hairline
+        // borders and near-black surface steps, never from shadows.
+        //
+        // NOTE: the `ink` ramp is intentionally INVERTED relative to a
+        // conventional light-mode ramp. 900 is the brightest value because
+        // it is the primary-text token used across every page; 50 is the
+        // darkest because it is the page-background token. Re-point these
+        // values rather than renaming classes.
         ink: {
-          50: '#F7F8FA',
-          100: '#F0F2F4',
-          200: '#E5E7EB',
-          300: '#D1D5DB',
-          400: '#B0B7C3',
-          500: '#8892A0',
-          600: '#5B6572',
-          700: '#46505C',
-          800: '#333C46',
-          850: '#1F252C',
-          900: '#0F141A',
-          950: '#080B0E',
+          50: '#000000',   // page canvas
+          100: '#0A0A0A',  // raised surface
+          200: '#141414',  // hairline border
+          300: '#1F1F1F',  // stronger border
+          400: '#2E2E2E',
+          500: '#8C8C8C',  // muted body text
+          600: '#A3A3A3',  // secondary body text
+          700: '#B8B8B8',
+          800: '#E0E0E0',  // strong text
+          850: '#ECECEC',
+          900: '#FFFFFF',  // primary text / headings
+          950: '#0A0A0A',  // card surface; also button label on white
         },
-        // Semantic aliases — the shared token contract between both frontends
-        canvas: '#FFFFFF',
-        surface: '#FFFFFF',
-        'surface-2': '#F7F9FA',
-        'surface-3': '#F0F3F4',
-        line: '#E5E7EB',
-        'line-strong': '#D1D5DB',
+        // Accent = white. On developer.x.com the primary button is a solid
+        // white pill with a black label; the focus ring is white too.
+        primary: {
+          50: '#141414',   // subtle active surface
+          100: '#FFFFFF',  // primary button fill
+          200: '#E5E5E5',
+          300: '#FFFFFF',  // focus ring
+          400: '#FFFFFF',
+          500: '#FFFFFF',  // focus-visible ring
+          600: '#D4D4D4',  // brand wordmark tint
+          700: '#B0B0B0',
+          800: '#8C8C8C',
+          900: '#737980',
+          950: '#0A0A0A',
+        },
+        // Green is the single chromatic accent on the reference page and is
+        // reserved for cost figures, positive deltas and success states.
+        accent: {
+          50: '#04140E',
+          100: '#06251A',
+          200: '#0B3D2A',
+          300: '#10B981',
+          400: '#34D399',
+          500: '#10B981',
+          600: '#059669',
+          700: '#047857',
+        },
         success: {
-          50: '#EAF7F1',
-          100: '#D3EFE2',
-          200: '#A7DFC8',
-          300: '#6FC9A8',
-          400: '#3FAE87',
-          500: '#0E8A5F',
-          600: '#0B7450',
-          700: '#095E42',
+          50: '#04140E',
+          100: '#06251A',
+          200: '#0B3D2A',
+          300: '#10B981',
+          400: '#34D399',
+          500: '#10B981',
+          600: '#059669',
+          700: '#047857',
         },
         warning: {
-          400: '#E0A85C',
-          500: '#B45309',
-          600: '#96410A',
+          400: '#FBBF24',
+          500: '#F59E0B',
+          600: '#D97706',
         },
         error: {
-          50: '#FCEEEE',
-          100: '#F9D9D6',
-          200: '#F2B4AE',
-          300: '#E88B82',
-          400: '#DC6C60',
-          500: '#C4362F',
-          600: '#A62B25',
-          700: '#85211C',
+          50: '#1A0A0A',
+          100: '#2A0F0F',
+          200: '#4A1A17',
+          300: '#EF4444',
+          400: '#F87171',
+          500: '#EF4444',
+          600: '#DC2626',
+          700: '#B91C1C',
         },
+        // Semantic aliases — the shared contract between both frontends.
+        canvas: '#000000',
+        surface: '#000000',
+        'surface-2': '#0A0A0A',
+        'surface-3': '#141414',
+        line: '#1F1F1F',
+        'line-strong': '#2E2E2E',
+        // `secondary` and `tertiary` are legacy aliases still referenced by
+        // a handful of components; they map onto the dark ramp.
+        secondary: '#737980',
+        tertiary: '#262626',
+        muted: '#8C8C8C',
       },
       fontFamily: {
         // TwitterChirp is proprietary; Inter is the closest free substitute.
@@ -87,42 +99,52 @@ export default {
       },
       fontSize: {
         '2xs': ['0.6875rem', { lineHeight: '1rem' }],
-        'display-lg': ['64px', { lineHeight: '77px', letterSpacing: '-1px' }],
-        'headline-lg': ['24px', { lineHeight: '29px', letterSpacing: '0px' }],
-        'headline-md': ['20px', { lineHeight: '24px', letterSpacing: '0px' }],
-        'headline-sm': ['18px', { lineHeight: '22px', letterSpacing: '0px' }],
-        'body-lg': ['16px', { lineHeight: '24px', letterSpacing: '0px' }],
-        'body-md': ['15px', { lineHeight: '23px', letterSpacing: '0px' }],
-        'body-sm': ['14px', { lineHeight: '20px', letterSpacing: '0px' }],
-        'label-lg': ['15px', { lineHeight: '23px', letterSpacing: '0px' }],
-        'label-md': ['12px', { lineHeight: '16px', letterSpacing: '0px' }],
-        'hero': ['3.25rem', { lineHeight: '1.04', letterSpacing: '-0.022em' }],
-        'display': ['2.5rem', { lineHeight: '1.08', letterSpacing: '-0.022em' }],
+        // The reference headlines are enormous and light-weight (font-weight
+        // 400-500), not bold. `display-lg` drives hero and section titles.
+        'display-lg': ['64px', { lineHeight: '1.06', letterSpacing: '-0.022em' }],
+        'headline-lg': ['24px', { lineHeight: '1.2', letterSpacing: '-0.015em' }],
+        'headline-md': ['20px', { lineHeight: '1.3', letterSpacing: '-0.01em' }],
+        'headline-sm': ['18px', { lineHeight: '1.35', letterSpacing: '-0.005em' }],
+        'body-lg': ['16px', { lineHeight: '1.5', letterSpacing: '0px' }],
+        'body-md': ['15px', { lineHeight: '1.53', letterSpacing: '0px' }],
+        'body-sm': ['14px', { lineHeight: '1.43', letterSpacing: '0px' }],
+        'label-lg': ['15px', { lineHeight: '1.53', letterSpacing: '0px' }],
+        'label-md': ['12px', { lineHeight: '1.33', letterSpacing: '0px' }],
+        hero: ['3.25rem', { lineHeight: '1.04', letterSpacing: '-0.022em' }],
+        display: ['2.5rem', { lineHeight: '1.08', letterSpacing: '-0.022em' }],
       },
       letterSpacing: {
+        // Section eyebrows are mono and widely tracked: `[ INTRODUCING ]`.
         micro: '.08em',
+        eyebrow: '0.18em',
       },
       borderRadius: {
-        // Near-zero radius: a console, not a card deck. (Shared with the app.)
+        // The reference is pill-driven: buttons, inputs and badges are fully
+        // rounded. Larger panels keep a soft 8-16px radius.
         none: '0px',
         xs: '2px',
-        control: '2px',
-        panel: '3px',
-        '4xl': '3px',
+        sm: '4px',
+        panel: '8px',
+        card: '12px',
+        control: '9999px',
+        pill: '9999px',
+        '4xl': '16px',
       },
       maxWidth: {
         '8xl': '88rem',
       },
       boxShadow: {
-        // Elevation is expressed through hairlines, not shadows.
+        // The only shadow on the reference is the soft white glow beneath the
+        // hero and final-CTA buttons. All other elevation is hairline-only.
         none: 'none',
         control: 'none',
-        'soft': 'none',
-        'card': 'none',
+        soft: 'none',
+        card: 'none',
         'card-hover': 'none',
-        'elevated': '0 1px 0 rgb(15 17 21 / 0.04)',
-        'glow': 'none',
-        'glow-accent': 'none',
+        elevated: 'none',
+        glow: '0 0 34px 2px rgb(255 255 255 / 0.22)',
+        'glow-sm': '0 0 18px 0 rgb(255 255 255 / 0.14)',
+        'glow-accent': '0 0 34px 2px rgb(16 185 129 / 0.20)',
       },
       keyframes: {
         'fade-up': {

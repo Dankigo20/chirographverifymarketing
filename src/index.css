@@ -6,34 +6,31 @@
 
 @layer base {
   :root {
-    --primary: #0F141A;
-    --accent: #1D9BF0;
-    --secondary: #5B6572;
-    --tertiary: #D1D5DB;
-    --muted: #8892A0;
-    --neutral: #FFFFFF;
-    --canvas: #FFFFFF;
-    --surface: #FFFFFF;
-    --surface-2: #F7F9FA;
-    --surface-3: #F0F3F4;
-    --line: #E5E7EB;
-    --line-strong: #D1D5DB;
-    --error: #D93025;
-    --text: #0F141A;
-    --text-muted: #5B6572;
-    --text-subtle: #8892A0;
+    --canvas: #000000;
+    --surface: #000000;
+    --surface-2: #0A0A0A;
+    --surface-3: #141414;
+    --line: #1F1F1F;
+    --line-strong: #2E2E2E;
+    --primary: #FFFFFF;
+    --accent: #10B981;
+    --text: #FFFFFF;
+    --text-muted: #A3A3A3;
+    --text-subtle: #8C8C8C;
+    --error: #EF4444;
   }
 
+  /* Retained for the few components that still request an inverted panel. */
   .dark-surface {
-    --canvas: #0F1115;
-    --surface: #1A1E25;
-    --surface-2: #1F242C;
-    --surface-3: #262C35;
-    --line: #262C35;
-    --line-strong: #333A44;
-    --text: #F7F8FA;
-    --text-muted: #A6ADB8;
-    --text-subtle: #6E7681;
+    --canvas: #000000;
+    --surface: #0A0A0A;
+    --surface-2: #141414;
+    --surface-3: #1F1F1F;
+    --line: #1F1F1F;
+    --line-strong: #2E2E2E;
+    --text: #FFFFFF;
+    --text-muted: #A3A3A3;
+    --text-subtle: #8C8C8C;
   }
 
   html {
@@ -44,21 +41,22 @@
   }
 
   body {
-    @apply bg-white text-ink-900 font-sans antialiased;
+    @apply bg-ink-50 font-sans antialiased;
+    color: #FFFFFF;
     font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
   }
 
   ::selection {
-    @apply bg-primary-500/20 text-primary-900;
+    @apply bg-white/25 text-white;
   }
 
-  /* Focus ring */
+  /* Focus ring — white on black, matching the reference. */
   :focus-visible {
-    @apply outline-none ring-2 ring-primary-500 ring-offset-2 ring-offset-white;
+    @apply outline-none ring-2 ring-primary-500 ring-offset-2 ring-offset-black;
   }
 
   .dark-surface :focus-visible {
-    @apply ring-offset-ink-900;
+    @apply ring-offset-black;
   }
 }
 
@@ -67,66 +65,99 @@
     @apply mx-auto w-full max-w-8xl px-5 sm:px-6 lg:px-8;
   }
 
-  /* ── Shared vocabulary (X Developer Platform: black + white pills) ── */
+  /* ── Shared vocabulary (X Developer Platform: black canvas, white pills) ── */
   .page-title {
-    @apply text-3xl font-bold tracking-tight text-ink-900 sm:text-4xl;
+    @apply text-3xl font-normal tracking-tight text-ink-900 sm:text-4xl;
     letter-spacing: -0.025em;
   }
   .page-description {
-    @apply mt-2 text-base leading-relaxed text-ink-400;
+    @apply mt-3 text-base leading-relaxed text-ink-500;
   }
   .section-title {
-    @apply text-base font-semibold tracking-tight text-ink-900;
+    @apply text-base font-medium tracking-tight text-ink-900;
   }
+
+  /* Section eyebrow. The reference renders these as a mono, widely tracked,
+     bracket-wrapped label, e.g. `[ INTRODUCING ]`. */
   .micro-label {
-    @apply text-xs font-semibold uppercase tracking-[0.1em] text-ink-600;
+    @apply font-mono text-xs font-normal uppercase text-ink-500;
+    letter-spacing: 0.18em;
   }
+  .eyebrow {
+    @apply font-mono text-xs font-normal uppercase text-ink-500;
+    letter-spacing: 0.18em;
+  }
+
   .label-text {
-    @apply mb-1.5 block text-sm font-medium text-ink-300;
+    @apply mb-1.5 block text-sm font-normal text-ink-600;
   }
   .stat-value {
-    @apply font-mono text-2xl font-semibold tabular-nums tracking-tight text-ink-900;
+    @apply font-mono text-2xl font-normal tabular-nums tracking-tight text-ink-900;
   }
   .mono-value {
     @apply font-mono tabular-nums;
   }
+
+  /* Primary action: solid white pill, black label, soft white glow. */
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-1.5 rounded-full bg-primary-100 px-4 text-[13px] font-semibold text-ink-950 transition-colors duration-150 hover:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-300/60 disabled:cursor-not-allowed disabled:opacity-50;
-    height: 36px;
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-primary-100 px-6 text-[15px] font-medium text-ink-950 transition-all duration-200 hover:bg-white hover:shadow-glow focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-300/70 disabled:cursor-not-allowed disabled:opacity-50;
+    height: 48px;
   }
+  /* Secondary action: hairline-outlined pill. */
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-1.5 rounded-full border border-ink-800 bg-transparent px-4 text-[13px] font-semibold text-ink-200 transition-colors duration-150 hover:border-ink-300 hover:bg-white/[0.06] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-300/60 disabled:cursor-not-allowed disabled:opacity-50;
-    height: 36px;
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-ink-300 bg-transparent px-6 text-[15px] font-medium text-ink-900 transition-colors duration-200 hover:border-ink-500 hover:bg-white/[0.06] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-300/70 disabled:cursor-not-allowed disabled:opacity-50;
+    height: 48px;
   }
   .btn-ghost {
-    @apply inline-flex items-center justify-center gap-1.5 rounded-full px-3 text-[13px] font-medium text-ink-300 transition-colors duration-150 hover:bg-white/[0.08] hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-300/60;
-    height: 36px;
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-4 text-[15px] font-normal text-ink-600 transition-colors duration-200 hover:bg-white/[0.08] hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-300/70;
+    height: 44px;
   }
   .input-field {
-    @apply w-full rounded-lg border border-ink-800 bg-transparent px-3 font-mono text-[13px] text-ink-100 transition-colors duration-150 placeholder:font-sans placeholder:text-[13px] placeholder:text-ink-600 hover:border-ink-700 focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-300/40 disabled:cursor-not-allowed disabled:opacity-50;
-    height: 38px;
+    @apply w-full rounded-full border border-ink-300 bg-transparent px-5 text-[15px] text-ink-900 transition-colors duration-200 placeholder:text-ink-500 hover:border-ink-500 focus:border-white focus:outline-none focus:ring-1 focus:ring-white/40 disabled:cursor-not-allowed disabled:opacity-50;
+    height: 48px;
   }
   .card {
-    @apply rounded-panel border border-ink-800 bg-ink-950;
+    @apply rounded-card border border-ink-200 bg-ink-100;
   }
   .divider {
-    @apply border-t border-ink-800;
+    @apply border-t border-ink-200;
+  }
+  /* Vertical hairline used to separate the feature columns on the reference. */
+  .divider-y {
+    @apply border-l border-ink-200;
   }
   /* ──────────────────────────────────────────────────────────── */
 
   .text-gradient {
-    @apply text-primary-600;
+    @apply text-ink-900;
   }
 
   .text-gradient-light {
-    @apply bg-gradient-to-r from-white via-primary-200 to-accent-300 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-white via-white to-ink-500 bg-clip-text text-transparent;
+  }
+
+  /* The hero and final CTA on the reference sit on a soft diagonal white
+     light-streak rather than a grid. */
+  .bg-streak {
+    background:
+      radial-gradient(60% 42% at 50% 0%, rgb(255 255 255 / 0.10) 0%, transparent 70%),
+      linear-gradient(115deg, transparent 42%, rgb(255 255 255 / 0.055) 50%, transparent 58%);
+  }
+
+  /* Oversized brand mark, ghosted, sitting behind the footer. */
+  .bg-watermark {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none' stroke='%23FFFFFF' stroke-width='6'%3E%3Cpath d='M8 8 L92 92 M92 8 L8 92'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 420px 420px;
+    opacity: 0.06;
   }
 
   /* Grid background */
   .bg-grid {
     background-image:
-      linear-gradient(to right, rgb(15 23 42 / 0.035) 1px, transparent 1px),
-      linear-gradient(to bottom, rgb(15 23 42 / 0.035) 1px, transparent 1px);
+      linear-gradient(to right, rgb(255 255 255 / 0.045) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(255 255 255 / 0.045) 1px, transparent 1px);
     background-size: 48px 48px;
   }
 
@@ -151,10 +182,10 @@
     background: transparent;
   }
   .code-scroll::-webkit-scrollbar-thumb {
-    @apply bg-ink-700 rounded-full;
+    @apply bg-ink-600 rounded-full;
   }
   .code-scroll::-webkit-scrollbar-thumb:hover {
-    @apply bg-ink-600;
+    @apply bg-ink-500;
   }
 }
 

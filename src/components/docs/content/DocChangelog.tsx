@@ -8,7 +8,7 @@ export function DocChangelog() {
         Chirograph Verify API v1
       </DocParagraph>
 
-      <div className="mt-8 rounded-xl border border-ink-200 bg-white p-6">
+      <div className="mt-8 rounded-xl border border-ink-200 bg-ink-100 p-6">
         <div className="flex items-center gap-3">
           <span className="rounded-md bg-primary-100 px-2.5 py-1 text-xs font-semibold text-primary-700">
             Initial documentation

@@ -9,12 +9,12 @@ export function AnalyticsPage({ navigate }: { navigate: NavigateFn }) {
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-xl font-semibold text-ink-900">Analytics</h2>
+        <h2 className="text-xl font-normal text-ink-900">Analytics</h2>
         <p className="mt-1 text-sm text-ink-500">Visualize your verification trends and device trust signals.</p>
       </div>
 
       <DashboardCard title="Verification trends" description="Daily verification volume over the last 30 days.">
-        <div className="flex h-64 items-center justify-center rounded-xl border border-dashed border-ink-300 bg-ink-50/50">
+        <div className="flex h-64 items-center justify-center rounded-xl border border-dashed border-ink-300 bg-white/[0.02]">
           <div className="text-center">
             <BarChart3 className="mx-auto h-10 w-10 text-ink-300" />
             <p className="mt-3 text-sm font-medium text-ink-500">No analytics data yet</p>

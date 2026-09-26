@@ -99,10 +99,10 @@ export function DocsPage({ slug, navigate }: DocsPageProps) {
 
       <div className="min-w-0 flex-1">
         {/* Mobile docs header */}
-        <div className="sticky top-16 z-30 flex items-center justify-between border-b border-tertiary bg-surface/90 px-5 py-3 backdrop-blur lg:hidden">
+        <div className="sticky top-16 z-30 flex items-center justify-between border-b border-ink-200 bg-black/90 px-5 py-3 backdrop-blur lg:hidden">
           <button
             onClick={() => setMobileSidebarOpen(true)}
-            className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-ink-700 hover:\bg-surface/[0.06]"
+            className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-ink-700 hover:\bg-white/[0.04]"
             aria-label="Open documentation navigation"
           >
             <Menu className="h-4 w-4" />

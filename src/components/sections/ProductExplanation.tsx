@@ -27,7 +27,7 @@ const steps = [
 
 export function ProductExplanation() {
   return (
-    <section id="product" className="relative scroll-mt-20 border-t border-ink-100 py-24 lg:py-32">
+    <section id="product" className="relative scroll-mt-20 border-t border-ink-200 py-24 lg:py-32">
       <div className="container-page">
         <Reveal>
           <SectionHeading
@@ -48,7 +48,7 @@ export function ProductExplanation() {
                   return (
                     <div key={i} className="flex flex-1 items-center">
                       <div className="group flex flex-1 flex-col items-center text-center">
-                        <div className="relative flex h-20 w-20 items-center justify-center rounded-panel border border-tertiary bg-surface transition-colors duration-100 group-hover:border-primary-300 group-">
+                        <div className="relative flex h-20 w-20 items-center justify-center rounded-panel border border-ink-200 bg-ink-100 transition-colors duration-100 group-hover:border-ink-300 group-">
                           <Icon className="h-8 w-8 text-primary-600" strokeWidth={1.8} />
                           <span className="absolute -top-2 -right-2 flex h-6 w-6 items-center justify-center rounded-full bg-primary-600 text-xs font-semibold text-white">
                             {i + 1}
@@ -76,7 +76,7 @@ export function ProductExplanation() {
                     return (
                       <Reveal key={i} delay={i * 100}>
                         <div className="relative flex gap-4">
-                          <div className="relative z-10 flex h-20 w-20 shrink-0 items-center justify-center rounded-panel border border-tertiary bg-surface">
+                          <div className="relative z-10 flex h-20 w-20 shrink-0 items-center justify-center rounded-panel border border-ink-200 bg-ink-100">
                             <Icon className="h-8 w-8 text-primary-600" strokeWidth={1.8} />
                             <span className="absolute -top-2 -right-2 flex h-6 w-6 items-center justify-center rounded-full bg-primary-600 text-xs font-semibold text-white">
                               {i + 1}

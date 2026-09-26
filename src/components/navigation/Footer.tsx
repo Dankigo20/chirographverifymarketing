@@ -9,13 +9,15 @@ export function Footer({ navigate }: FooterProps) {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-tertiary bg-ink-50/80">
-      <div className="container-page py-16 lg:py-20">
+    <footer className="relative overflow-hidden border-t border-ink-200 bg-ink-50">
+      {/* Oversized ghosted mark behind the footer, as on the reference. */}
+      <div className="bg-watermark pointer-events-none absolute inset-x-0 top-10 h-[420px]" aria-hidden="true" />
+      <div className="container-page relative py-20 lg:py-24">
         <div className="grid gap-10 lg:grid-cols-12">
           {/* Brand */}
           <div className="lg:col-span-4">
             <div className="flex items-center gap-2.5">
-              <span className="flex h-8 w-8 items-center justify-center rounded-control border border-primary-200 bg-primary-50 text-primary-600">
+              <span className="flex h-8 w-8 items-center justify-center rounded-full border border-ink-300 text-ink-900">
                 <Fingerprint className="h-4 w-4" strokeWidth={2.1} />
               </span>
               <span className="text-[15px] font-semibold tracking-tight text-ink-900">
@@ -87,7 +89,7 @@ export function Footer({ navigate }: FooterProps) {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col items-start justify-between gap-4 border-t border-tertiary pt-8 sm:flex-row sm:items-center">
+        <div className="mt-12 flex flex-col items-start justify-between gap-4 border-t border-ink-200 pt-8 sm:flex-row sm:items-center">
           <p className="text-sm text-ink-500">
             © {year} {siteConfig.name}. All rights reserved.
           </p>
@@ -181,7 +183,7 @@ function SocialLink({
       target="_blank"
       rel="noopener noreferrer"
       aria-label={label}
-      className="flex h-9 w-9 items-center justify-center rounded-control border border-tertiary bg-surface text-ink-500 transition-colors hover:border-line-strong hover:text-ink-900"
+      className="flex h-9 w-9 items-center justify-center rounded-control border border-ink-200 bg-ink-100 text-ink-500 transition-colors hover:border-line-strong hover:text-ink-900"
     >
       {children}
     </a>

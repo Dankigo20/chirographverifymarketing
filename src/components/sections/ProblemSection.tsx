@@ -52,7 +52,7 @@ export function ProblemSection() {
             const Icon = p.icon;
             return (
               <Reveal key={i} delay={i * 80}>
-                <div className="group h-full rounded-panel border border-tertiary bg-surface p-7 transition-colors duration-100 hover:border-line-strong  ">
+                <div className="group h-full rounded-panel border border-ink-200 bg-ink-100 p-7 transition-colors duration-100 hover:border-line-strong  ">
                   <div className="flex h-11 w-11 items-center justify-center rounded-panel bg-error-500/10 text-error-500">
                     <Icon className="h-5 w-5" strokeWidth={2} />
                   </div>

@@ -41,7 +41,7 @@ export function DocsSidebar({ currentSlug, navigate, isMobileOpen, onMobileClose
 
       {/* Sidebar */}
       <aside
-        className={`fixed left-0 top-16 z-50 h-[calc(100vh-4rem)] w-72 overflow-y-auto border-r border-ink-200 bg-white transition-transform duration-300 ease-out-expo lg:sticky lg:top-[72px] lg:z-0 lg:h-[calc(100vh-72px)] lg:translate-x-0 ${
+        className={`fixed left-0 top-16 z-50 h-[calc(100vh-4rem)] w-72 overflow-y-auto border-r border-ink-200 bg-ink-100 transition-transform duration-300 ease-out-expo lg:sticky lg:top-[72px] lg:z-0 lg:h-[calc(100vh-72px)] lg:translate-x-0 ${
           isMobileOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
@@ -54,7 +54,7 @@ export function DocsSidebar({ currentSlug, navigate, isMobileOpen, onMobileClose
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Search docs..."
-              className="w-full rounded-lg border border-ink-200 bg-ink-50 py-2 pl-9 pr-3 text-sm text-ink-700 placeholder:text-ink-400 transition-colors focus:border-primary-400 focus:bg-white focus:outline-none focus:ring-1 focus:ring-primary-400"
+              className="w-full rounded-lg border border-ink-200 bg-ink-50 py-2 pl-9 pr-3 text-sm text-ink-700 placeholder:text-ink-400 transition-colors focus:border-ink-300 focus:bg-ink-100 focus:outline-none focus:ring-1 focus:ring-primary-500"
             />
             {query && (
               <button
@@ -93,7 +93,7 @@ export function DocsSidebar({ currentSlug, navigate, isMobileOpen, onMobileClose
                           className={`flex w-full items-center justify-between rounded-lg px-3 py-2 text-left text-sm transition-all duration-200 ${
                             active
                               ? 'bg-primary-50 font-medium text-primary-700'
-                              : 'text-ink-600 hover:bg-ink-50 hover:text-ink-900'
+                              : 'text-ink-600 hover:bg-white/[0.06] hover:text-ink-900'
                           }`}
                         >
                           <span className="flex items-center gap-2">

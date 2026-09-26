@@ -12,7 +12,7 @@ export function Card({ children, className, hover = false, dark = false }: CardP
     <div
       className={[
         'rounded-panel border',
-        dark ? 'bg-surface/[0.03] border-white/10' : 'bg-surface border-tertiary',
+        dark ? 'bg-surface/[0.03] border-white/10' : 'bg-ink-100 border-ink-200',
         hover ? 'transition-colors duration-150  hover:border-line-strong' : '',
         className ?? '',
       ]

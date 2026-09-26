@@ -68,11 +68,11 @@ export function SignupPage({ navigate }: { navigate: (to: string) => void }) {
           </button>
         </header>
         <div className="flex flex-1 items-center justify-center px-5 py-12">
-          <div className="w-full max-w-md rounded-2xl border border-tertiary bg-surface p-8 shadow-card text-center">
+          <div className="w-full max-w-md rounded-2xl border border-ink-200 bg-ink-100 p-8 shadow-card text-center">
             <span className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-success-500/10">
               <CheckCircle2 className="h-7 w-7 text-success-600" />
             </span>
-            <h1 className="text-2xl font-semibold tracking-tight text-ink-900">Check your email</h1>
+            <h1 className="text-2xl font-normal tracking-tight text-ink-900">Check your email</h1>
             <p className="mt-3 text-sm text-ink-500">
               We sent a confirmation link to <strong>{email}</strong>. Click the link in the email to activate your account.
             </p>
@@ -109,8 +109,8 @@ export function SignupPage({ navigate }: { navigate: (to: string) => void }) {
 
       <div className="flex flex-1 items-center justify-center px-5 py-12">
         <div className="w-full max-w-md">
-          <div className="rounded-2xl border border-tertiary bg-surface p-8 shadow-card">
-            <h1 className="text-2xl font-semibold tracking-tight text-ink-900">Create account</h1>
+          <div className="rounded-2xl border border-ink-200 bg-ink-100 p-8 shadow-card">
+            <h1 className="text-2xl font-normal tracking-tight text-ink-900">Create account</h1>
             <p className="mt-2 text-sm text-ink-500">
               Start verifying real users with WebAuthn in minutes.
             </p>
@@ -232,7 +232,7 @@ function Field({
           placeholder={placeholder}
           autoComplete={autoComplete}
           required={required}
-          className={`w-full rounded-xl border border-tertiary bg-ink-50 py-3 ${icon ? 'pl-10' : 'pl-4'} pr-4 text-sm text-ink-800 placeholder:text-secondary transition-colors focus:border-primary-400 focus:bg-surface focus:outline-none focus:ring-1 focus:ring-primary-400`}
+          className={`w-full rounded-xl border border-ink-200 bg-ink-50 py-3 ${icon ? 'pl-10' : 'pl-4'} pr-4 text-sm text-ink-800 placeholder:text-secondary transition-colors focus:border-ink-300 focus:bg-ink-100 focus:outline-none focus:ring-1 focus:ring-primary-500`}
         />
       </div>
     </div>

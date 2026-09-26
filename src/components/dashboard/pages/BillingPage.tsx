@@ -20,7 +20,7 @@ export function BillingPage({ navigate: _navigate }: { navigate: NavigateFn }) {
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-xl font-semibold text-ink-900">Billing</h2>
+        <h2 className="text-xl font-normal text-ink-900">Billing</h2>
         <p className="mt-1 text-sm text-ink-500">Manage your subscription and payment method.</p>
       </div>
 
@@ -52,7 +52,7 @@ export function BillingPage({ navigate: _navigate }: { navigate: NavigateFn }) {
                 key={tier.name}
                 className={`relative rounded-xl border p-5 ${
                   tier.featured
-                    ? 'border-primary-400 ring-1 ring-primary-400'
+                    ? 'border-ink-300 ring-1 ring-primary-500'
                     : 'border-ink-200'
                 }`}
               >
@@ -65,7 +65,7 @@ export function BillingPage({ navigate: _navigate }: { navigate: NavigateFn }) {
                 )}
                 <h3 className="text-sm font-semibold text-ink-900">{tier.name}</h3>
                 <div className="mt-2 flex items-baseline gap-1">
-                  <span className="text-2xl font-bold tracking-tight text-ink-900">{tier.price}</span>
+                  <span className="text-2xl font-normal tracking-tight text-ink-900">{tier.price}</span>
                   <span className="text-sm text-ink-400">{tier.unit}</span>
                 </div>
                 <p className="mt-1 text-xs text-ink-500">{tier.verifications}</p>
@@ -80,7 +80,7 @@ export function BillingPage({ navigate: _navigate }: { navigate: NavigateFn }) {
                     <button
                       className={`flex w-full items-center justify-center gap-1.5 rounded-lg py-2.5 text-sm font-semibold transition-colors ${
                         tier.name === 'Enterprise'
-                          ? 'border border-ink-200 text-ink-700 hover:bg-ink-50'
+                          ? 'border border-ink-200 text-ink-700 hover:bg-white/[0.06]'
                           : 'bg-primary-600 text-white hover:bg-primary-700'
                       }`}
                     >

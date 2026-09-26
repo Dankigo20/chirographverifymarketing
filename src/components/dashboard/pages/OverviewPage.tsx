@@ -23,7 +23,7 @@ export function OverviewPage({ navigate }: { navigate: NavigateFn }) {
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-xl font-semibold text-ink-900">
+        <h2 className="text-xl font-normal text-ink-900">
           Welcome{user?.email ? `, ${user.email.split('@')[0]}` : ''}
         </h2>
         <p className="mt-1 text-sm text-ink-500">
@@ -151,7 +151,7 @@ function QuickAction({
   return (
     <button
       onClick={onClick}
-      className="flex w-full items-center gap-3 rounded-lg border border-ink-200 p-3 text-left transition-colors hover:border-primary-200 hover:bg-primary-50/30"
+      className="flex w-full items-center gap-3 rounded-lg border border-ink-200 p-3 text-left transition-colors hover:border-ink-300 hover:bg-primary-50/30"
     >
       <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary-50 text-primary-600">
         {icon}

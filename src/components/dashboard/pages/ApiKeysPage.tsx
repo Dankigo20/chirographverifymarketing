@@ -54,7 +54,7 @@ export function ApiKeysPage({ navigate }: { navigate: NavigateFn }) {
     return (
       <div className="space-y-6">
         <div>
-          <h2 className="text-xl font-semibold text-ink-900">API key regenerated</h2>
+          <h2 className="text-xl font-normal text-ink-900">API key regenerated</h2>
           <p className="mt-1 text-sm text-ink-500">
             Copy your new key now. For security, the full key will not be shown again.
           </p>
@@ -108,7 +108,7 @@ export function ApiKeysPage({ navigate }: { navigate: NavigateFn }) {
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-xl font-semibold text-ink-900">API Key</h2>
+        <h2 className="text-xl font-normal text-ink-900">API Key</h2>
         <p className="mt-1 text-sm text-ink-500">Your tenant API key is used to authenticate API requests from your backend.</p>
       </div>
 
@@ -131,11 +131,11 @@ export function ApiKeysPage({ navigate }: { navigate: NavigateFn }) {
             </div>
 
             <div className="grid gap-3 sm:grid-cols-2">
-              <div className="rounded-lg border border-ink-200 bg-white p-4">
+              <div className="rounded-lg border border-ink-200 bg-ink-100 p-4">
                 <p className="text-xs font-medium text-ink-500">Created</p>
                 <p className="mt-1 text-sm font-medium text-ink-900">{createdAt ?? '—'}</p>
               </div>
-              <div className="rounded-lg border border-ink-200 bg-white p-4">
+              <div className="rounded-lg border border-ink-200 bg-ink-100 p-4">
                 <p className="text-xs font-medium text-ink-500">Last regenerated</p>
                 <p className="mt-1 text-sm font-medium text-ink-900">{lastRegen ?? '—'}</p>
               </div>
@@ -164,7 +164,7 @@ export function ApiKeysPage({ navigate }: { navigate: NavigateFn }) {
                   </button>
                   <button
                     onClick={() => setConfirmRegen(false)}
-                    className="rounded-xl border border-ink-200 px-5 py-2.5 text-sm font-medium text-ink-700 transition-colors hover:bg-ink-50"
+                    className="rounded-xl border border-ink-200 px-5 py-2.5 text-sm font-medium text-ink-700 transition-colors hover:bg-white/[0.06]"
                   >
                     Cancel
                   </button>
@@ -213,7 +213,7 @@ export function ApiKeysPage({ navigate }: { navigate: NavigateFn }) {
       </div>
 
       {/* Quick link to docs */}
-      <div className="flex items-center justify-between rounded-xl border border-ink-200 bg-white p-5">
+      <div className="flex items-center justify-between rounded-xl border border-ink-200 bg-ink-100 p-5">
         <div>
           <p className="text-sm font-semibold text-ink-900">Need help integrating?</p>
           <p className="mt-0.5 text-xs text-ink-500">Read the quick start guide to learn how to use your API key.</p>

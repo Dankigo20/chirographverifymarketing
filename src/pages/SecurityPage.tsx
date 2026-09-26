@@ -147,7 +147,7 @@ export function SecurityPage() {
                 <ShieldCheck className="h-3.5 w-3.5" />
                 Security architecture
               </Badge>
-              <h1 className="text-4xl font-semibold leading-[1.05] tracking-tight text-white sm:text-5xl lg:text-6xl lg:leading-[1.02]">
+              <h1 className="text-4xl font-normal leading-[1.05] tracking-tight text-white sm:text-5xl lg:text-6xl lg:leading-[1.02]">
                 Verified by cryptography,
                 <br />
                 <span className="text-gradient-light">not by trust.</span>
@@ -175,12 +175,12 @@ export function SecurityPage() {
               const Icon = s.icon;
               return (
                 <Reveal key={i} delay={(i % 2) * 100}>
-                  <div className="h-full rounded-2xl border border-tertiary bg-surface p-7 transition-all duration-300 hover:border-line-strong hover:shadow-card-hover hover:-translate-y-0.5">
+                  <div className="h-full rounded-2xl border border-ink-200 bg-ink-100 p-7 transition-all duration-300 hover:border-line-strong hover:shadow-card-hover hover:-translate-y-0.5">
                     <div className="flex items-center gap-3">
                       <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-primary-50 to-accent-50 text-primary-600">
                         <Icon className="h-5 w-5" strokeWidth={2} />
                       </div>
-                      <h2 className="text-lg font-semibold text-ink-900">{s.title}</h2>
+                      <h2 className="text-lg font-normal text-ink-900">{s.title}</h2>
                     </div>
                     <p className="mt-4 text-sm leading-relaxed text-ink-500">{s.desc}</p>
                     <ul className="mt-4 space-y-2">
@@ -245,8 +245,8 @@ export function SecurityPage() {
       <section className="py-24 lg:py-28">
         <div className="container-page">
           <Reveal>
-            <div className="mx-auto max-w-2xl rounded-3xl border border-tertiary bg-gradient-to-br from-ink-50 to-primary-50/40 p-12 text-center lg:p-16">
-              <h2 className="text-2xl font-semibold tracking-tight text-ink-900 sm:text-3xl">
+            <div className="mx-auto max-w-2xl rounded-3xl border border-ink-200 bg-gradient-to-br from-ink-50 to-primary-50/40 p-12 text-center lg:p-16">
+              <h2 className="text-2xl font-normal tracking-tight text-ink-900 sm:text-3xl">
                 Start verifying users securely
               </h2>
               <p className="mx-auto mt-3 max-w-md text-ink-500">

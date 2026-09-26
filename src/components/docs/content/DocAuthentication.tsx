@@ -48,7 +48,7 @@ export function DocAuthentication() {
             <li>Never in browser code</li>
           </ul>
         </div>
-        <div className="rounded-xl border border-primary-200 bg-primary-50/50 p-5">
+        <div className="rounded-xl border border-ink-300 bg-primary-50/50 p-5">
           <div className="font-mono text-sm font-semibold text-primary-700">pk_live_...</div>
           <div className="mt-2 text-xs font-medium uppercase tracking-wider text-primary-700">Publishable</div>
           <ul className="mt-2 space-y-1 text-sm text-ink-600">

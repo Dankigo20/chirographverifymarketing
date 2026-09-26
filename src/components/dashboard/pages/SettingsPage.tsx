@@ -65,7 +65,7 @@ export function SettingsPage({ navigate: _navigate }: { navigate: NavigateFn }) 
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-xl font-semibold text-ink-900">Settings</h2>
+        <h2 className="text-xl font-normal text-ink-900">Settings</h2>
         <p className="mt-1 text-sm text-ink-500">Manage your account, API configuration, and security settings.</p>
       </div>
 
@@ -102,7 +102,7 @@ export function SettingsPage({ navigate: _navigate }: { navigate: NavigateFn }) 
               value={newOrigin}
               onChange={(e) => setNewOrigin(e.target.value)}
               placeholder="https://yourapp.com"
-              className="flex-1 rounded-xl border border-ink-200 bg-ink-50 px-4 py-2.5 text-sm text-ink-800 placeholder:text-ink-400 focus:border-primary-400 focus:bg-white focus:outline-none focus:ring-1 focus:ring-primary-400"
+              className="flex-1 rounded-xl border border-ink-200 bg-ink-50 px-4 py-2.5 text-sm text-ink-800 placeholder:text-ink-400 focus:border-ink-300 focus:bg-ink-100 focus:outline-none focus:ring-1 focus:ring-primary-500"
             />
             <button
               onClick={addOrigin}
@@ -146,7 +146,7 @@ export function SettingsPage({ navigate: _navigate }: { navigate: NavigateFn }) 
 
 function Row({ label, value, mono }: { label: string; value: React.ReactNode; mono?: boolean }) {
   return (
-    <div className="flex items-center justify-between border-b border-ink-100 pb-3 last:border-0 last:pb-0">
+    <div className="flex items-center justify-between border-b border-ink-200 pb-3 last:border-0 last:pb-0">
       <span className="text-sm text-ink-500">{label}</span>
       <span className={`text-sm font-medium text-ink-900 ${mono ? 'font-mono text-xs' : ''}`}>{value}</span>
     </div>

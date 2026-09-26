@@ -24,7 +24,7 @@ export function TermsPage() {
                 <ShieldCheck className="h-3.5 w-3.5" />
                 Legal
               </Badge>
-              <h1 className="text-4xl font-semibold leading-[1.05] tracking-tight text-ink-900 sm:text-5xl">
+              <h1 className="text-4xl font-normal leading-[1.05] tracking-tight text-ink-900 sm:text-5xl">
                 Terms of Use
               </h1>
               <p className="mt-4 text-sm text-secondary">
@@ -259,8 +259,8 @@ export function TermsPage() {
 
 function LegalBlock({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <div className="rounded-2xl border border-tertiary bg-surface p-7 lg:p-8">
-      <h2 className="text-lg font-semibold text-ink-900">{title}</h2>
+    <div className="rounded-2xl border border-ink-200 bg-ink-100 p-7 lg:p-8">
+      <h2 className="text-lg font-normal text-ink-900">{title}</h2>
       <div className="mt-4 space-y-3 text-sm leading-relaxed text-ink-600 [&_a]:text-primary-600 [&_a:hover]:underline">
         {children}
       </div>

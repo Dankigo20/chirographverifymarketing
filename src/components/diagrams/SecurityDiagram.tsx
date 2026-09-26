@@ -25,7 +25,7 @@ export function SecurityDiagram() {
           return (
             <div
               key={i}
-              className={`group relative flex flex-col gap-3 rounded-xl border border-tertiary bg-surface p-5 shadow-card transition-all duration-700 ease-out-expo ${
+              className={`group relative flex flex-col gap-3 rounded-xl border border-ink-200 bg-ink-100 p-5 shadow-card transition-all duration-700 ease-out-expo ${
                 visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
               }`}
               style={{ transitionDelay: `${i * 100}ms` }}
@@ -71,10 +71,10 @@ function colorBg(color: string): string {
     case 'accent':
       return 'bg-accent-50 text-accent-600 border border-accent-200';
     case 'primary':
-      return 'bg-primary-50 text-primary-600 border border-primary-200';
+      return 'bg-primary-50 text-primary-600 border border-ink-300';
     case 'success':
       return 'bg-accent-50 text-accent-600 border border-accent-200';
     default:
-      return 'bg-ink-50 text-ink-600 border border-tertiary';
+      return 'bg-ink-50 text-ink-600 border border-ink-200';
   }
 }

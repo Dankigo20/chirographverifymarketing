@@ -81,7 +81,7 @@ export async function POST(req) {
 
 export function DeveloperSection() {
   return (
-    <section id="developers-preview" className="relative scroll-mt-20 border-t border-ink-100 bg-ink-50/60 py-24 lg:py-32">
+    <section id="developers-preview" className="relative scroll-mt-20 border-t border-ink-200 bg-white/[0.02] py-24 lg:py-32">
       <div className="container-page">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <Reveal>
@@ -89,7 +89,7 @@ export function DeveloperSection() {
               <div className="mb-3.5 text-xs font-semibold uppercase tracking-[0.2em] text-accent-600">
                 For developers
               </div>
-              <h2 className="text-3xl font-semibold tracking-tight text-ink-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.08]">
+              <h2 className="text-3xl font-normal tracking-tight text-ink-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.08]">
                 Integrate in three calls
               </h2>
               <p className="mt-5 text-base leading-relaxed text-ink-500 sm:text-lg">

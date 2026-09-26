@@ -62,7 +62,7 @@ export function DocCallout({
   children: ReactNode;
 }) {
   const styles = {
-    info: 'border-primary-200 bg-primary-50/60 text-ink-700',
+    info: 'border-ink-300 bg-primary-50/60 text-ink-700',
     warning: 'border-amber-200 bg-amber-50/60 text-ink-700',
     danger: 'border-error-200 bg-error-50/60 text-ink-700',
   };
@@ -115,7 +115,7 @@ export function DocTable({ headers, rows }: { headers: string[]; rows: ReactNode
         </thead>
         <tbody>
           {rows.map((row, i) => (
-            <tr key={i} className={`border-b border-ink-100 ${i % 2 === 0 ? 'bg-white' : 'bg-ink-50/30'}`}>
+            <tr key={i} className={`border-b border-ink-200 ${i % 2 === 0 ? 'bg-ink-100' : 'bg-white/[0.02]'}`}>
               {row.map((cell, j) => (
                 <td key={j} className="px-4 py-3 align-top text-ink-600">
                   {cell}

@@ -83,8 +83,8 @@ export function LoginPage({ navigate }: { navigate: (to: string) => void }) {
       {/* Form */}
       <div className="flex flex-1 items-center justify-center px-5 py-12">
         <div className="w-full max-w-md">
-          <div className="rounded-2xl border border-tertiary bg-surface p-8 shadow-card">
-            <h1 className="text-2xl font-semibold tracking-tight text-ink-900">
+          <div className="rounded-2xl border border-ink-200 bg-ink-100 p-8 shadow-card">
+            <h1 className="text-2xl font-normal tracking-tight text-ink-900">
               {resetMode ? 'Reset password' : 'Sign in'}
             </h1>
             <p className="mt-2 text-sm text-ink-500">
@@ -233,7 +233,7 @@ function Field({
           placeholder={placeholder}
           autoComplete={autoComplete}
           required={required}
-          className={`w-full rounded-xl border border-tertiary bg-ink-50 py-3 ${icon ? 'pl-10' : 'pl-4'} pr-4 text-sm text-ink-800 placeholder:text-secondary transition-colors focus:border-primary-400 focus:bg-surface focus:outline-none focus:ring-1 focus:ring-primary-400`}
+          className={`w-full rounded-xl border border-ink-200 bg-ink-50 py-3 ${icon ? 'pl-10' : 'pl-4'} pr-4 text-sm text-ink-800 placeholder:text-secondary transition-colors focus:border-ink-300 focus:bg-ink-100 focus:outline-none focus:ring-1 focus:ring-primary-500`}
         />
       </div>
     </div>
