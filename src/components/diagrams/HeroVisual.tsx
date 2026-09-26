@@ -12,16 +12,16 @@ export function HeroVisual() {
     <div ref={ref} className="w-full">
       {/* Terminal panel — the console's native idiom */}
       <div
-        className={`overflow-hidden rounded-panel border border-ink-800 bg-ink-950 transition-opacity duration-500 ${
+        className={`overflow-hidden rounded-panel border border-tertiary bg-surface transition-opacity duration-500 ${
           visible ? 'opacity-100' : 'opacity-0'
         }`}
       >
         {/* Title bar */}
-        <div className="flex items-center justify-between border-b border-ink-800 bg-surface-2 px-3 py-1.5">
-          <span className="font-mono text-[10px] uppercase tracking-micro text-ink-400">
+        <div className="flex items-center justify-between border-b border-tertiary bg-surface-2 px-3 py-1.5">
+          <span className="font-mono text-[10px] uppercase tracking-micro text-secondary">
             verification-flow
           </span>
-          <span className="font-mono text-[10px] text-ink-400">HTTP 200</span>
+          <span className="font-mono text-[10px] text-secondary">HTTP 200</span>
         </div>
 
         <div className="p-4">
@@ -32,28 +32,28 @@ export function HeroVisual() {
               <span className="text-ink-500">curl -X POST</span>
               <span className="text-primary-600">/v1/challenge</span>
             </div>
-            <div className="mt-1 pl-4 text-ink-400">
+            <div className="mt-1 pl-4 text-secondary">
               -H <span className="text-ink-600">&apos;X-API-Key: sk_live_…&apos;</span>
             </div>
-            <div className="pl-4 text-ink-400">
+            <div className="pl-4 text-secondary">
               -d <span className="text-ink-600">&apos;{'{'} &quot;tenant&quot;: &quot;acme&quot; {'}'}'</span>
             </div>
           </div>
 
           {/* Divider */}
-          <div className="my-3 border-t border-ink-800" />
+          <div className="my-3 border-t border-tertiary" />
 
           {/* Response */}
           <pre className="overflow-x-auto font-mono text-[11px] leading-relaxed text-ink-500">
-            <span className="text-ink-400">{'{'}</span>{'\n'}
+            <span className="text-secondary">{'{'}</span>{'\n'}
             {'  '}<span className="text-primary-600">&quot;flow_id&quot;</span>: <span className="text-accent-600">&quot;flw_8f2a91c4&quot;</span>,{'\n'}
             {'  '}<span className="text-primary-600">&quot;expires_in&quot;</span>: <span className="text-ink-900">120</span>,{'\n'}
             {'  '}<span className="text-primary-600">&quot;redirect_url&quot;</span>: <span className="text-accent-600">&quot;https://verify.chirograph…&quot;</span>{'\n'}
-            <span className="text-ink-400">{'}'}</span>
+            <span className="text-secondary">{'}'}</span>
           </pre>
 
           {/* Ceremony state */}
-          <div className="mt-4 border-t border-ink-800 pt-3">
+          <div className="mt-4 border-t border-tertiary pt-3">
             <div className="micro-label mb-2">Ceremony</div>
             <div className="space-y-1.5">
               <Step label="WebAuthn challenge issued" delay={400} visible={visible} />

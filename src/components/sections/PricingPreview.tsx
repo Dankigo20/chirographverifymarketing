@@ -50,8 +50,8 @@ function PreviewCard({ tier }: { tier: PricingTier }) {
     <div
       className={`relative flex h-full flex-col rounded-panel border p-6 transition-colors duration-150 ${
         tier.featured
-          ? 'border-primary-300 bg-ink-950'
-          : 'border-ink-800 bg-ink-950 hover:border-ink-700'
+          ? 'border-primary-300 bg-surface'
+          : 'border-tertiary bg-surface hover:border-line-strong'
       }`}
     >
       {tier.featured && (

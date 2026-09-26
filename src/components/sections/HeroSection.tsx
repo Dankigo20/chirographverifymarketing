@@ -5,7 +5,7 @@ import { appLinks } from '@/config/site';
 
 export function HeroSection() {
   return (
-    <section className="relative overflow-hidden border-b border-ink-800 bg-ink-950 pt-24 pb-16 lg:pt-28 lg:pb-20">
+    <section className="relative overflow-hidden border-b border-tertiary bg-surface pt-24 pb-16 lg:pt-28 lg:pb-20">
       <div className="absolute inset-0 bg-grid opacity-60" />
 
       <div className="container-page relative">
@@ -19,7 +19,7 @@ export function HeroSection() {
 
             <h1 className="text-3xl font-semibold leading-[1.1] tracking-tight text-ink-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.08]">
               Cryptographic proof of humanity.
-              <span className="block text-ink-400">No passwords, no SMS, no CAPTCHA.</span>
+              <span className="block text-secondary">No passwords, no SMS, no CAPTCHA.</span>
             </h1>
 
             <p className="mt-5 max-w-lg text-sm leading-relaxed text-ink-500">
@@ -40,7 +40,7 @@ export function HeroSection() {
             </div>
 
             {/* Endpoint strip — the console's own vocabulary */}
-            <dl className="mt-9 grid grid-cols-2 border-t border-l border-ink-800 sm:grid-cols-4">
+            <dl className="mt-9 grid grid-cols-2 border-t border-l border-tertiary sm:grid-cols-4">
               <Stat term="Protocol" value="WebAuthn" />
               <Stat term="Latency" value="12ms" />
               <Stat term="Uptime" value="99.99%" />
@@ -60,7 +60,7 @@ export function HeroSection() {
 
 function Stat({ term, value }: { term: string; value: string }) {
   return (
-    <div className="border-b border-r border-ink-800 px-3 py-2.5">
+    <div className="border-b border-r border-tertiary px-3 py-2.5">
       <dt className="micro-label">{term}</dt>
       <dd className="mt-1 font-mono text-[13px] font-medium tabular-nums text-ink-900">{value}</dd>
     </div>

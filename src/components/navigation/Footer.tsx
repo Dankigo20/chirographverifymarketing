@@ -9,7 +9,7 @@ export function Footer({ navigate }: FooterProps) {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-ink-800 bg-ink-50/80">
+    <footer className="border-t border-tertiary bg-ink-50/80">
       <div className="container-page py-16 lg:py-20">
         <div className="grid gap-10 lg:grid-cols-12">
           {/* Brand */}
@@ -87,11 +87,11 @@ export function Footer({ navigate }: FooterProps) {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col items-start justify-between gap-4 border-t border-ink-800 pt-8 sm:flex-row sm:items-center">
+        <div className="mt-12 flex flex-col items-start justify-between gap-4 border-t border-tertiary pt-8 sm:flex-row sm:items-center">
           <p className="text-sm text-ink-500">
             © {year} {siteConfig.name}. All rights reserved.
           </p>
-          <p className="text-xs text-ink-400">
+          <p className="text-xs text-secondary">
             Based in {siteConfig.country}. Built for developers, platforms, and communities fighting automated abuse.
           </p>
         </div>
@@ -103,7 +103,7 @@ export function Footer({ navigate }: FooterProps) {
 function FooterCol({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div>
-      <h3 className="text-2xs font-semibold uppercase tracking-wider text-ink-400">{title}</h3>
+      <h3 className="text-2xs font-semibold uppercase tracking-wider text-secondary">{title}</h3>
       <ul className="mt-4 space-y-2.5">{children}</ul>
     </div>
   );
@@ -160,7 +160,7 @@ function ContactLink({
       href={href}
       className="flex items-center gap-2 text-sm text-ink-500 transition-colors hover:text-ink-900"
     >
-      <span className="text-ink-400">{icon}</span>
+      <span className="text-secondary">{icon}</span>
       {label}
     </a>
   );
@@ -181,7 +181,7 @@ function SocialLink({
       target="_blank"
       rel="noopener noreferrer"
       aria-label={label}
-      className="flex h-9 w-9 items-center justify-center rounded-control border border-ink-800 bg-ink-950 text-ink-500 transition-colors hover:border-ink-700 hover:text-ink-900"
+      className="flex h-9 w-9 items-center justify-center rounded-control border border-tertiary bg-surface text-ink-500 transition-colors hover:border-line-strong hover:text-ink-900"
     >
       {children}
     </a>

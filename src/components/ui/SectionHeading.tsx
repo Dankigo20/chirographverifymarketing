@@ -23,7 +23,7 @@ export function SectionHeading({
     >
       {eyebrow && (
         <div
-          className={`micro-label mb-3 flex items-center gap-2 ${dark ? 'text-accent-300' : 'text-ink-400'}`}
+          className={`micro-label mb-3 flex items-center gap-2 ${dark ? 'text-accent-300' : 'text-secondary'}`}
         >
           <span className={`h-px w-4 ${dark ? 'bg-accent-400' : 'bg-ink-300'}`} />
           {eyebrow}
@@ -36,7 +36,7 @@ export function SectionHeading({
       </h2>
       {description && (
         <p
-          className={`mt-3 text-sm leading-relaxed ${dark ? 'text-ink-300' : 'text-ink-500'}`}
+          className={`mt-3 text-sm leading-relaxed ${dark ? 'text-primary' : 'text-ink-500'}`}
         >
           {description}
         </p>

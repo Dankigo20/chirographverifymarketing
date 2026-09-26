@@ -54,7 +54,7 @@ export function PricingPage() {
 
           {/* Note */}
           <Reveal delay={300}>
-            <p className="mt-8 text-center text-sm text-ink-400">
+            <p className="mt-8 text-center text-sm text-secondary">
               All plans include WebAuthn verification, server-side verification, single-use challenges, and tenant isolation.
               Billing is handled via Flutterwave.
             </p>
@@ -77,8 +77,8 @@ export function PricingPage() {
             <div className="mx-auto mt-14 max-w-5xl overflow-x-auto">
               <table className="w-full border-collapse">
                 <thead>
-                  <tr className="border-b border-ink-800">
-                    <th className="sticky left-0 z-10 w-1/3 bg-ink-950 px-4 py-4 text-left text-sm font-semibold text-ink-900">
+                  <tr className="border-b border-tertiary">
+                    <th className="sticky left-0 z-10 w-1/3 bg-surface px-4 py-4 text-left text-sm font-semibold text-ink-900">
                       Feature
                     </th>
                     {pricingTiers.map((t) => (
@@ -117,7 +117,7 @@ export function PricingPage() {
       <section className="pb-24 lg:pb-32">
         <div className="container-page">
           <Reveal>
-            <div className="mx-auto max-w-2xl rounded-3xl border border-ink-800 bg-gradient-to-br from-ink-50 to-primary-50/40 p-12 text-center lg:p-16">
+            <div className="mx-auto max-w-2xl rounded-3xl border border-tertiary bg-gradient-to-br from-ink-50 to-primary-50/40 p-12 text-center lg:p-16">
               <h2 className="text-2xl font-semibold tracking-tight text-ink-900 sm:text-3xl">
                 Need something custom?
               </h2>
@@ -143,8 +143,8 @@ function PricingCard({ tier }: { tier: PricingTier }) {
     <div
       className={`relative flex h-full flex-col rounded-2xl border p-7 transition-all duration-300 ${
         tier.featured
-          ? 'border-primary-300 bg-ink-950 shadow-glow lg:-translate-y-2'
-          : 'border-ink-800 bg-ink-950 hover:border-ink-700 hover:shadow-card-hover hover:-translate-y-0.5'
+          ? 'border-primary-300 bg-surface shadow-glow lg:-translate-y-2'
+          : 'border-tertiary bg-surface hover:border-line-strong hover:shadow-card-hover hover:-translate-y-0.5'
       }`}
     >
       {tier.featured && (
@@ -204,7 +204,7 @@ function Cell({ val }: { val: string | boolean }) {
     return val ? (
       <Check className="mx-auto h-5 w-5 text-primary-500" strokeWidth={2.5} />
     ) : (
-      <Minus className="mx-auto h-5 w-5 text-ink-300" />
+      <Minus className="mx-auto h-5 w-5 text-primary" />
     );
   }
   return <span className="text-sm text-ink-600">{val}</span>;

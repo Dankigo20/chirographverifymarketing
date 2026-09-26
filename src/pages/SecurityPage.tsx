@@ -137,7 +137,7 @@ export function SecurityPage() {
     <>
       {/* Hero */}
       <section className="relative overflow-hidden pt-32 pb-20 lg:pt-40 lg:pb-24">
-        <div className="dark-surface absolute inset-0 bg-ink-900" />
+        <div className="dark-surface absolute inset-0 bg-primary" />
         <div className="absolute inset-0 bg-grid-dark opacity-30" />
         <div className="absolute left-1/2 top-0 -z-0 h-[400px] w-[700px] -translate-x-1/2 rounded-full bg-primary-500/10 blur-3xl" />
         <div className="container-page relative">
@@ -152,7 +152,7 @@ export function SecurityPage() {
                 <br />
                 <span className="text-gradient-light">not by trust.</span>
               </h1>
-              <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-ink-300">
+              <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-primary">
                 No party — not the browser, not the user, not a man-in-the-middle — can
                 forge a verification result. Here's how the security model works.
               </p>
@@ -175,7 +175,7 @@ export function SecurityPage() {
               const Icon = s.icon;
               return (
                 <Reveal key={i} delay={(i % 2) * 100}>
-                  <div className="h-full rounded-2xl border border-ink-800 bg-ink-950 p-7 transition-all duration-300 hover:border-ink-700 hover:shadow-card-hover hover:-translate-y-0.5">
+                  <div className="h-full rounded-2xl border border-tertiary bg-surface p-7 transition-all duration-300 hover:border-line-strong hover:shadow-card-hover hover:-translate-y-0.5">
                     <div className="flex items-center gap-3">
                       <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-primary-50 to-accent-50 text-primary-600">
                         <Icon className="h-5 w-5" strokeWidth={2} />
@@ -245,7 +245,7 @@ export function SecurityPage() {
       <section className="py-24 lg:py-28">
         <div className="container-page">
           <Reveal>
-            <div className="mx-auto max-w-2xl rounded-3xl border border-ink-800 bg-gradient-to-br from-ink-50 to-primary-50/40 p-12 text-center lg:p-16">
+            <div className="mx-auto max-w-2xl rounded-3xl border border-tertiary bg-gradient-to-br from-ink-50 to-primary-50/40 p-12 text-center lg:p-16">
               <h2 className="text-2xl font-semibold tracking-tight text-ink-900 sm:text-3xl">
                 Start verifying users securely
               </h2>

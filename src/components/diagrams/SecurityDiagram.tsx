@@ -25,7 +25,7 @@ export function SecurityDiagram() {
           return (
             <div
               key={i}
-              className={`group relative flex flex-col gap-3 rounded-xl border border-ink-800 bg-ink-950 p-5 shadow-card transition-all duration-700 ease-out-expo ${
+              className={`group relative flex flex-col gap-3 rounded-xl border border-tertiary bg-surface p-5 shadow-card transition-all duration-700 ease-out-expo ${
                 visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
               }`}
               style={{ transitionDelay: `${i * 100}ms` }}
@@ -36,7 +36,7 @@ export function SecurityDiagram() {
                 >
                   <Icon className="h-4.5 w-4.5" strokeWidth={2} />
                 </span>
-                <span className="text-2xs font-semibold uppercase tracking-wider text-ink-400">
+                <span className="text-2xs font-semibold uppercase tracking-wider text-secondary">
                   Layer {i + 1}
                 </span>
               </div>
@@ -46,7 +46,7 @@ export function SecurityDiagram() {
               </div>
               {/* Connector arrow (hidden on last) */}
               {i < layers.length - 1 && (
-                <div className="absolute -bottom-2.5 left-1/2 hidden -translate-x-1/2 text-ink-400 lg:block">
+                <div className="absolute -bottom-2.5 left-1/2 hidden -translate-x-1/2 text-secondary lg:block">
                   {i % 3 !== 2 && <ChevronDown />}
                 </div>
               )}
@@ -75,6 +75,6 @@ function colorBg(color: string): string {
     case 'success':
       return 'bg-accent-50 text-accent-600 border border-accent-200';
     default:
-      return 'bg-ink-50 text-ink-600 border border-ink-800';
+      return 'bg-ink-50 text-ink-600 border border-tertiary';
   }
 }

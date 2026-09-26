@@ -83,7 +83,7 @@ export function LoginPage({ navigate }: { navigate: (to: string) => void }) {
       {/* Form */}
       <div className="flex flex-1 items-center justify-center px-5 py-12">
         <div className="w-full max-w-md">
-          <div className="rounded-2xl border border-ink-800 bg-ink-950 p-8 shadow-card">
+          <div className="rounded-2xl border border-tertiary bg-surface p-8 shadow-card">
             <h1 className="text-2xl font-semibold tracking-tight text-ink-900">
               {resetMode ? 'Reset password' : 'Sign in'}
             </h1>
@@ -188,7 +188,7 @@ export function LoginPage({ navigate }: { navigate: (to: string) => void }) {
             )}
           </div>
 
-          <p className="mt-6 text-center text-xs text-ink-400">
+          <p className="mt-6 text-center text-xs text-secondary">
             By signing in, you agree to our{' '}
             <button onClick={() => navigate('/terms')} className="text-ink-500 hover:underline">Terms</button>{' '}
             and{' '}
@@ -224,7 +224,7 @@ function Field({
       <label className="mb-1.5 block text-sm font-medium text-ink-700">{label}</label>
       <div className="relative">
         {icon && (
-          <span className="absolute left-3 top-1/2 -translate-y-1/2 text-ink-400">{icon}</span>
+          <span className="absolute left-3 top-1/2 -translate-y-1/2 text-secondary">{icon}</span>
         )}
         <input
           type={type}
@@ -233,7 +233,7 @@ function Field({
           placeholder={placeholder}
           autoComplete={autoComplete}
           required={required}
-          className={`w-full rounded-xl border border-ink-800 bg-ink-50 py-3 ${icon ? 'pl-10' : 'pl-4'} pr-4 text-sm text-ink-800 placeholder:text-ink-400 transition-colors focus:border-primary-400 focus:bg-ink-950 focus:outline-none focus:ring-1 focus:ring-primary-400`}
+          className={`w-full rounded-xl border border-tertiary bg-ink-50 py-3 ${icon ? 'pl-10' : 'pl-4'} pr-4 text-sm text-ink-800 placeholder:text-secondary transition-colors focus:border-primary-400 focus:bg-surface focus:outline-none focus:ring-1 focus:ring-primary-400`}
         />
       </div>
     </div>

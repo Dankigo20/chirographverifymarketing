@@ -12,7 +12,7 @@ const steps: FlowStep[] = [
 
 export function HowItWorks() {
   return (
-    <section id="how-it-works" className="relative scroll-mt-20 overflow-hidden border-y border-ink-800 bg-ink-50/60 py-24 lg:py-32">
+    <section id="how-it-works" className="relative scroll-mt-20 overflow-hidden border-y border-tertiary bg-ink-50/60 py-24 lg:py-32">
       <div className="absolute inset-0 bg-grid opacity-60" />
 
       <div className="container-page relative">

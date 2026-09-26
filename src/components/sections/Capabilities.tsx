@@ -64,7 +64,7 @@ const capabilities = [
 
 export function Capabilities() {
   return (
-    <section id="capabilities" className="relative scroll-mt-20 border-t border-ink-800 py-20">
+    <section id="capabilities" className="relative scroll-mt-20 border-t border-tertiary py-20">
       <div className="container-page">
         <Reveal>
           <SectionHeading
@@ -77,8 +77,8 @@ export function Capabilities() {
 
         {/* Specification table, not a card grid */}
         <Reveal delay={120}>
-          <div className="mt-10 overflow-hidden rounded-panel border border-ink-800">
-            <div className="hidden grid-cols-[220px_minmax(0,1fr)_140px] border-b border-ink-800 bg-surface-2 px-4 py-2 sm:grid">
+          <div className="mt-10 overflow-hidden rounded-panel border border-tertiary">
+            <div className="hidden grid-cols-[220px_minmax(0,1fr)_140px] border-b border-tertiary bg-surface-2 px-4 py-2 sm:grid">
               <span className="micro-label">Capability</span>
               <span className="micro-label">Description</span>
               <span className="micro-label text-right">Surface</span>
@@ -88,8 +88,8 @@ export function Capabilities() {
               return (
                 <div
                   key={i}
-                  className={`grid grid-cols-1 items-start gap-1 px-4 py-3 transition-colors hover:\bg-ink-950/[0.06] sm:grid-cols-[220px_minmax(0,1fr)_140px] sm:items-center sm:gap-4 ${
-                    i > 0 ? 'border-t border-ink-800' : ''
+                  className={`grid grid-cols-1 items-start gap-1 px-4 py-3 transition-colors hover:\bg-surface/[0.06] sm:grid-cols-[220px_minmax(0,1fr)_140px] sm:items-center sm:gap-4 ${
+                    i > 0 ? 'border-t border-tertiary' : ''
                   }`}
                 >
                   <div className="flex items-center gap-2">
@@ -97,7 +97,7 @@ export function Capabilities() {
                     <span className="text-[13px] font-medium text-ink-900">{cap.title}</span>
                   </div>
                   <p className="text-[13px] leading-relaxed text-ink-500">{cap.desc}</p>
-                  <span className="justify-self-start rounded-xs border border-ink-800 bg-surface-2 px-1.5 py-0.5 font-mono text-[10px] uppercase tracking-wide text-ink-400 sm:justify-self-end">
+                  <span className="justify-self-start rounded-xs border border-tertiary bg-surface-2 px-1.5 py-0.5 font-mono text-[10px] uppercase tracking-wide text-secondary sm:justify-self-end">
                     {cap.surface}
                   </span>
                 </div>

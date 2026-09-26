@@ -67,15 +67,15 @@ export function FAQSection() {
         <div className="mx-auto mt-14 max-w-3xl space-y-3">
           {faqs.map((faq, i) => (
             <Reveal key={i} delay={(i % 4) * 50}>
-              <div className="overflow-hidden rounded-panel border border-ink-800 bg-ink-950 transition-colors duration-100 hover:border-ink-700">
+              <div className="overflow-hidden rounded-panel border border-tertiary bg-surface transition-colors duration-100 hover:border-line-strong">
                 <button
                   onClick={() => setOpen(open === i ? null : i)}
-                  className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left transition-colors hover:\bg-ink-950/[0.06]"
+                  className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left transition-colors hover:\bg-surface/[0.06]"
                   aria-expanded={open === i}
                 >
                   <span className="text-sm font-semibold text-ink-900 sm:text-base">{faq.q}</span>
                   <ChevronDown
-                    className={`h-5 w-5 shrink-0 text-ink-400 transition-transform duration-300 ${
+                    className={`h-5 w-5 shrink-0 text-secondary transition-transform duration-300 ${
                       open === i ? 'rotate-180' : ''
                     }`}
                   />
