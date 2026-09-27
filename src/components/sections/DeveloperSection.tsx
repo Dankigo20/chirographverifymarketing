@@ -22,7 +22,7 @@ const { flow_id, redirect_url } = await res.json();
 // flow_id is single-use. Redirect the user to redirect_url.`;
 
 const widgetCode = `<!-- 2. Trigger the widget from your frontend -->
-<script src="https://cdn.chirographverify.com/widget.js"></script>
+<script src="https://app.chirographverify.com/widget.js"></script>
 <button onclick="startVerification()">Verify you're human</button>
 
 <script>

@@ -40,7 +40,7 @@ const flow = await chiro.challenges.create({
 // flow_id is single-use and expires after a short window`;
 
 const widgetCode = `<!-- Client-side: trigger the widget -->
-<script src="https://cdn.chirographverify.com/widget.js"></script>
+<script src="https://app.chirographverify.com/widget.js"></script>
 <script>
   function startVerification(flowId) {
     Chirograph.verify({

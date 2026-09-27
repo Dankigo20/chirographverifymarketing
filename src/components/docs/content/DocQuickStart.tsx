@@ -43,12 +43,12 @@ export function DocQuickStart() {
         Alternatively, load the widget via CDN (not yet live):
       </DocParagraph>
       <DocCode
-        code={`<script src="https://cdn.chirographverify.com/widget.js"></script>`}
+        code={`<script src="https://app.chirographverify.com/widget.js"></script>`}
         language="html"
         filename="index.html"
       />
       <DocCallout variant="warning" title="CDN widget script not yet live">
-        The <code className="font-mono text-sm">cdn.chirographverify.com/widget.js</code>{' '}
+        The <code className="font-mono text-sm">app.chirographverify.com/widget.js</code>{' '}
         script is planned but not yet published. Use the npm package when it is
         available, or follow the CDN example once the script goes live.
       </DocCallout>
@@ -100,7 +100,7 @@ const flow = await chiro.challenges.create({
         On your frontend, use the widget SDK to redirect the user to the hosted ceremony:
       </DocParagraph>
       <DocCode
-        code={`<script src="https://cdn.chirographverify.com/widget.js"></script>
+        code={`<script src="https://app.chirographverify.com/widget.js"></script>
 <script>
   function startVerification(flowId) {
     Chirograph.verify({
