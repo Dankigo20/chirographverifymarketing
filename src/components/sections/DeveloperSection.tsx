@@ -84,7 +84,15 @@ export function DeveloperSection() {
     <section id="developers-preview" className="relative scroll-mt-20 border-t border-ink-200 bg-white/[0.02] py-24 lg:py-32">
       <div className="container-page">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-          <Reveal>
+          {/* min-w-0 lets these grid items shrink below their content's intrinsic
+              width. Without it the track sizes to the `white-space: pre` <pre> in
+              CodeTabs (min-width:auto on a grid/flex item), which pushed the whole
+              page into horizontal overflow on narrow viewports — the code block has
+              an overflow-x-auto wrapper, but it could never engage because its
+              ancestors refused to shrink. Fixes the "For developers" section and,
+              by the same mechanism, any other section pairing prose with a code
+              block. */}
+          <Reveal className="min-w-0">
             <div>
               <div className="mb-3.5 text-xs font-semibold uppercase tracking-[0.2em] text-accent-400">
                 For developers
@@ -117,7 +125,7 @@ export function DeveloperSection() {
             </div>
           </Reveal>
 
-          <Reveal delay={150}>
+          <Reveal delay={150} className="min-w-0">
             <div>
               <div className="mb-3 flex items-center gap-2 text-xs font-medium text-ink-500">
                 <Terminal className="h-4 w-4" />
