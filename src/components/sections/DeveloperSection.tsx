@@ -50,7 +50,7 @@ const res = await fetch('https://app.chirographverify.com/widget/redeem', {
 });
 
 const { verified, trust_score, device } = await res.json();
-// verified === true  → the user is a real person
+// verified === true  → a valid passkey assertion was verified
 // trust_score        → risk-based confidence signal`;
 
 const webhookCode = `// 4. Receive signed webhook events

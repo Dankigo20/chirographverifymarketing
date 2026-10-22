@@ -11,7 +11,7 @@ export function PricingPage() {
   useSeo({
     title: 'Pricing — Chirograph Verify',
     description:
-      'Simple, usage-based pricing for human verification infrastructure. Start free and scale as you verify more users.',
+      'Simple, usage-based pricing for passkey verification. Start free and scale as you verify more users.',
     path: '/pricing',
   });
 

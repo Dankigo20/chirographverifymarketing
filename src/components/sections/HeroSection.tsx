@@ -15,8 +15,7 @@ export function HeroSection() {
           <div className="eyebrow animate-fade-in mb-8">[ INTRODUCING ]</div>
 
           <h1 className="animate-fade-up text-5xl font-normal leading-[1.04] tracking-tight text-ink-900 sm:text-6xl lg:text-[5rem]">
-            Cryptographic proof
-            <br className="hidden sm:block" /> of humanity.
+             Passkey checks for the flows bots abuse.
           </h1>
 
           <p className="mx-auto mt-7 max-w-2xl text-base leading-relaxed text-ink-500 sm:text-lg">
@@ -38,10 +37,8 @@ export function HeroSection() {
         </div>
 
         {/* Console vocabulary strip */}
-        <dl className="mx-auto mt-24 grid max-w-3xl grid-cols-2 border-l border-t border-ink-200 sm:grid-cols-4">
+        <dl className="mx-auto mt-24 grid max-w-3xl grid-cols-2 border-l border-t border-ink-200 sm:grid-cols-2">
           <Stat term="Protocol" value="WebAuthn" />
-          <Stat term="Latency" value="12ms" />
-          <Stat term="Uptime" value="99.99%" />
           <Stat term="Flow" value="Single-use" />
         </dl>
 

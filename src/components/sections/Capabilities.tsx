@@ -62,7 +62,7 @@ export function Capabilities() {
           <SectionHeading
             align="left"
             eyebrow="Key features"
-            title="Everything needed to verify real users"
+            title="Everything needed to verify passkey assertions server-side"
             aside="Complete verification infrastructure — browser SDK through server-side redemption, with no CAPTCHA and no shared secrets."
           />
         </Reveal>

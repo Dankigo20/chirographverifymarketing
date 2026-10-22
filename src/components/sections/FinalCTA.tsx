@@ -15,7 +15,7 @@ export function FinalCTA() {
               Ready to get started?
             </h2>
             <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-ink-500 sm:text-lg">
-              Add cryptographic human verification to your platform in an afternoon.
+              Add passkey-based bot prevention to your platform.
               No CAPTCHA, no SMS, no passwords — just verified users.
             </p>
             <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">

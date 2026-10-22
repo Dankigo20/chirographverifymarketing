@@ -15,7 +15,7 @@ export function HomePage() {
   useSeo({
     title: 'Chirograph Verify — Prove you\'re human without passwords or SMS',
     description:
-      'Developer-focused human verification infrastructure. Verify real users with WebAuthn and server-side cryptographic verification — no CAPTCHA, no friction.',
+      'Bot-prevention API using WebAuthn passkeys. Server-verified, single-use, no CAPTCHA or SMS codes.',
     path: '/',
   });
 

@@ -6,7 +6,7 @@ import { ChevronDown } from 'lucide-react';
 const faqs = [
   {
     q: 'What is Chirograph Verify?',
-    a: 'Chirograph Verify is human verification infrastructure for developers. It helps platforms confirm that a user is a real person using WebAuthn-based device authentication and server-side cryptographic verification — without passwords, SMS, or CAPTCHA.',
+    a: 'Chirograph Verify is bot-prevention infrastructure for developers. It checks for a valid passkey assertion from an enrolled device, verified server-side, without passwords, SMS, or CAPTCHA. It does not prove identity, uniqueness, or liveness.',
   },
   {
     q: 'Does Chirograph use CAPTCHA?',

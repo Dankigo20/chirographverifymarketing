@@ -109,7 +109,7 @@ export function SignupPage({ navigate }: { navigate: (to: string) => void }) {
           <div className="rounded-2xl border border-ink-200 bg-ink-100 p-8 shadow-card">
             <h1 className="text-2xl font-normal tracking-tight text-ink-900">Create account</h1>
             <p className="mt-2 text-sm text-ink-500">
-              Start verifying real users with WebAuthn in minutes.
+              Start adding passkey verification in minutes.
             </p>
 
             <form onSubmit={handleSubmit} className="mt-6 space-y-4">

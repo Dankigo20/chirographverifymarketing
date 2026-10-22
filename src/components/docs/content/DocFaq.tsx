@@ -5,7 +5,7 @@ import { DocPageWrapper, DocHeading } from '@/components/docs/DocBlocks';
 const faqs = [
   {
     q: 'What is Chirograph Verify?',
-    a: 'Chirograph Verify is a device-biometric bot-prevention API that uses WebAuthn to help applications distinguish legitimate human interactions from automated or abusive activity. It uses platform authenticators like Face ID, Touch ID, and security keys to produce a cryptographic signal that a real human authenticated through an enrolled device.',
+    a: 'Chirograph Verify is a device-biometric bot-prevention API that uses WebAuthn to help applications raise the cost of automated or abusive activity. It uses platform authenticators like Face ID, Touch ID, and security keys to produce a cryptographic signal: a valid passkey assertion from an enrolled device, verified server-side.',
   },
   {
     q: 'Does Chirograph Verify store fingerprints or Face ID images?',
@@ -29,7 +29,7 @@ const faqs = [
   },
   {
     q: 'Does Chirograph Verify identify the user?',
-    a: 'No. Verification is a technical security signal that confirms a real human authenticated through an enrolled device. It is not equivalent to legal identity verification. Chirograph Verify does not identify the person behind a device.',
+    a: 'No. Verification is a technical security signal that confirms a valid passkey assertion from an enrolled device. It is not equivalent to legal identity verification. Chirograph Verify does not identify the person behind a device.',
   },
   {
     q: 'What happens when a device is flagged?',

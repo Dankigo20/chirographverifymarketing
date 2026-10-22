@@ -6,12 +6,12 @@ const useCases = [
   {
     icon: Coins,
     title: 'Web3 applications',
-    desc: 'Gate token claims, presale access, and airdrops behind real-person verification. Stop sybil farming without KYC friction.',
+    desc: 'Gate token claims, presale access, and airdrops without KYC friction.',
   },
   {
     icon: MessagesSquare,
     title: 'Discord & communities',
-    desc: 'Prevent raid attacks and bot infiltration. Verify members before they join or post, using device-level proof.',
+    desc: 'Raise the cost of automated signups and mass account creation in community apps.',
   },
   {
     icon: LayoutGrid,
@@ -31,7 +31,7 @@ const useCases = [
   {
     icon: ShieldBan,
     title: 'Anti-abuse systems',
-    desc: 'Layer Chirograph into your existing abuse pipeline as a strong, low-friction signal for human verification.',
+    desc: 'Layer Chirograph into your existing abuse pipeline as a strong, low-friction passkey signal.',
   },
 ];
 
@@ -42,8 +42,8 @@ export function UseCases() {
         <Reveal>
           <SectionHeading
             eyebrow="Use cases"
-            title="Built for platforms that need real users"
-            description="Wherever bots create accounts, raid communities, or abuse systems, Chirograph adds a cryptographic layer of human verification."
+            title="Built for platforms that bots abuse"
+            description="Wherever bots create accounts or abuse systems, Chirograph adds a passkey-based layer that raises the cost of automated abuse."
           />
         </Reveal>
 

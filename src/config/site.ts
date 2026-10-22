@@ -12,7 +12,7 @@ export const siteConfig = {
   siteUrl: 'https://chirographverify.com',
   appUrl: (import.meta.env.VITE_APP_URL as string | undefined) ?? 'https://verify.chirographverify.com',
   description:
-    'Developer-focused human verification infrastructure. Verify real users with WebAuthn and server-side cryptographic verification — no passwords, no SMS, no CAPTCHA.',
+    'Bot-prevention API using WebAuthn passkeys. Server-verified, single-use, no CAPTCHA or SMS codes.',
   country: 'Egypt',
   emails: {
     hello: 'hello@chirographverify.com',

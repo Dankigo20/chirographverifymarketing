@@ -6,13 +6,12 @@ export function DocIntroduction() {
       <DocHeading level={2}>Introduction</DocHeading>
       <DocParagraph>
         Chirograph Verify is a device-biometric bot-prevention API that uses WebAuthn to help
-        applications distinguish legitimate human interactions from automated or abusive activity.
+        applications raise the cost of automated or abusive activity.
       </DocParagraph>
       <DocParagraph>
         Instead of relying on CAPTCHA puzzles, SMS codes, or passwords, Chirograph Verify uses
         platform authenticators — such as Face ID, Touch ID, and compatible security keys — to
-        produce a cryptographic signal that a real human successfully authenticated through an
-        enrolled device.
+        produce a cryptographic signal: a valid passkey assertion from an enrolled device, verified server-side.
       </DocParagraph>
 
       <DocCallout variant="info" title="What Chirograph Verify is not">

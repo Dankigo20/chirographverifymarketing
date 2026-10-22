@@ -47,10 +47,7 @@ export function PrivacyPage() {
                   brand, based in {siteConfig.country}.
                 </p>
                 <p>
-                  Chirograph Verify is designed to verify that a real human successfully
-                  authenticated through an enrolled device using WebAuthn. It is not a
-                  facial-recognition system, does not receive or store raw biometric data, and
-                  does not identify a person's real-world identity from biometrics.
+                  Chirograph Verify is designed to verify a valid passkey assertion from an enrolled device. Verification is a technical signal; it does not prove identity, uniqueness, or liveness. It is not a facial-recognition system, does not receive or store raw biometric data, and does not identify a person's real-world identity from biometrics.
                 </p>
               </LegalBlock>
 

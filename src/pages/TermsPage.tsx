@@ -54,7 +54,8 @@ export function TermsPage() {
                   Chirograph Verify is a device-biometric bot-prevention API. It uses
                   WebAuthn-based verification with platform authenticators (such as Face ID,
                   Touch ID, and compatible security keys) to provide a cryptographic signal
-                  that a real human successfully authenticated through an enrolled device.
+                  that a valid passkey assertion from an enrolled device. Verification is a
+                  technical signal; it does not prove identity, uniqueness, or liveness.
                 </p>
                 <p>
                   Verification is a technical security signal. It does not prove a person's

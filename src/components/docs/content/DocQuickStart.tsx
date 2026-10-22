@@ -135,7 +135,7 @@ const flow = await chiro.challenges.create({
 });
 
 if (result.verified) {
-  // The user is verified as a real person
+  // A valid passkey assertion was verified
   await db.users.markVerified(userId, {
     trust_score: result.trust_score,
     device: result.device,

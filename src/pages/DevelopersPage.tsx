@@ -63,7 +63,7 @@ const result = await chiro.flows.redeem({
 });
 
 if (result.verified) {
-  // The user is a real person
+  // A valid passkey assertion was verified
   await db.users.markVerified(userId, {
     trust_score: result.trust_score,
     device: result.device,
