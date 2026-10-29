@@ -5,21 +5,21 @@ export function DocEnvironmentVariables() {
     <DocPageWrapper>
       <DocHeading level={2}>Environment Variables</DocHeading>
       <DocParagraph>
-        Chirograph Verify uses two environment variables. Each belongs in a different part of
+        Chirograph Verify uses the following server-side and browser configuration. Each belongs in a different part of
         your stack.
       </DocParagraph>
 
       <DocTable
         headers={['Variable', 'Used in', 'Description']}
         rows={[
-          [<code className="font-mono text-sm text-ink-800">CHIROGRAPH_SECRET_KEY</code>, 'Server / backend', 'Secret API key for creating challenges and redeeming results. Never expose to the browser.'],
-          [<code className="font-mono text-sm text-ink-800">CHIROGRAPH_PUBLISHABLE_KEY</code>, 'Browser / frontend', 'Publishable key for the widget SDK. Safe for client-side use.'],
+          ['Secret API key', 'Server / backend', 'Secret API key for creating challenges and redeeming results. Never expose to the browser.'],
+          ['Publishable widget key', 'Browser / frontend', 'Publishable key for the widget SDK. Safe for client-side use.'],
         ]}
       />
 
       <DocHeading level={3} id="server-side">Server-side configuration</DocHeading>
       <DocCode
-        code={`# .env (server-side — never commit this file)\nCHIROGRAPH_SECRET_KEY="sk_live_..."\nCHIROGRAPH_PUBLISHABLE_KEY="pk_live_..."`}
+        code={`# .env (server-side — never commit this file)\\nSK_LIVE_KEY="sk_live_..."`}
         language="bash"
         filename=".env"
       />
@@ -49,7 +49,7 @@ export function DocEnvironmentVariables() {
         headers={['Environment', 'Secret key', 'Publishable key']}
         rows={[
           ['Development', <code className="font-mono text-sm text-ink-800">sk_test_...</code>, <code className="font-mono text-sm text-ink-800">pk_test_...</code>],
-          ['Production', <code className="font-mono text-sm text-ink-800">sk_live_...</code>, <code className="font-mono text-sm text-ink-800">pk_live_...</code>],
+          ['Production', <code className="font-mono text-sm text-ink-800">sk_live_<span className="text-gray-400">…</span></code>, <code className="font-mono text-sm text-ink-800">pk_live_<span className="text-gray-400">…</span></code>],
         ]}
       />
 

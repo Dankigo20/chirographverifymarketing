@@ -5,149 +5,148 @@ export function DocQuickStart() {
     <DocPageWrapper>
       <DocHeading level={2}>Quick Start</DocHeading>
       <DocParagraph>
-        Get from zero to a working verification flow in six steps.
+        Get from zero to a working verification flow. Chirograph Verify uses a
+        hosted WebAuthn ceremony: your backend creates a flow, the user's browser
+        is redirected to a Chirograph-hosted passkey ceremony, and your backend
+        redeems the result server-side.
       </DocParagraph>
 
-      <DocHeading level={3} id="step-0">Step 0 — Get your API key</DocHeading>
+      <DocHeading level={3} id="step-0">Step 0 — Configure allowed origins</DocHeading>
       <DocParagraph>
-        Sign up at{' '}
-        <a
-          href="https://verify.chirographverify.com/signup"
-          className="font-medium text-primary-600 hover:underline"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          https://verify.chirographverify.com/signup
-        </a>
-        , verify your email, and you'll land in your dashboard. Open{' '}
-        <strong>API Keys</strong> in the sidebar and click{' '}
-        <strong>Regenerate Key</strong> to get your secret key. It is shown{' '}
-        <strong>once — copy it immediately</strong>.
+        Before creating a widget client, add at least one allowed origin in your
+        tenant dashboard. The origin is the domain where your widget will run.
       </DocParagraph>
-      <DocCallout variant="warning" title="The key cannot be retrieved again">
-        Your secret key is stored server-side only as a cryptographic hash. The
-        plaintext key is displayed exactly once, at generation. If you lose it,
-        regenerate a new key and update your environment variables.
+      <DocCallout variant="info" title="Allowed origin vs redirect URL">
+        The <strong>allowed origin</strong> is the domain where your page is served — it must match
+        the Origin header the browser sends when starting a flow.
+        The <strong>redirect URL</strong> is where the browser returns after the ceremony — it must
+        be listed in the widget client's redirect allowlist. Both are configured separately.
       </DocCallout>
 
-      <DocHeading level={3} id="step-1">Step 1 — Install the SDK</DocHeading>
+      <DocHeading level={3} id="step-1">Step 1 — Create a widget client and get your publishable key</DocHeading>
       <DocParagraph>
-        Install the Node.js SDK for server-side usage:
+        In your tenant dashboard, go to Settings and create a widget client. The dashboard
+        returns a <strong>publishable widget key</strong> exactly once — copy it immediately.
+        This key is safe to use in browser code; it cannot redeem results or access tenant
+        configuration.
       </DocParagraph>
-      <DocCode code="npm install @chirograph/verify" language="bash" filename="terminal" />
+      <DocCallout variant="danger" title="Widget key vs secret API key">
+        <ul className="space-y-1">
+          <li><strong>Publishable widget key:</strong> browser-safe, starts widget flows only.</li>
+          <li><strong>Secret API key (X-API-Key):</strong> server-side only, creates challenges and redeems results. Never expose to the browser.</li>
+          <li><strong>Admin API key:</strong> restricted to administrative operations.</li>
+        </ul>
+      </DocCallout>
+
+      <DocHeading level={3} id="step-2">Step 2 — Install the widget SDK</DocHeading>
       <DocParagraph>
-        Install the browser widget SDK separately:
-      </DocParagraph>
-      <DocCode code="npm install @chirograph/verify-widget" language="bash" filename="terminal" />
-      <DocParagraph>
-        Alternatively, load the widget via CDN (not yet live):
+        The widget SDK is self-hosted on your Chirograph Verify domain. Load it directly in
+        your page — no npm package is required:
       </DocParagraph>
       <DocCode
-        code={`<script src="https://app.chirographverify.com/widget.js"></script>`}
+        code="<script src="https://YOUR-CHIROGRAPH-DOMAIN/widget.js"></script>"
         language="html"
         filename="index.html"
       />
-      <DocCallout variant="warning" title="CDN widget script not yet live">
-        The <code className="font-mono text-sm">app.chirographverify.com/widget.js</code>{' '}
-        script is planned but not yet published. Use the npm package when it is
-        available, or follow the CDN example once the script goes live.
-      </DocCallout>
-
-      <DocHeading level={3} id="step-2">Step 2 — Configure keys</DocHeading>
       <DocParagraph>
-        Set your API keys as environment variables:
+        The bundle exposes a global <code className="font-mono text-sm">ChirographWidget</code>
+        object with <code className="font-mono text-sm">init()</code>, <code className="font-mono text-sm">start()</code>,
+        and <code className="font-mono text-sm">readFlowResult()</code>.
+      </DocParagraph>
+
+      <DocHeading level={3} id="step-3">Step 3 — Initialize the widget</DocHeading>
+      <DocParagraph>
+        Initialize the widget with your Chirograph domain and publishable widget key:
       </DocParagraph>
       <DocCode
-        code={`CHIROGRAPH_SECRET_KEY="sk_live_..."\nCHIROGRAPH_PUBLISHABLE_KEY="pk_live_..."`}
-        language="bash"
-        filename=".env"
-      />
-      <DocCallout variant="danger" title="Secret key — server-side only">
-        <ul className="space-y-1">
-          <li>Never expose the secret key in browser code</li>
-          <li>Never commit it to GitHub</li>
-          <li>Store it only in server-side environment variables or secrets management</li>
-        </ul>
-      </DocCallout>
-      <DocCallout variant="info" title="Publishable key — safe for the browser">
-        The publishable key is intentionally different from the secret key. It is designed for
-        client-side use with the widget SDK.
-      </DocCallout>
-
-      <DocHeading level={3} id="step-3">Step 3 — Create a verification flow</DocHeading>
-      <DocParagraph>
-        On your backend, create a verification challenge:
-      </DocParagraph>
-      <DocCode
-        code={`import { Chirograph } from '@chirograph/verify';
-
-const chiro = new Chirograph(process.env.CHIROGRAPH_SECRET_KEY);
-
-const flow = await chiro.challenges.create({
-  tenant: 'acme',
-  redirect_url: 'https://yourapp.com/verified',
-});`}
+        code="const widget = ChirographWidget.init({\n  baseUrl: 'https://YOUR-CHIROGRAPH-DOMAIN',\n  widgetKey: 'YOUR_PUBLISHABLE_WIDGET_KEY',\n});"
         language="ts"
-        filename="server.ts"
+        filename="widget.js"
       />
-      <DocParagraph>
-        The server receives a <code className="rounded bg-ink-100 px-1 py-0.5 font-mono text-sm text-ink-800">flow_id</code> and a
-        hosted ceremony URL. Send the flow ID to your frontend.
-      </DocParagraph>
+      <DocList items={[
+        '<code className="font-mono text-sm">baseUrl</code> — The origin of your Chirograph Verify deployment (HTTPS required in production).',
+        '<code className="font-mono text-sm">widgetKey</code> — The publishable widget key from your tenant dashboard.',
+      ]} />
 
-      <DocHeading level={3} id="step-4">Step 4 — Redirect the browser</DocHeading>
+      <DocHeading level={3} id="step-4">Step 4 — Register a passkey</DocHeading>
       <DocParagraph>
-        On your frontend, use the widget SDK to redirect the user to the hosted ceremony:
+        Use <code className="font-mono text-sm">purpose: 'register'</code> to enroll a new user's
+        passkey. The browser is redirected to the hosted WebAuthn ceremony.
       </DocParagraph>
       <DocCode
-        code={`<script src="https://app.chirographverify.com/widget.js"></script>
-<script>
-  function startVerification(flowId) {
-    Chirograph.verify({
-      publishableKey: 'pk_live_...',
-      flowId: flowId,
-      // The browser is redirected to the hosted
-      // WebAuthn ceremony, then back to your app
-    });
-  }
-</script>
-
-<button onclick="startVerification(flowId)">
-  Verify you're human
-</button>`}
-        language="html"
-        filename="widget.html"
-      />
-      <DocParagraph>
-        The user authenticates with their device (Face ID, Touch ID, or security key). After
-        the ceremony, the browser is redirected back to your <code className="rounded bg-ink-100 px-1 py-0.5 font-mono text-sm text-ink-800">redirect_url</code> with
-        an opaque result token.
-      </DocParagraph>
-
-      <DocHeading level={3} id="step-5">Step 5 — Redeem the result</DocHeading>
-      <DocParagraph>
-        On your backend, redeem the opaque result token to confirm verification:
-      </DocParagraph>
-      <DocCode
-        code={`const result = await chiro.flows.redeem({
-  flow_id: flowId,
-  result_token: resultToken, // from the redirect
-});
-
-if (result.verified) {
-  // A valid passkey assertion was verified
-  await db.users.markVerified(userId, {
-    trust_score: result.trust_score,
-    device: result.device,
-  });
-}`}
+        code="await widget.start({\n  userReference: 'user@example.com',\n  purpose: 'register',\n  redirectUrl: 'https://yourapp.com/auth/callback',\n});"
         language="ts"
-        filename="server.ts"
+        filename="widget.js"
       />
-      <DocCallout variant="danger" title="Never trust a browser-only success state">
-        The browser must never be trusted to declare itself verified. Always redeem the result
-        token on your backend before acting on the verification.
+      <DocCallout variant="info" title="Stable user reference">
+        Use the same stable identifier (email, user ID, etc.) for the same person across
+        registration and authentication. The user reference is bound to the enrolled passkey.
       </DocCallout>
+
+      <DocHeading level={3} id="step-5">Step 5 — Authenticate a returning user</DocHeading>
+      <DocParagraph>
+        Use <code className="font-mono text-sm">purpose: 'authenticate'</code> for returning users.
+        The user must already have a passkey enrolled (via the register flow).
+      </DocParagraph>
+      <DocCode
+        code="await widget.start({\n  userReference: 'user@example.com',\n  purpose: 'authenticate',\n  redirectUrl: 'https://yourapp.com/auth/callback',\n});"
+        language="ts"
+        filename="widget.js"
+      />
+      <DocCallout variant="warning" title="user_not_enrolled">
+        If the user has not enrolled a passkey, the widget returns a
+        <code className="font-mono text-sm">user_not_enrolled</code> error.
+        Direct the user to complete registration first.
+      </DocCallout>
+
+      <DocHeading level={3} id="step-6">Step 6 — Handle the callback</DocHeading>
+      <DocParagraph>
+        After the ceremony, the browser is redirected to your allowlisted callback URL with
+        <code className="font-mono text-sm">flow_result</code> and <code className="font-mono text-sm">flow_id</code>
+        query parameters. Use <code className="font-mono text-sm">readFlowResult()</code> to read them:
+      </DocParagraph>
+      <DocCode
+        code="const { flowResult, flowId } = ChirographWidget.readFlowResult();\n\n// flowResult is an opaque token — send it to your backend for redemption\n// flowId identifies the verification flow"
+        language="ts"
+        filename="callback.js"
+      />
+      <DocCallout variant="danger" title="flow_result is not proof of verification">
+        Possession of <code className="font-mono text-sm">flow_result</code> in the URL is not
+        sufficient to consider a user verified. Always redeem the token server-side before
+        acting on the result.
+      </DocCallout>
+
+      <DocHeading level={3} id="step-7">Step 7 — Redeem the result server-side</DocHeading>
+      <DocParagraph>
+        Forward the result token to your trusted backend and redeem it via the Chirograph API:
+      </DocParagraph>
+      <DocCode
+        code="// Server-side — never expose your secret API key in browser code\nconst response = await fetch('https://YOUR-CHIROGRAPH-DOMAIN/v1/widget/redeem', {\
+  method: 'POST',\n  headers: {\
+    'X-API-Key': 'YOUR_TENANT_SECRET_API_KEY',\n    'Content-Type': 'application/json',\n  },\
+  body: JSON.stringify({\
+    result_token: flowResult,\
+  }),\n});\n\nconst result = await response.json();\n// result: { verified: boolean, flow_id: string, device_trust_score?: number }"
+        language="ts"
+        filename="redeem.ts"
+      />
+      <DocList items={[
+        '<code className="font-mono text-sm">verified</code> — Whether the WebAuthn assertion was valid.',
+        '<code className="font-mono text-sm">flow_id</code> — The verification flow identifier.',
+        '<code className="font-mono text-sm">device_trust_score</code> — A numeric trust score (when available).',
+      ]} />
+      <DocCallout variant="danger" title="Result token is single-use">
+        Each result token can be redeemed only once and expires after a short window.
+        Reusing or replaying a token returns <code className="font-mono text-sm">400 invalid_result_token</code>.
+      </DocCallout>
+
+      <DocHeading level={3} id="limitations">Limitations to know before launch</DocHeading>
+      <DocList items={[
+        'The widget SDK is self-hosted at <code className="font-mono text-sm">YOUR-CHIROGRAPH-DOMAIN/widget.js</code> — no public npm package is currently published.',
+        'The Bolt dashboard JSON API can create widget clients and configure allowed origins, but does not yet expose list/edit for existing widget clients. Existing widget-client allowlist editing is available through the legacy server-rendered dashboard.',
+        'Production dashboard email delivery is not yet implemented (NoopEmailSender).',
+        'Recurring billing is not implemented; one-time payments via Flutterwave require server-side configuration.',
+      ]} />
     </DocPageWrapper>
   );
 }

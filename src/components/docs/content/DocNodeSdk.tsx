@@ -1,4 +1,4 @@
-import { DocPageWrapper, DocHeading, DocParagraph, DocCode, DocCallout, DocTable, DocList, ComingSoonBadge } from '@/components/docs/DocBlocks';
+import { DocPageWrapper, DocHeading, DocParagraph, DocCode, DocCallout, DocTable, DocList } from '@/components/docs/DocBlocks';
 
 export function DocNodeSdk() {
   return (
@@ -10,13 +10,14 @@ export function DocNodeSdk() {
       </DocParagraph>
 
       <DocHeading level={3} id="installation">Installation</DocHeading>
-      <DocCode code="npm install @chirograph/verify" language="bash" filename="terminal" />
+      <DocParagraph>No npm package is required for server-side integration — use fetch or your HTTP client against the REST API.</DocParagraph>
 
       <DocHeading level={3} id="initialization">Initialization</DocHeading>
       <DocCode
-        code={`import { Chirograph } from '@chirograph/verify';
+        code={`const SK_LIVE_KEY = process.env.SK_LIVE_KEY;
 
-const chiro = new Chirograph(process.env.CHIROGRAPH_SECRET_KEY);`}
+// Use fetch or your HTTP client against the REST API
+// POST /v1/widget/flows, POST /v1/widget/redeem, etc.`}
         language="ts"
         filename="server.ts"
       />
@@ -25,46 +26,45 @@ const chiro = new Chirograph(process.env.CHIROGRAPH_SECRET_KEY);`}
       </DocCallout>
 
       <DocHeading level={3} id="methods">Methods</DocHeading>
-      <ComingSoonBadge />
-      <DocCallout variant="info" title="SDK method reference pending implementation">
-        The <code className="font-mono text-sm">@chirograph/verify</code> npm package is planned
-        but not yet published. The methods below represent the intended API surface based on the
-        existing backend endpoints. When the SDK is published, this page will be updated with
-        complete method signatures, parameter types, return types, and error behavior.
+      <DocCallout variant="info" title="No published npm package">
+        There is no published npm package for server-side integration. The widget SDK is
+        self-hosted as <code className="font-mono text-sm">/widget.js</code> on your Chirograph
+        domain. Server-side API calls use the REST endpoints directly via fetch or your HTTP
+        client of choice.
       </DocCallout>
-
-      <DocTable
-        headers={['Method', 'Parameters', 'Description']}
-        rows={[
-          [<code className="font-mono text-sm text-ink-800">chiro.challenges.create()</code>, <code className="font-mono text-sm text-ink-800">{'{ tenant, redirect_url }'}</code>, 'Creates a single-use verification challenge and returns a flow ID.'],
-          [<code className="font-mono text-sm text-ink-800">chiro.flows.redeem()</code>, <code className="font-mono text-sm text-ink-800">{'{ flow_id, result_token }'}</code>, 'Redeems an opaque result token and returns the verification result.'],
-          [<code className="font-mono text-sm text-ink-800">chiro.verify()</code>, <code className="font-mono text-sm text-ink-800">{'{ flow_id, assertion }'}</code>, 'Verifies a WebAuthn assertion server-side.'],
-        ]}
-      />
 
       <DocHeading level={3} id="example">Complete example</DocHeading>
       <DocCode
-        code={`import { Chirograph } from '@chirograph/verify';
-
-const chiro = new Chirograph(process.env.CHIROGRAPH_SECRET_KEY);
-
-// 1. Create a challenge
-const flow = await chiro.challenges.create({
-  tenant: 'acme',
-  redirect_url: 'https://yourapp.com/verified',
+        code={`// Server-side: create a widget flow
+const response = await fetch('https://YOUR-CHIROGRAPH-DOMAIN/v1/widget/flows', {
+  method: 'POST',
+  headers: {
+    'X-Widget-Key': 'YOUR_PUBLISHABLE_WIDGET_KEY',
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    user_reference: 'user@example.com',
+    redirect_url: 'https://yourapp.com/auth/callback',
+    purpose: 'register',
+  }),
 });
 
-// Send flow.flow_id to your frontend
+const { flow_id, hosted_url } = await response.json();
+// Redirect browser to hosted_url
 
-// 2. After the ceremony, redeem the result
-// (result_token comes from the redirect back to your app)
-const result = await chiro.flows.redeem({
-  flow_id: flow.flow_id,
-  result_token: resultToken,
+// After the ceremony, redeem the result
+const redeemResponse = await fetch('https://YOUR-CHIROGRAPH-DOMAIN/v1/widget/redeem', {
+  method: 'POST',
+  headers: {
+    'X-API-Key': 'YOUR_TENANT_SECRET_API_KEY',
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({ result_token: flowResult }),
 });
 
+const result = await redeemResponse.json();
 if (result.verified) {
-  console.log('User verified with trust score:', result.trust_score);
+  console.log('User verified with trust score:', result.device_trust_score);
 } else {
   console.log('Verification failed');
 }`}

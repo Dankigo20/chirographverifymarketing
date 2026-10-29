@@ -12,8 +12,10 @@ export function DocApiChallenge() {
         ['Content-Type', 'application/json'],
       ]}
       bodyParams={[
-        { name: 'tenant', type: 'string', required: true, description: 'The tenant identifier.' },
-        { name: 'redirect_url', type: 'string', required: true, description: 'The URL to redirect the user back to after the ceremony completes.' },
+        { name: 'tenant_id', type: 'string (UUID)', required: true, description: 'The tenant identifier (UUID). Must match the tenant associated with the API key.' },
+        { name: 'user_reference', type: 'string', required: true, description: 'A stable identifier for the user (e.g., email or internal user ID). Max 256 characters.' },
+        { name: 'redirect_url', type: 'string (URL)', required: true, description: 'The URL to redirect the user back to after the ceremony completes. Must be allowlisted in the widget client configuration.' },
+        { name: 'purpose', type: 'string (enum)', required: true, description: 'The purpose of the verification: "register" for new user enrollment, or "authenticate" for returning users.' },
       ]}
       requestExample={`curl -X POST https://app.chirographverify.com/v1/challenge \\
   -H "X-API-Key: $CHIROGRAPH_SECRET_KEY" \\
@@ -23,8 +25,9 @@ export function DocApiChallenge() {
     "redirect_url": "https://yourapp.com/verified"
   }'`}
       responseExample={`{
-  "flow_id": "flw_abc123...",
-  "redirect_url": "https://app.chirographverify.com/widget/flow?flow_id=flw_abc123..."
+  "challenge_id": "550e8400-e29b-41d4-a716-446655440000",
+  "challenge_url": "https://yourapp.com/auth/callback?challenge_id=550e8400-e29b-41d4-a716-446655440000",
+  "expires_at": "2026-10-28T15:00:00Z"
 }`}
       errorResponses={[
         { status: 401, code: 'unauthorized', meaning: 'Missing or invalid API key', action: 'Verify your secret key is correct and has not been revoked.' },

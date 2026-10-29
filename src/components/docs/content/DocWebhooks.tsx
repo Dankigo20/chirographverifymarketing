@@ -1,4 +1,4 @@
-import { DocPageWrapper, DocHeading, DocParagraph, DocCode, DocCallout, ComingSoonBadge } from '@/components/docs/DocBlocks';
+import { DocPageWrapper, DocHeading, DocParagraph, DocCode, DocCallout } from '@/components/docs/DocBlocks';
 
 export function DocWebhooks() {
   return (
@@ -17,12 +17,11 @@ export function DocWebhooks() {
       </DocParagraph>
 
       <DocHeading level={3} id="events">Events</DocHeading>
-      <ComingSoonBadge />
-      <DocCallout variant="info" title="Event reference pending implementation">
-        The specific named webhook events supported by the backend (e.g., event type names,
-        payload schemas, and retry behavior) are pending finalization. The webhook
-        infrastructure exists in the backend, but the complete event reference is not yet
-        available for documentation.
+      <DocCallout variant="info" title="Webhook events">
+        Webhook events are delivered via a PostgreSQL outbox with a background worker.
+        Supported event types are listed on the /dashboard/webhooks endpoint. Each event is
+        HMAC-signed using your webhook secret and delivered with retries (30s / 5m / 30m,
+        max 4 attempts).
       </DocCallout>
       <DocParagraph>
         When the event reference is finalized, this page will document:
@@ -68,11 +67,10 @@ function verifyWebhook(rawBody: string, signature: string, secret: string): bool
       </DocCallout>
 
       <DocHeading level={3} id="retries">Retries</DocHeading>
-      <ComingSoonBadge />
-      <DocCallout variant="info" title="Retry behavior pending implementation">
-        The specific retry behavior (retry count, backoff strategy, and delivery guarantees) is
-        not yet finalized in the backend. This section will be updated when the retry
-        implementation is complete.
+      <DocCallout variant="info" title="Retry behavior">
+        Retry schedule: attempt 1 immediately, then 30s / 5m / 30m, then failed (max 4
+        attempts). Concurrent deliveries are bounded. Private destinations (127.0.0.1,
+        RFC1918) are rejected in production.
       </DocCallout>
     </DocPageWrapper>
   );

@@ -29,21 +29,22 @@ export function DocRedeemingResult() {
 
       <DocHeading level={3} id="server-side-example">Server-side example</DocHeading>
       <DocCode
-        code={`import { Chirograph } from '@chirograph/verify';
-
-const chiro = new Chirograph(process.env.CHIROGRAPH_SECRET_KEY);
-
-// The result_token comes from the redirect back to your app
-const result = await chiro.flows.redeem({
-  flow_id: flowId,
-  result_token: resultToken,
+        code={`// Server-side: redeem the result token
+const response = await fetch('https://YOUR-CHIROGRAPH-DOMAIN/v1/widget/redeem', {
+  method: 'POST',
+  headers: {
+    'X-API-Key': 'YOUR_TENANT_SECRET_API_KEY',
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({ result_token: flowResult }),
 });
+
+const result = await response.json();
 
 if (result.verified) {
   // Verification confirmed by Chirograph server-side
   await db.users.markVerified(userId, {
-    trust_score: result.trust_score,
-    device: result.device,
+    trust_score: result.device_trust_score,
   });
 } else {
   // Verification failed or was invalid

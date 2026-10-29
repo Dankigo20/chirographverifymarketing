@@ -1,4 +1,4 @@
-import { DocPageWrapper, DocHeading, DocParagraph, DocTable, DocCallout, ComingSoonBadge } from '@/components/docs/DocBlocks';
+import { DocPageWrapper, DocHeading, DocParagraph, DocTable, DocCallout } from '@/components/docs/DocBlocks';
 
 export function DocErrors() {
   return (
@@ -62,11 +62,10 @@ export function DocErrors() {
       />
 
       <DocCallout variant="info" title="Error response format">
-        <ComingSoonBadge />
-        The exact error response schema (field names, error code format, and additional
-        metadata) is pending finalization in the backend. The error codes listed above are
-        based on the known API behavior. This page will be updated when the final error schema
-        is documented.
+        Error responses include an error code and a human-readable message. All error codes
+        follow the pattern: unauthorized, forbidden, invalid_request, user_not_enrolled,
+        rate_limited, unavailable, network_error, invalid_response, already_starting,
+        invalid_configuration.
       </DocCallout>
     </DocPageWrapper>
   );

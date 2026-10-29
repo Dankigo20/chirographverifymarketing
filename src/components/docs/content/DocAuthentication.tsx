@@ -5,8 +5,9 @@ export function DocAuthentication() {
     <DocPageWrapper>
       <DocHeading level={2}>Authentication</DocHeading>
       <DocParagraph>
-        Chirograph Verify uses two distinct credential types. Understanding the difference is
-        critical for keeping your integration secure.
+        Chirograph Verify uses Clerk for dashboard authentication and two distinct API credential
+        types for programmatic access. Understanding the difference is critical for keeping your
+        integration secure.
       </DocParagraph>
 
       <DocHeading level={3} id="secret-key">Secret key</DocHeading>
