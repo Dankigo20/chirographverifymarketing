@@ -3,7 +3,7 @@ import { DocPageWrapper, DocHeading, DocParagraph, DocCode, DocCallout, DocList 
 export function DocWebhookSecurity() {
   return (
     <DocPageWrapper>
-      <DocHeading level={2}>Webhook Security</DocHeading>
+      <DocHeading level={1}>Webhook Security</DocHeading>
       <DocParagraph>
         Webhook events are signed using HMAC. Your backend must verify the signature before
         trusting any event payload. This prevents forged webhook deliveries and ensures that

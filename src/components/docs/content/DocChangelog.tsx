@@ -3,7 +3,7 @@ import { DocPageWrapper, DocHeading, DocParagraph } from '@/components/docs/DocB
 export function DocChangelog() {
   return (
     <DocPageWrapper>
-      <DocHeading level={2}>Changelog</DocHeading>
+      <DocHeading level={1}>Changelog</DocHeading>
       <DocParagraph>
         Chirograph Verify API v1
       </DocParagraph>

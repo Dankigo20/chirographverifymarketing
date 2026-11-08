@@ -3,7 +3,7 @@ import { DocPageWrapper, DocHeading, DocParagraph, DocCode, DocCallout, DocTable
 export function DocNodeSdk() {
   return (
     <DocPageWrapper>
-      <DocHeading level={2}>Node.js SDK</DocHeading>
+      <DocHeading level={1}>Node.js SDK</DocHeading>
       <DocParagraph>
         The official Node.js SDK provides a typed client for server-side integration with the
         Chirograph Verify API.

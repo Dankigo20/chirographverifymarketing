@@ -3,7 +3,7 @@ import { DocPageWrapper, DocHeading, DocParagraph, DocList, DocCallout } from '@
 export function DocIntroduction() {
   return (
     <DocPageWrapper>
-      <DocHeading level={2}>Introduction</DocHeading>
+      <DocHeading level={1}>Introduction</DocHeading>
       <DocParagraph>
         Chirograph Verify is a device-biometric bot-prevention API that uses WebAuthn to help
         applications raise the cost of automated or abusive activity.

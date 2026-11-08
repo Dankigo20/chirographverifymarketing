@@ -3,7 +3,7 @@ import { DocPageWrapper, DocHeading, DocParagraph, DocCode, DocCallout, DocList,
 export function DocWidgetSdk() {
   return (
     <DocPageWrapper>
-      <DocHeading level={2}>Browser Widget SDK</DocHeading>
+      <DocHeading level={1}>Browser Widget SDK</DocHeading>
       <DocParagraph>
         The browser widget SDK is a lightweight JavaScript library that redirects the user's
         browser to the Chirograph-hosted WebAuthn ceremony and returns them to your application

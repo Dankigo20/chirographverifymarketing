@@ -7,13 +7,13 @@ import { Badge } from '@/components/ui/Badge';
  * These keep every doc page consistent and reduce duplication.
  */
 
-export function DocHeading({ id, level = 2, children }: { id?: string; level?: 2 | 3; children: ReactNode }) {
-  const Tag = (level === 2 ? 'h2' : 'h3') as 'h2' | 'h3';
+export function DocHeading({ id, level = 2, children }: { id?: string; level?: 1 | 2 | 3; children: ReactNode }) {
+  const Tag = (level === 1 ? 'h1' : level === 2 ? 'h2' : 'h3') as 'h1' | 'h2' | 'h3';
   return (
     <Tag
       id={id}
       className="scroll-mt-24 font-semibold tracking-tight text-ink-900 [&:not(:first-child)]:mt-10"
-      style={level === 2 ? { fontSize: '1.5rem', lineHeight: '2rem' } : { fontSize: '1.125rem', lineHeight: '1.75rem' }}
+      style={level === 1 || level === 2 ? { fontSize: '1.5rem', lineHeight: '2rem' } : { fontSize: '1.125rem', lineHeight: '1.75rem' }}
     >
       {children}
     </Tag>

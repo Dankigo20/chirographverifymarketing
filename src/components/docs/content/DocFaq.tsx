@@ -42,7 +42,7 @@ export function DocFaq() {
 
   return (
     <DocPageWrapper>
-      <DocHeading level={2}>FAQ</DocHeading>
+      <DocHeading level={1}>FAQ</DocHeading>
 
       <div className="mt-6 space-y-3">
         {faqs.map((faq, i) => (

@@ -3,7 +3,7 @@ import { DocPageWrapper, DocHeading, DocParagraph, DocList, DocCallout } from '@
 export function DocDeviceTrust() {
   return (
     <DocPageWrapper>
-      <DocHeading level={2}>Device Trust &amp; Abuse Detection</DocHeading>
+      <DocHeading level={1}>Device Trust &amp; Abuse Detection</DocHeading>
       <DocParagraph>
         Chirograph Verify produces a trust score and device-level signals to help you make
         risk-based decisions. These signals are based on the WebAuthn ceremony, device

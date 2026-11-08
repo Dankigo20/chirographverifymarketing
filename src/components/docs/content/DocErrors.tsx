@@ -3,7 +3,7 @@ import { DocPageWrapper, DocHeading, DocParagraph, DocTable, DocCallout } from '
 export function DocErrors() {
   return (
     <DocPageWrapper>
-      <DocHeading level={2}>Errors</DocHeading>
+      <DocHeading level={1}>Errors</DocHeading>
       <DocParagraph>
         Chirograph Verify uses standard HTTP status codes to indicate the outcome of API
         requests. Error responses include an error code and a human-readable message.

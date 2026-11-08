@@ -3,7 +3,7 @@ import { DocPageWrapper, DocHeading, DocParagraph, DocList, DocCode, DocCallout,
 export function DocApiKeys() {
   return (
     <DocPageWrapper>
-      <DocHeading level={2}>API Keys</DocHeading>
+      <DocHeading level={1}>API Keys</DocHeading>
       <DocParagraph>
         Chirograph Verify uses two types of API keys. Understanding where each key belongs and
         how to protect it is essential for a secure integration.

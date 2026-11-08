@@ -3,7 +3,7 @@ import { DocPageWrapper, DocHeading, DocParagraph, DocList, DocCallout } from '@
 export function DocSecurityModel() {
   return (
     <DocPageWrapper>
-      <DocHeading level={2}>Security Model</DocHeading>
+      <DocHeading level={1}>Security Model</DocHeading>
       <DocParagraph>
         The Chirograph Verify security model is designed so that no party — not the browser, not
         the user, not a man-in-the-middle — can forge a verification result.

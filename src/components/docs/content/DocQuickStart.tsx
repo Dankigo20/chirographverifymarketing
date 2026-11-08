@@ -3,7 +3,7 @@ import { DocPageWrapper, DocHeading, DocParagraph, DocList, DocCode, DocCallout 
 export function DocQuickStart() {
   return (
     <DocPageWrapper>
-      <DocHeading level={2}>Quick Start</DocHeading>
+      <DocHeading level={1}>Quick Start</DocHeading>
       <DocParagraph>
         Get from zero to a working verification flow. Chirograph Verify uses a
         hosted WebAuthn ceremony: your backend creates a flow, the user's browser

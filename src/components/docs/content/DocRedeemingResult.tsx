@@ -3,7 +3,7 @@ import { DocPageWrapper, DocHeading, DocParagraph, DocList, DocCode, DocCallout 
 export function DocRedeemingResult() {
   return (
     <DocPageWrapper>
-      <DocHeading level={2}>Redeeming the Result</DocHeading>
+      <DocHeading level={1}>Redeeming the Result</DocHeading>
       <DocParagraph>
         After the hosted ceremony completes, the browser is redirected back to your application
         with an opaque result token. This token is meaningless on its own — it must be redeemed

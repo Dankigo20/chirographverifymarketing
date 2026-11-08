@@ -42,7 +42,7 @@ export function EndpointDoc({
 }: EndpointDocProps) {
   return (
     <DocPageWrapper>
-      <DocHeading level={2}>{`${method} ${path}`}</DocHeading>
+      <DocHeading level={1}>{`${method} ${path}`}</DocHeading>
       {comingSoon && <ComingSoonBadge />}
       <DocParagraph>{description}</DocParagraph>
 

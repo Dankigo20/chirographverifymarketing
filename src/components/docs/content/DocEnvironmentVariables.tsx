@@ -3,7 +3,7 @@ import { DocPageWrapper, DocHeading, DocParagraph, DocCode, DocCallout, DocTable
 export function DocEnvironmentVariables() {
   return (
     <DocPageWrapper>
-      <DocHeading level={2}>Environment Variables</DocHeading>
+      <DocHeading level={1}>Environment Variables</DocHeading>
       <DocParagraph>
         Chirograph Verify uses the following server-side and browser configuration. Each belongs in a different part of
         your stack.

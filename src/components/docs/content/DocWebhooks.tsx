@@ -3,7 +3,7 @@ import { DocPageWrapper, DocHeading, DocParagraph, DocCode, DocCallout } from '@
 export function DocWebhooks() {
   return (
     <DocPageWrapper>
-      <DocHeading level={2}>Webhooks</DocHeading>
+      <DocHeading level={1}>Webhooks</DocHeading>
       <DocParagraph>
         Chirograph Verify can deliver signed webhook events to your backend when verification
         events occur. This allows you to react to verification outcomes in real time without

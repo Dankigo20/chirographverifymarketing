@@ -3,7 +3,7 @@ import { DocPageWrapper, DocHeading, DocParagraph, DocList, DocCallout } from '@
 export function DocHostedCeremony() {
   return (
     <DocPageWrapper>
-      <DocHeading level={2}>Hosted Ceremony</DocHeading>
+      <DocHeading level={1}>Hosted Ceremony</DocHeading>
       <DocParagraph>
         The hosted ceremony is the core of the Chirograph Verify verification process. It is a
         Chirograph-hosted WebAuthn flow that runs in the user's browser after the widget SDK

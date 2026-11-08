@@ -3,7 +3,7 @@ import { DocPageWrapper, DocHeading, DocParagraph, DocList, DocCallout } from '@
 export function DocReplayProtection() {
   return (
     <DocPageWrapper>
-      <DocHeading level={2}>Replay Protection</DocHeading>
+      <DocHeading level={1}>Replay Protection</DocHeading>
       <DocParagraph>
         Chirograph Verify is designed to prevent replay attacks at every stage of the
         verification flow. Multiple layers of protection ensure that captured challenges,

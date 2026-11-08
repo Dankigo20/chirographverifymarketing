@@ -3,7 +3,7 @@ import { DocPageWrapper, DocHeading, DocParagraph, DocList, DocCode, DocCallout 
 export function DocVerificationFlow() {
   return (
     <DocPageWrapper>
-      <DocHeading level={2}>Verification Flow</DocHeading>
+      <DocHeading level={1}>Verification Flow</DocHeading>
       <DocParagraph>
         Every Chirograph Verify verification follows a three-step flow: Challenge, Ceremony,
         and Redeem. Each step has a clear responsibility split between the customer's

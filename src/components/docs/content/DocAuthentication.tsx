@@ -3,7 +3,7 @@ import { DocPageWrapper, DocHeading, DocParagraph, DocCode, DocCallout } from '@
 export function DocAuthentication() {
   return (
     <DocPageWrapper>
-      <DocHeading level={2}>Authentication</DocHeading>
+      <DocHeading level={1}>Authentication</DocHeading>
       <DocParagraph>
         Chirograph Verify uses Clerk for dashboard authentication and two distinct API credential
         types for programmatic access. Understanding the difference is critical for keeping your
