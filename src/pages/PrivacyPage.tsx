@@ -1,16 +1,12 @@
 import { useSeo } from '@/hooks/useSeo';
+import { seo } from '@/config/seo';
 import { Reveal } from '@/components/ui/Reveal';
 import { Badge } from '@/components/ui/Badge';
 import { siteConfig } from '@/config/site';
 import { Lock } from 'lucide-react';
 
 export function PrivacyPage() {
-  useSeo({
-    title: 'Privacy Policy — Chirograph Verify',
-    description:
-      'How Chirograph Verify handles account information, API credentials, verification data, WebAuthn information, device fingerprints, and abuse-detection signals.',
-    path: '/privacy',
-  });
+  useSeo(seo.privacy);
 
   return (
     <>

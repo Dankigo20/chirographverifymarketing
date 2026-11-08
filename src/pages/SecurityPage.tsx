@@ -1,4 +1,5 @@
 import { useSeo } from '@/hooks/useSeo';
+import { seo } from '@/config/seo';
 import { Reveal } from '@/components/ui/Reveal';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { SecurityDiagram } from '@/components/diagrams/SecurityDiagram';
@@ -126,12 +127,7 @@ function verifyWebhook(rawBody: string, signature: string, secret: string): bool
 // }`;
 
 export function SecurityPage() {
-  useSeo({
-    title: 'Security — Chirograph Verify',
-    description:
-      'The security architecture behind Chirograph Verify: WebAuthn, server-side verification, single-use challenges, tenant isolation, signed webhooks, and opaque results.',
-    path: '/security',
-  });
+  useSeo(seo.security);
 
   return (
     <>

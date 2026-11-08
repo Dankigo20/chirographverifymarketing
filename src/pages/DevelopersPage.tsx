@@ -1,4 +1,5 @@
 import { useSeo } from '@/hooks/useSeo';
+import { seo } from '@/config/seo';
 import { Reveal } from '@/components/ui/Reveal';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { CodeBlock, CodeTabs } from '@/components/ui/CodeBlock';
@@ -112,12 +113,7 @@ const endpoints = [
 ];
 
 export function DevelopersPage() {
-  useSeo({
-    title: 'Developers — Chirograph Verify',
-    description:
-      'Integrate Chirograph Verify: quick start, API reference, widget SDK, webhook events, and the verification flow architecture.',
-    path: '/developers',
-  });
+  useSeo(seo.developers);
 
   return (
     <>

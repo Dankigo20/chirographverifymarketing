@@ -65,7 +65,10 @@ export function Navbar({ currentPath, navigate }: NavbarProps) {
               key={item.href}
               href={item.href}
               active={isActive(currentPath, item.href)}
-              onClick={() => go(item.href)}
+              onClick={(event) => {
+                event.preventDefault();
+                go(item.href);
+              }}
             >
               {item.label}
             </NavLink>
@@ -103,9 +106,13 @@ export function Navbar({ currentPath, navigate }: NavbarProps) {
         <div className="fixed inset-0 top-14 z-40 bg-black/95 backdrop-blur-xl">
           <div className="container-page flex h-full flex-col gap-1 overflow-y-auto pt-6 pb-32">
             {siteConfig.nav.map((item) => (
-              <button
+              <a
                 key={item.href}
-                onClick={() => go(item.href)}
+                href={item.href}
+                onClick={(event) => {
+                  event.preventDefault();
+                  go(item.href);
+                }}
                 className={`flex items-center justify-between rounded-control px-4 py-3 text-left text-[15px] font-medium transition-colors ${
                   isActive(currentPath, item.href)
                     ? 'bg-primary-50 text-primary-700'
@@ -114,7 +121,7 @@ export function Navbar({ currentPath, navigate }: NavbarProps) {
               >
                 {item.label}
                 <ChevronRight className="h-4 w-4 text-secondary" />
-              </button>
+              </a>
             ))}
             <div className="mt-4 flex flex-col gap-2">
               <ButtonLink href={appLinks.signIn} variant="secondary" size="lg" external>
@@ -133,17 +140,19 @@ export function Navbar({ currentPath, navigate }: NavbarProps) {
 }
 
 function NavLink({
+  href,
   active,
   onClick,
   children,
 }: {
   href: string;
   active: boolean;
-  onClick: () => void;
+  onClick: (event: React.MouseEvent<HTMLAnchorElement>) => void;
   children: React.ReactNode;
 }) {
   return (
-    <button
+    <a
+      href={href}
       onClick={onClick}
       className={`relative rounded-control px-3 py-1.5 text-sm font-medium transition-colors ${
         active ? 'text-ink-900' : 'text-ink-500 hover:text-ink-900'
@@ -151,7 +160,7 @@ function NavLink({
     >
       {children}
       {active && <span className="absolute inset-x-3 -bottom-px h-[2px] rounded-full bg-ink-900" />}
-    </button>
+    </a>
   );
 }
 

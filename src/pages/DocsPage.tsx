@@ -4,6 +4,7 @@ import { BrandMark } from '@/components/brand/BrandMark';
 import { DocsSidebar } from '@/components/docs/DocsSidebar';
 import { DocNav } from '@/components/docs/DocNav';
 import { useSeo } from '@/hooks/useSeo';
+import { docsSeo } from '@/config/seo';
 import { docSections, allDocPages, docsLandingSlug } from '@/config/docs';
 
 import { DocIntroduction } from '@/components/docs/content/DocIntroduction';
@@ -77,9 +78,9 @@ export function DocsPage({ slug, navigate }: DocsPageProps) {
   const pageTitle = titleMap[currentSlug] ?? 'Documentation';
 
   useSeo({
-    title: `${pageTitle} — Chirograph Verify Docs`,
-    description: 'Developer documentation for Chirograph Verify — the device-biometric bot-prevention API built on WebAuthn.',
-    path: `/docs/${currentSlug}`,
+    title: docsSeo(currentSlug, pageTitle).title,
+    description: docsSeo(currentSlug, pageTitle).description,
+    path: slug ? `/docs/${currentSlug}` : '/docs',
   });
 
   // Close mobile sidebar on slug change
@@ -119,15 +120,49 @@ export function DocsPage({ slug, navigate }: DocsPageProps) {
         <div className="container-page mx-auto max-w-4xl px-5 py-12 lg:px-10 lg:py-16">
           {/* Breadcrumb */}
           <div className="mb-8 flex items-center gap-2 text-sm text-secondary">
-            <button
-              onClick={() => navigate('/docs')}
+            <a
+              href="/docs/"
+              onClick={(event) => {
+                event.preventDefault();
+                navigate('/docs');
+              }}
               className="hover:text-ink-700"
             >
               Docs
-            </button>
+            </a>
             <span>/</span>
             <span className="text-ink-600">{pageTitle}</span>
           </div>
+
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                '@context': 'https://schema.org',
+                '@type': 'BreadcrumbList',
+                itemListElement: [
+                  {
+                    '@type': 'ListItem',
+                    position: 1,
+                    name: 'Home',
+                    item: 'https://chirographverify.com/',
+                  },
+                  {
+                    '@type': 'ListItem',
+                    position: 2,
+                    name: 'Documentation',
+                    item: 'https://chirographverify.com/#/docs',
+                  },
+                  {
+                    '@type': 'ListItem',
+                    position: 3,
+                    name: pageTitle,
+                    item: `https://chirographverify.com/#/docs/${currentSlug}`,
+                  },
+                ],
+              }),
+            }}
+          />
 
           {content ?? (
             <div className="py-20 text-center">

@@ -61,21 +61,21 @@ export function Footer({ navigate }: FooterProps) {
           {/* Link columns */}
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-4 lg:col-span-8">
             <FooterCol title="Product">
-              <FooterLink onClick={() => navigate('/#product')}>Features</FooterLink>
-              <FooterLink onClick={() => navigate('/pricing')}>Pricing</FooterLink>
-              <FooterLink onClick={() => navigate('/docs')}>Documentation</FooterLink>
-              <FooterLink onClick={() => navigate('/#faq')}>FAQ</FooterLink>
+              <FooterLink href="/#product" onClick={() => navigate('/#product')}>Features</FooterLink>
+              <FooterLink href="/pricing/" onClick={() => navigate('/pricing')}>Pricing</FooterLink>
+              <FooterLink href="/docs/" onClick={() => navigate('/docs')}>Documentation</FooterLink>
+              <FooterLink href="/#faq" onClick={() => navigate('/#faq')}>FAQ</FooterLink>
             </FooterCol>
 
             <FooterCol title="Company">
-              <FooterLink onClick={() => navigate('/#product')}>About</FooterLink>
+              <FooterLink href="/#product" onClick={() => navigate('/#product')}>About</FooterLink>
               <FooterLink href={`mailto:${siteConfig.emails.hello}`}>Contact</FooterLink>
             </FooterCol>
 
             <FooterCol title="Legal">
-              <FooterLink onClick={() => navigate('/terms')}>Terms of Use</FooterLink>
-              <FooterLink onClick={() => navigate('/privacy')}>Privacy Policy</FooterLink>
-              <FooterLink onClick={() => navigate('/cookies')}>Cookie Policy</FooterLink>
+              <FooterLink href="/terms/" onClick={() => navigate('/terms')}>Terms of Use</FooterLink>
+              <FooterLink href="/privacy/" onClick={() => navigate('/privacy')}>Privacy Policy</FooterLink>
+              <FooterLink href="/cookies/" onClick={() => navigate('/cookies')}>Cookie Policy</FooterLink>
             </FooterCol>
 
             <FooterCol title="Application">
@@ -124,6 +124,12 @@ function FooterLink({
       <li>
         <a
           href={href}
+          onClick={(event) => {
+            if (onClick && !external) {
+              event.preventDefault();
+              onClick();
+            }
+          }}
           target={external ? '_blank' : undefined}
           rel={external ? 'noopener noreferrer' : undefined}
           className="text-sm text-ink-500 transition-colors hover:text-ink-900"

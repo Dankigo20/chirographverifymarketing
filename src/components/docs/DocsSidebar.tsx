@@ -88,8 +88,12 @@ export function DocsSidebar({ currentSlug, navigate, isMobileOpen, onMobileClose
                     const active = page.slug === currentSlug;
                     return (
                       <li key={page.slug}>
-                        <button
-                          onClick={() => go(page.slug)}
+                        <a
+                          href={`/docs/${page.slug}/`}
+                          onClick={(event) => {
+                            event.preventDefault();
+                            go(page.slug);
+                          }}
                           className={`flex w-full items-center justify-between rounded-lg px-3 py-2 text-left text-sm transition-all duration-200 ${
                             active
                               ? 'bg-primary-50 font-medium text-primary-700'
@@ -105,7 +109,7 @@ export function DocsSidebar({ currentSlug, navigate, isMobileOpen, onMobileClose
                             )}
                           </span>
                           {active && <ChevronRight className="h-3.5 w-3.5 shrink-0" />}
-                        </button>
+                        </a>
                       </li>
                     );
                   })}

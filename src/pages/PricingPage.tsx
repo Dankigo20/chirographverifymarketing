@@ -1,4 +1,5 @@
 import { useSeo } from '@/hooks/useSeo';
+import { seo } from '@/config/seo';
 import { Reveal } from '@/components/ui/Reveal';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { ButtonLink } from '@/components/ui/Button';
@@ -8,12 +9,7 @@ import { pricingTiers, comparisonRows, type PricingTier } from '@/config/pricing
 import { Check, Minus, ArrowRight } from 'lucide-react';
 
 export function PricingPage() {
-  useSeo({
-    title: 'Pricing — Chirograph Verify',
-    description:
-      'Simple, usage-based pricing for passkey verification. Start free and scale as you verify more users.',
-    path: '/pricing',
-  });
+  useSeo(seo.pricing);
 
   return (
     <>

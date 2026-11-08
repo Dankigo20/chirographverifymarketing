@@ -34,11 +34,15 @@ export function useSeo({ title, description, path = '/', ogType = 'website' }: S
   useEffect(() => {
     const fullTitle = title.includes('Chirograph') ? title : `${title} · Chirograph Verify`;
     const desc = description ?? siteConfig.description;
-    const url = `${SITE_URL}/#${path}`;
+    const normalizedPath = path === '/' ? '/' : path.startsWith('/') ? path : `/${path}`;
+    const urlPath = normalizedPath === '/' ? '/' : normalizedPath.endsWith('/') ? normalizedPath : `${normalizedPath}/`;
+    const url = `${SITE_URL}${urlPath}`;
 
     document.title = fullTitle;
     setTag('name', 'description', desc);
-    setLink('canonical', `${SITE_URL}${path === '/' ? '/' : `/#${path}`}`);
+    setLink('canonical', url);
+
+    const imageUrl = `${SITE_URL}/favicon.svg`;
 
     // Open Graph
     setTag('property', 'og:title', fullTitle);
@@ -46,11 +50,16 @@ export function useSeo({ title, description, path = '/', ogType = 'website' }: S
     setTag('property', 'og:url', url);
     setTag('property', 'og:type', ogType);
     setTag('property', 'og:site_name', 'Chirograph Verify');
+    setTag('property', 'og:locale', 'en_US');
+    setTag('property', 'og:image', imageUrl);
+    setTag('property', 'og:image:alt', 'Chirograph Verify brand mark');
 
     // Twitter / X
     setTag('name', 'twitter:card', 'summary_large_image');
     setTag('name', 'twitter:title', fullTitle);
     setTag('name', 'twitter:description', desc);
     setTag('name', 'twitter:site', siteConfig.social.x.handle);
+    setTag('name', 'twitter:image', imageUrl);
+    setTag('name', 'twitter:image:alt', 'Chirograph Verify brand mark');
   }, [title, description, path, ogType]);
 }

@@ -1,4 +1,5 @@
 import { useSeo } from '@/hooks/useSeo';
+import { seo } from '@/config/seo';
 import { HeroSection } from '@/components/sections/HeroSection';
 import { ProblemSection } from '@/components/sections/ProblemSection';
 import { ProductExplanation } from '@/components/sections/ProductExplanation';
@@ -12,12 +13,7 @@ import { FAQSection } from '@/components/sections/FAQSection';
 import { FinalCTA } from '@/components/sections/FinalCTA';
 
 export function HomePage() {
-  useSeo({
-    title: 'Chirograph Verify — Prove you\'re human without passwords or SMS',
-    description:
-      'Bot-prevention API using WebAuthn passkeys. Server-verified, single-use, no CAPTCHA or SMS codes.',
-    path: '/',
-  });
+  useSeo(seo.home);
 
   return (
     <>

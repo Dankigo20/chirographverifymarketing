@@ -1,16 +1,12 @@
 import { useSeo } from '@/hooks/useSeo';
+import { seo } from '@/config/seo';
 import { Reveal } from '@/components/ui/Reveal';
 import { Badge } from '@/components/ui/Badge';
 import { siteConfig } from '@/config/site';
 import { ShieldCheck } from 'lucide-react';
 
 export function TermsPage() {
-  useSeo({
-    title: 'Terms of Use — Chirograph Verify',
-    description:
-      'The terms governing use of the Chirograph Verify service, API, and verification infrastructure.',
-    path: '/terms',
-  });
+  useSeo(seo.terms);
 
   return (
     <>

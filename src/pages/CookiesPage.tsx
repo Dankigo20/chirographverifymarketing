@@ -1,16 +1,12 @@
 import { useSeo } from '@/hooks/useSeo';
+import { seo } from '@/config/seo';
 import { Reveal } from '@/components/ui/Reveal';
 import { Badge } from '@/components/ui/Badge';
 import { siteConfig } from '@/config/site';
 import { Cookie } from 'lucide-react';
 
 export function CookiesPage() {
-  useSeo({
-    title: 'Cookie Policy — Chirograph Verify',
-    description:
-      'How the Chirograph Verify website uses cookies and similar technologies, including strictly necessary, functional, and security cookies.',
-    path: '/cookies',
-  });
+  useSeo(seo.cookies);
 
   return (
     <>

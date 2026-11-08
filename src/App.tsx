@@ -1,4 +1,4 @@
-import { useHashRoute } from '@/hooks/useHashRoute';
+import { usePathRoute } from '@/hooks/usePathRoute';
 import { Navbar } from '@/components/navigation/Navbar';
 import { Footer } from '@/components/navigation/Footer';
 import { HomePage } from '@/pages/HomePage';
@@ -11,7 +11,7 @@ import { CookiesPage } from '@/pages/CookiesPage';
 import { DocsPage } from '@/pages/DocsPage';
 
 function App() {
-  const { path, navigate } = useHashRoute();
+  const { path, navigate } = usePathRoute();
 
   // Check if this is a docs route
   const isDocsRoute = path === '/docs' || path.startsWith('/docs/');
