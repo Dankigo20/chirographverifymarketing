@@ -152,7 +152,7 @@ function DocArticleContent({ slug, onNavigate }: { slug: string; onNavigate: (pa
             {slug === 'authentication' ? 'Authentication' : 'API Keys'}
           </h1>
           <p className="text-sm leading-relaxed text-zinc-400">
-            Server-side API endpoints authenticate using your tenant secret key passed via the <code className="font-mono text-emerald-400">X-API-Key</code> header. Browser widget flows use your publishable widget key (<code className="font-mono text-[#7e95ff]">pk_live_...</code>).
+            Server-side API endpoints authenticate using your tenant secret key passed via the <code className="font-mono text-emerald-400">X-API-Key</code> header. Browser widget flows use your publishable widget key (a 64-character hexadecimal string).
           </p>
           <div className="glass-panel overflow-x-auto rounded-2xl p-1.5">
             <table className="glass-well w-full rounded-xl text-left text-sm overflow-hidden">
@@ -172,7 +172,7 @@ function DocArticleContent({ slug, onNavigate }: { slug: string; onNavigate: (pa
                 <tr>
                   <td className="px-4 py-3 font-sans text-sm">Production</td>
                   <td className="px-4 py-3 text-emerald-400">sk_live_…</td>
-                  <td className="px-4 py-3 text-[#7e95ff]">pk_live_…</td>
+                  <td className="px-4 py-3 text-[#7e95ff]">64-hex widget key</td>
                 </tr>
               </tbody>
             </table>
@@ -204,7 +204,7 @@ function DocArticleContent({ slug, onNavigate }: { slug: string; onNavigate: (pa
             filename=".env"
             code={`CHIROGRAPH_SECRET_KEY=sk_live_...
 CHIROGRAPH_WEBHOOK_SECRET=whsec_...
-VITE_CHIROGRAPH_PUBLISHABLE_KEY=pk_live_...`}
+VITE_CHIROGRAPH_PUBLISHABLE_KEY=<64-hex-widget-key>`}
           />
         </div>
       );
@@ -331,6 +331,179 @@ VITE_CHIROGRAPH_PUBLISHABLE_KEY=pk_live_...`}
               <li>Security model documentation including replay protection, device trust, and webhook security</li>
             </ul>
           </GlassCard>
+        </div>
+      );
+
+    case 'hosted-ceremony':
+      return (
+        <div className="space-y-6">
+          <h1 className="font-display text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+            Hosted Ceremony
+          </h1>
+          <p className="text-sm leading-relaxed text-zinc-400">
+            The hosted ceremony is the core of the Chirograph Verify verification process. It is a Chirograph-hosted WebAuthn flow that runs in the user&apos;s browser after the widget SDK redirects them.
+          </p>
+          <h2 className="text-lg font-medium text-white">How it works</h2>
+          <ol className="list-decimal space-y-1.5 pl-5 text-sm text-zinc-400">
+            <li>The customer backend creates a flow via the Chirograph API.</li>
+            <li>The customer backend sends the flow information to the client.</li>
+            <li>The widget SDK redirects the browser to the Chirograph-hosted ceremony.</li>
+            <li>The user authenticates using a supported WebAuthn authenticator (Face ID, Touch ID, or security key).</li>
+            <li>Chirograph verifies the authentication server-side.</li>
+            <li>An opaque result is returned for server-side redemption.</li>
+          </ol>
+          <h2 className="text-lg font-medium text-white">What happens during the ceremony</h2>
+          <p className="text-sm leading-relaxed text-zinc-400">
+            During the ceremony, the user&apos;s device performs a WebAuthn authentication. The device uses a platform authenticator (such as Face ID or Touch ID) or a roaming authenticator (such as a security key) to sign the challenge. The private key never leaves the device. Chirograph receives only the cryptographic assertion and verifies it server-side.
+          </p>
+          <GlassCard className="p-5">
+            <p className="text-sm font-medium text-white">Biometrics stay on the device</p>
+            <p className="mt-1 text-xs text-zinc-400">
+              Chirograph Verify does not receive or store raw biometric data. Face ID, Touch ID, or another platform authenticator performs the local authentication process. Chirograph receives only the cryptographic WebAuthn result necessary for verification.
+            </p>
+          </GlassCard>
+          <h2 className="text-lg font-medium text-white">Redirect behavior</h2>
+          <p className="text-sm leading-relaxed text-zinc-400">
+            The widget SDK performs a top-level browser redirect to the hosted ceremony. It is not an iframe, modal, or inline component. After the ceremony completes, the browser is redirected back to the redirect_url specified when the flow was created.
+          </p>
+          <GlassCard className="p-5 border-red-500/20">
+            <p className="text-sm font-medium text-red-400">Never trust a browser-only success state</p>
+            <p className="mt-1 text-xs text-zinc-400">
+              The customer&apos;s backend must redeem the result. A browser-only success state is never sufficient to consider a user verified. Always perform server-side redemption before acting on the verification.
+            </p>
+          </GlassCard>
+        </div>
+      );
+
+    case 'verification-flow':
+      return (
+        <div className="space-y-6">
+          <h1 className="font-display text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+            Verification Flow
+          </h1>
+          <p className="text-sm leading-relaxed text-zinc-400">
+            The Chirograph Verify verification flow is a server-initiated, single-use WebAuthn ceremony. Your backend creates a challenge, the user completes a biometric authentication in the browser, and your backend verifies the cryptographic result.
+          </p>
+          <h2 className="text-lg font-medium text-white">Flow steps</h2>
+          <ol className="list-decimal space-y-1.5 pl-5 text-sm text-zinc-400">
+            <li>Your server calls POST /v1/challenge with tenant ID, user reference, and purpose.</li>
+            <li>The server receives a challenge_id and redirect URL.</li>
+            <li>The user is redirected to the Chirograph-hosted ceremony.</li>
+            <li>The user authenticates with a platform authenticator (Face ID, Touch ID, or security key).</li>
+            <li>Chirograph verifies the WebAuthn assertion server-side.</li>
+            <li>The browser redirects back with an opaque result token.</li>
+            <li>Your server calls POST /v1/verify (or /widget/redeem) to confirm the result.</li>
+          </ol>
+        </div>
+      );
+
+    case 'node-sdk':
+      return (
+        <div className="space-y-6">
+          <h1 className="font-display text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+            Node.js SDK
+          </h1>
+          <p className="text-sm leading-relaxed text-zinc-400">
+            The Chirograph Node.js SDK provides a typed client for the Chirograph Verify API. It wraps the REST endpoints with convenient methods for challenge creation, verification, and webhook handling.
+          </p>
+          <CodeSnippet filename="install" code={`npm install @chirograph/node`} />
+          <p className="text-sm leading-relaxed text-zinc-400">
+            Configure the SDK with your tenant secret API key. The SDK handles request signing, error parsing, and response typing automatically.
+          </p>
+        </div>
+      );
+
+    case 'security-model':
+      return (
+        <div className="space-y-6">
+          <h1 className="font-display text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+            Security Model
+          </h1>
+          <p className="text-sm leading-relaxed text-zinc-400">
+            Chirograph Verify is designed around the principle that verification must be server-authoritative. No client-side state is trusted. Every verification flow is bound to a specific tenant, origin, and single-use challenge.
+          </p>
+          <h2 className="text-lg font-medium text-white">Key security properties</h2>
+          <ul className="list-disc space-y-1.5 pl-5 text-sm text-zinc-400">
+            <li>Single-use challenges with server-side state</li>
+            <li>Origin binding for widget flows</li>
+            <li>Tenant isolation at the database level</li>
+            <li>HMAC-SHA256 webhook signatures</li>
+            <li>Rate limiting and abuse detection</li>
+            <li>Device fingerprinting for repeat-abuse detection</li>
+          </ul>
+        </div>
+      );
+
+    case 'replay-protection':
+      return (
+        <div className="space-y-6">
+          <h1 className="font-display text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+            Replay Protection
+          </h1>
+          <p className="text-sm leading-relaxed text-zinc-400">
+            Every verification challenge is single-use. Once a challenge has been consumed (verified or expired), it cannot be reused. The backend tracks challenge state in Redis with a short TTL and marks challenges as consumed after verification.
+          </p>
+          <p className="text-sm leading-relaxed text-zinc-400">
+            Result tokens are also single-use. Redeeming a result token invalidates it, preventing replay attacks even if the token is intercepted.
+          </p>
+        </div>
+      );
+
+    case 'device-trust':
+      return (
+        <div className="space-y-6">
+          <h1 className="font-display text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+            Device Trust &amp; Abuse Detection
+          </h1>
+          <p className="text-sm leading-relaxed text-zinc-400">
+            Chirograph Verify generates a cryptographic device fingerprint from WebAuthn-related identifiers. This fingerprint is used to detect unusual patterns, such as repeated use of the same device across multiple customer tenants.
+          </p>
+          <p className="text-sm leading-relaxed text-zinc-400">
+            A flagged device is a security signal, not a fraud determination. Device trust scores are provided as technical signals to assist risk-based decisions.
+          </p>
+        </div>
+      );
+
+    case 'errors':
+      return (
+        <div className="space-y-6">
+          <h1 className="font-display text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+            Errors
+          </h1>
+          <p className="text-sm leading-relaxed text-zinc-400">
+            The Chirograph Verify API returns standard HTTP status codes and structured error responses. All errors include an error code and a human-readable message.
+          </p>
+          <div className="glass-panel overflow-x-auto rounded-2xl p-1.5">
+            <table className="glass-well w-full rounded-xl text-left text-sm overflow-hidden">
+              <thead className="border-b border-white/[0.08] bg-white/[0.03] text-xs font-semibold text-white">
+                <tr>
+                  <th className="px-4 py-3">Status</th>
+                  <th className="px-4 py-3">Meaning</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-white/[0.07] text-sm text-zinc-300">
+                <tr><td className="px-4 py-3 font-mono text-xs">400</td><td className="px-4 py-3">Invalid request parameters</td></tr>
+                <tr><td className="px-4 py-3 font-mono text-xs">401</td><td className="px-4 py-3">Missing or invalid API key</td></tr>
+                <tr><td className="px-4 py-3 font-mono text-xs">403</td><td className="px-4 py-3">Origin or redirect not authorized</td></tr>
+                <tr><td className="px-4 py-3 font-mono text-xs">404</td><td className="px-4 py-3">Resource not found</td></tr>
+                <tr><td className="px-4 py-3 font-mono text-xs">429</td><td className="px-4 py-3">Rate limit exceeded</td></tr>
+                <tr><td className="px-4 py-3 font-mono text-xs">500</td><td className="px-4 py-3">Internal server error</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      );
+
+    case 'api-ceremony-complete':
+      return (
+        <div className="space-y-6">
+          <div className="font-mono text-xs text-[#7e95ff]">POST /widget/ceremony (alias)</div>
+          <h1 className="font-display text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+            Ceremony completion (alias)
+          </h1>
+          <p className="text-sm leading-relaxed text-zinc-400">
+            The ceremony completion endpoint is an alias for the ceremony options endpoint. Both paths resolve to the same handler. Use either <code className="font-mono text-zinc-200">/widget/ceremony/options</code> or <code className="font-mono text-zinc-200">/widget/ceremony/complete</code> depending on your integration preference.
+          </p>
         </div>
       );
 

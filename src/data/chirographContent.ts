@@ -248,7 +248,7 @@ const { flow_id, redirect_url } = await res.json();
 <script>
   function startVerification() {
     Chirograph.verify({
-      publishableKey: 'pk_live_...',
+      publishableKey: 'a1b2c3d4... (64 hex chars)',
       flowId: flowIdFromYourBackend,
       // user is redirected to the hosted
       // WebAuthn ceremony, then back here
