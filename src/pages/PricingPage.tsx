@@ -1,103 +1,130 @@
-import { useSeo } from '@/hooks/useSeo';
-import { seo } from '@/config/seo';
-import { Reveal } from '@/components/ui/Reveal';
-import { SectionHeading } from '@/components/ui/SectionHeading';
-import { ButtonLink } from '@/components/ui/Button';
-import { Badge } from '@/components/ui/Badge';
-import { appLinks } from '@/config/site';
-import { pricingTiers, comparisonRows, type PricingTier } from '@/config/pricing';
-import { Check, Minus, ArrowRight } from 'lucide-react';
+import { ArrowUpRight, Check, Minus } from 'lucide-react';
+import { GlassCard } from '../components/GlassCard';
+import { ScrollReveal } from '../components/ScrollReveal';
+import { PRICING_COMPARISON_ROWS, PRICING_TIERS } from '../data/chirographContent';
 
 export function PricingPage() {
-  useSeo(seo.pricing);
-
   return (
-    <>
-      {/* Hero */}
-      <section className="relative overflow-hidden pt-32 pb-12 lg:pt-40 lg:pb-16">
-        <div className="absolute inset-0 bg-grid mask-fade-b" />
-        <div className="absolute left-1/2 top-0 -z-10 h-[400px] w-[700px] -translate-x-1/2 rounded-full bg-gradient-to-b from-primary-100/50 to-transparent blur-3xl" />
-        <div className="container-page">
-          <Reveal>
+    <div className="bg-[#020305]">
+      {/* Header */}
+      <section className="relative overflow-hidden border-b border-white/[0.08] pt-20 pb-16 lg:pt-28 lg:pb-20">
+        <div aria-hidden="true" className="pointer-events-none absolute -top-20 left-1/3 h-80 w-[480px] animate-morph-a bg-emerald-500/14 blur-[130px]" />
+        <div aria-hidden="true" className="pointer-events-none absolute top-24 right-[10%] h-72 w-80 animate-morph-b bg-[#3B5BFF]/14 blur-[120px]" />
+
+        <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
+          <ScrollReveal>
             <div className="mx-auto max-w-2xl text-center">
-              <Badge variant="primary" className="mb-5">
-                Pricing
-              </Badge>
-              <h1 className="text-4xl font-normal leading-[1.05] tracking-tight text-ink-900 sm:text-5xl lg:text-6xl lg:leading-[1.02] lg:tracking-tighter">
-                Pricing that scales
-                <br />
-                <span className="text-gradient">with your usage.</span>
+              <p className="text-xs font-mono text-emerald-400">Pricing</p>
+              <h1 className="mt-4 font-display text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl [text-wrap:balance]">
+                Pricing that scales with your usage.
               </h1>
-              <p className="mx-auto mt-7 max-w-xl text-lg leading-relaxed text-ink-500">
-                Start free and pay only as you verify more users. No per-seat costs,
-                no hidden fees, no contracts required.
+              <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-zinc-300 sm:text-lg">
+                Start free and pay only as you verify more users. No per-seat costs, no hidden fees, no contracts required.
               </p>
             </div>
-          </Reveal>
-        </div>
-      </section>
+          </ScrollReveal>
 
-      {/* Pricing cards */}
-      <section className="pb-24 lg:pb-32">
-        <div className="container-page">
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
-            {pricingTiers.map((tier, i) => (
-              <Reveal key={tier.name} delay={i * 80}>
-                <PricingCard tier={tier} />
-              </Reveal>
+          <div className="mt-16 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+            {PRICING_TIERS.map((tier, idx) => (
+              <ScrollReveal key={tier.id} delay={idx * 0.05} className="h-full">
+                <GlassCard featured={Boolean(tier.popular)} className="h-full p-6">
+                  <div className="flex h-full flex-col justify-between">
+                    <div>
+                      <div className="flex items-center justify-between gap-2">
+                        <h2 className="text-base font-semibold text-white">{tier.name}</h2>
+                        {tier.popular && (
+                          <span className="font-mono text-[11px] text-emerald-400">Most popular</span>
+                        )}
+                      </div>
+                      <div className="mt-5 flex items-baseline gap-1.5">
+                        <span className="text-3xl font-semibold tracking-tight text-white tabular-nums">
+                          {tier.price}
+                        </span>
+                        {tier.period && (
+                          <span className="text-xs text-zinc-400">{tier.period}</span>
+                        )}
+                      </div>
+                      <p className="mt-1.5 font-mono text-xs text-emerald-400 tabular-nums">
+                        {tier.volume}
+                      </p>
+                      <p className="mt-4 text-xs leading-relaxed text-zinc-300">
+                        {tier.description}
+                      </p>
+                    </div>
+
+                    <a
+                      href={tier.href}
+                      target={tier.href.startsWith('http') ? '_blank' : undefined}
+                      rel={tier.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                      className={`mt-8 inline-flex w-full items-center justify-center gap-1.5 rounded-xl px-4 py-2.5 text-xs font-semibold transition-all ${
+                        tier.popular
+                          ? 'bg-emerald-500 text-black shadow-[0_0_24px_rgba(16,185,129,0.35)] hover:bg-emerald-400'
+                          : 'morph-socket text-white hover:bg-white hover:text-black'
+                      }`}
+                    >
+                      <span>{tier.cta}</span>
+                      <ArrowUpRight className="h-3.5 w-3.5" />
+                    </a>
+                  </div>
+                </GlassCard>
+              </ScrollReveal>
             ))}
           </div>
 
-          {/* Note */}
-          <Reveal delay={300}>
-            <p className="mt-8 text-center text-sm text-secondary">
-              All plans include WebAuthn verification, server-side verification, single-use challenges, and tenant isolation.
-              Billing is handled via Flutterwave.
+          <ScrollReveal delay={0.12}>
+            <p className="mt-8 text-center text-sm text-zinc-400">
+              All plans include WebAuthn verification, server-side verification, single-use challenges, and tenant isolation. Billing is handled via Flutterwave.
             </p>
-          </Reveal>
+          </ScrollReveal>
         </div>
       </section>
 
-      {/* Comparison table */}
-      <section className="pb-24 lg:pb-32">
-        <div className="container-page">
-          <Reveal>
-            <SectionHeading
-              eyebrow="Compare"
-              title="Feature comparison"
-              description="Everything you get at each tier."
-            />
-          </Reveal>
+      {/* Full Feature Comparison Matrix */}
+      <section className="py-20 lg:py-28">
+        <div className="mx-auto max-w-6xl px-6 lg:px-10">
+          <ScrollReveal>
+            <div className="text-center">
+              <p className="text-xs font-mono text-[#7e95ff]">Compare</p>
+              <h2 className="mt-3 text-3xl font-semibold tracking-tight text-white">
+                Feature comparison
+              </h2>
+              <p className="mt-2 text-sm text-zinc-400">
+                Everything you get at each tier.
+              </p>
+            </div>
+          </ScrollReveal>
 
-          <Reveal delay={100}>
-            <div className="mx-auto mt-14 max-w-5xl overflow-x-auto">
-              <table className="w-full border-collapse">
+          <ScrollReveal delay={0.08}>
+            <div className="glass-panel mt-12 overflow-x-auto rounded-2xl p-2">
+              <table className="glass-well w-full border-collapse rounded-xl text-left overflow-hidden">
                 <thead>
-                  <tr className="border-b border-ink-200">
-                    <th className="sticky left-0 z-10 w-1/3 bg-ink-100 px-4 py-4 text-left text-sm font-semibold text-ink-900">
-                      Feature
-                    </th>
-                    {pricingTiers.map((t) => (
+                  <tr className="border-b border-white/[0.08] bg-white/[0.03]">
+                    <th className="px-5 py-4 text-sm font-semibold text-white">Feature</th>
+                    {PRICING_TIERS.map((tier) => (
                       <th
-                        key={t.name}
-                        className={`px-3 py-4 text-center text-sm font-semibold lg:px-4 ${
-                          t.featured ? 'text-primary-700' : 'text-ink-900'
+                        key={tier.id}
+                        className={`px-4 py-4 text-center text-sm font-semibold ${
+                          tier.popular ? 'text-emerald-400' : 'text-white'
                         }`}
                       >
-                        {t.name}
+                        {tier.name}
                       </th>
                     ))}
                   </tr>
                 </thead>
-                <tbody>
-                  {comparisonRows.map((row, i) => (
-                    <tr key={row.label} className={`border-b border-ink-200 ${i % 2 === 0 ? 'bg-white/[0.02]' : ''}`}>
-                      <td className="sticky left-0 z-10 bg-inherit px-4 py-3.5 text-left text-sm text-ink-700">
-                        {row.label}
-                      </td>
-                      {row.values.map((val, j) => (
-                        <td key={j} className="px-3 py-3.5 text-center lg:px-4">
-                          <Cell val={val} />
+                <tbody className="divide-y divide-white/[0.07]">
+                  {PRICING_COMPARISON_ROWS.map((row) => (
+                    <tr key={row.label} className="hover:bg-white/[0.025]">
+                      <td className="px-5 py-3.5 text-sm text-zinc-300">{row.label}</td>
+                      {row.values.map((val, idx) => (
+                        <td key={idx} className="px-4 py-3.5 text-center text-sm tabular-nums">
+                          {val === true ? (
+                            <Check className="mx-auto h-4 w-4 text-emerald-400" />
+                          ) : val === false ? (
+                            <Minus className="mx-auto h-4 w-4 text-zinc-600" />
+                          ) : (
+                            <span className="font-mono text-xs text-zinc-200">{val}</span>
+                          )}
                         </td>
                       ))}
                     </tr>
@@ -105,103 +132,9 @@ export function PricingPage() {
                 </tbody>
               </table>
             </div>
-          </Reveal>
+          </ScrollReveal>
         </div>
       </section>
-
-      {/* Enterprise CTA */}
-      <section className="pb-24 lg:pb-32">
-        <div className="container-page">
-          <Reveal>
-            <div className="mx-auto max-w-2xl rounded-3xl border border-ink-200 bg-gradient-to-br from-ink-50 to-primary-50/40 p-12 text-center lg:p-16">
-              <h2 className="text-2xl font-normal tracking-tight text-ink-900 sm:text-3xl">
-                Need something custom?
-              </h2>
-              <p className="mx-auto mt-3 max-w-md text-ink-500">
-                Higher volumes, custom SLAs, or custom security requirements — let's talk.
-              </p>
-              <div className="mt-6">
-                <ButtonLink href={appLinks.getStarted} size="lg" external>
-                  Contact us
-                  <ArrowRight className="h-4 w-4" />
-                </ButtonLink>
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-    </>
-  );
-}
-
-function PricingCard({ tier }: { tier: PricingTier }) {
-  return (
-    <div
-      className={`relative flex h-full flex-col rounded-2xl border p-7 transition-all duration-300 ${
-        tier.featured
-          ? 'border-ink-300 bg-ink-100 shadow-glow lg:-translate-y-2'
-          : 'border-ink-200 bg-ink-100 hover:border-line-strong hover:shadow-card-hover hover:-translate-y-0.5'
-      }`}
-    >
-      {tier.featured && (
-        <span className="absolute -top-3 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-ink-900 px-3 py-1 text-2xs font-semibold uppercase tracking-wider text-ink-950">
-          Most popular
-        </span>
-      )}
-      <h3 className="text-base font-semibold text-ink-900">{tier.name}</h3>
-      <div className="mt-4 flex items-baseline gap-1">
-        <span className="text-3xl font-normal tracking-tight text-ink-900">
-          {tier.price}
-        </span>
-        {tier.unit && (
-          <span className="text-sm text-ink-500">{tier.unit}</span>
-        )}
-      </div>
-      <p className="mt-2 text-xs font-medium text-primary-600">{tier.verifications}</p>
-      <p className="mt-3 text-xs leading-relaxed text-ink-500">{tier.desc}</p>
-
-      <ButtonLink
-        href={appLinks.getStarted}
-        variant={tier.featured ? 'primary' : 'secondary'}
-        size="md"
-        external
-        className="mt-5 w-full"
-      >
-        {tier.cta}
-      </ButtonLink>
-
-      <ul className="mt-6 flex-1 space-y-2.5">
-        {tier.features.map((f, i) => (
-          <FeatureItem key={i} feature={f} isFirst={i === 0 && f.endsWith(':')} />
-        ))}
-      </ul>
     </div>
   );
-}
-
-function FeatureItem({ feature, isFirst }: { feature: string; isFirst: boolean }) {
-  if (isFirst) {
-    return (
-      <li className="pt-1 text-xs font-semibold uppercase tracking-wider text-ink-700">
-        {feature}
-      </li>
-    );
-  }
-  return (
-    <li className="flex items-start gap-2.5 text-sm text-ink-600">
-      <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary-500" strokeWidth={2.5} />
-      {feature}
-    </li>
-  );
-}
-
-function Cell({ val }: { val: string | boolean }) {
-  if (typeof val === 'boolean') {
-    return val ? (
-      <Check className="mx-auto h-5 w-5 text-primary-500" strokeWidth={2.5} />
-    ) : (
-      <Minus className="mx-auto h-5 w-5 text-primary" />
-    );
-  }
-  return <span className="text-sm text-ink-600">{val}</span>;
 }
