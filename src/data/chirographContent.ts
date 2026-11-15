@@ -1,7 +1,15 @@
+/**
+ * Account-entry destinations.
+ *
+ * The customer-facing application (sign in, sign up and dashboard) is served
+ * from verify.chirographverify.com. app.chirographverify.com remains the API
+ * and widget origin (see the /v1/* examples and widget.js below) — it is not a
+ * place to send visitors who want to reach their account.
+ */
 export const APP_URLS = {
-  signIn: 'https://app.chirographverify.com/login',
-  getStarted: 'https://app.chirographverify.com/signup',
-  dashboard: 'https://app.chirographverify.com/dashboard',
+  signIn: 'https://verify.chirographverify.com/login',
+  getStarted: 'https://verify.chirographverify.com/login',
+  dashboard: 'https://verify.chirographverify.com/login',
   developers: 'https://app.chirographverify.com/developers',
   x: 'https://x.com/chirograph_V',
 };
