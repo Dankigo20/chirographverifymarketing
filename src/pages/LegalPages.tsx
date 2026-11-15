@@ -28,7 +28,7 @@ export function TermsPage() {
           <section className="border-t border-white/[0.08] pt-6">
             <h2 className="text-lg font-semibold text-white">2. The Service</h2>
             <p className="mt-2 text-zinc-400">
-              Chirograph Verify is a device-biometric bot-prevention API. It uses WebAuthn-based verification with platform authenticators (such as Face ID, Touch ID, and compatible security keys) to provide a cryptographic signal of a valid passkey assertion from an enrolled device. Verification is a technical signal; it does not prove identity, uniqueness, or liveness.
+              Chirograph Verify is a device-biometric bot-prevention API. It uses WebAuthn-based verification with platform authenticators (such as Face ID, Touch ID, and compatible security keys) to provide a cryptographic signal that a valid passkey assertion from an enrolled device. Verification is a technical signal; it does not prove identity, uniqueness, or liveness.
             </p>
             <p className="mt-3 text-zinc-400">
               Verification is a technical security signal. It does not prove a person&apos;s legal identity, and Chirograph Verify is not a complete identity-verification service. Biometric authentication is performed locally by the user&apos;s device or platform authenticator. Chirograph Verify receives the cryptographic WebAuthn information required for verification — it does not receive or store raw biometric data such as facial images or fingerprint images.
